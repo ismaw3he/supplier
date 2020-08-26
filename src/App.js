@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import SingIn from "./components/signIn/SignIn"
+import LogIn from "./components/logIn/LogIn"
 import SignUp from "./components/signUp/SignUp"
 import Main from "./components/main/Main"
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <Provider store={store} >
       <div className="App">
-        <SingIn />
+        <LogIn />
         {/* <SignUp /> */}
         {/* <Main/> */}
       </div>

@@ -1,2 +1,2 @@
 export * from "./signUp/signUpActions"
-export * from "./signIn/signInActions"
+export * from "./logIn/logInActions"

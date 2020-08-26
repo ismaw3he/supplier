@@ -1,29 +1,29 @@
-const { SIGN_IN_USER_REQUEST, SIGN_IN_USER_SUCCESS, SIGN_IN_USER_FAILURE } = require("./signInTypes")
+const { LOG_IN_USER_REQUEST, LOG_IN_USER_SUCCESS, LOG_IN_USER_FAILURE } = require("./logInTypes")
   
 const initialState = {
     loading: false,
-    mail: "",
+    user: {},
     error: ""
 }
 
-const signInReducer = (state = initialState, action) => {
+const logInReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SIGN_IN_USER_REQUEST:
+        case LOG_IN_USER_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case SIGN_IN_USER_SUCCESS:
+        case LOG_IN_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                mail: action.payload
+                userData: action.payload
             }
-        case SIGN_IN_USER_FAILURE:
+        case LOG_IN_USER_FAILURE:
             return {
                 ...state,
                 loading: false,
-                mail: "",
+                userData: {},
                 error: action.payload
            }
        default: return state
@@ -31,4 +31,4 @@ const signInReducer = (state = initialState, action) => {
     }
 }
 
-export default signInReducer;
+export default logInReducer;
