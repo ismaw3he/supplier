@@ -2,7 +2,7 @@ const { SIGN_UP_USER_REQUEST, SIGN_UP_USER_SUCCESS, SIGN_UP_USER_FAILURE } = req
   
 const initialState = {
     loading: false,
-    mail: "",
+    mail: {},
     error: ""
 }
 
@@ -17,13 +17,13 @@ const signUpReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                mail: action.payload
+                userData: action.payload
             }
         case SIGN_UP_USER_FAILURE:
             return {
                 ...state,
                 loading: false,
-                mail: "",
+                userData: "",
                 error: action.payload
            }
        default: return state

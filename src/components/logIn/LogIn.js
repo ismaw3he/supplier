@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { logInUser } from "../../API/logInUserAPI"
 
 function LogIn({ userData, logInUser }) {
-  const [mail, setMail] = useState("")
   const [logInData, setLogInData] = useState({
     Email: "",
     Password: ""

@@ -4,19 +4,31 @@ import {
     signUpUserFailure
 } from "../redux/signUp/signUpActions"
 
+import url from "./url";
+
 import axios from "axios"
 
-export const signUpUser = (mail) =>{
+export const signUpUser = (signUpData) =>{
     return (dispatch) =>{
         dispatch(signUpUserRequest())
-        // axios.get("")
-        // .then(response=>{
-        //     const users = response.data;
-            dispatch(signUpUserSuccess(mail))
-        // })
-        // .catch(error=>{
-            // const errorMsg = error.message;
-            // dispatch(signUpUserFailure("errorMsg"))
-        // })
+        console.log(signUpData)
+        axios.post(url + '/api/Auth/SignIn', {
+            Name: signUpData.Name,
+            Surname: signUpData.Surname,
+            Country: signUpData.Country,
+            CompanyName: signUpData.CompanyName,
+            TradeRole: signUpData.TradeRole,
+            PhoneNumber: signUpData.PhoneNumber,
+            Email: signUpData.Email,
+            Password: signUpData.Password,
+            ConfirmPassword: signUpData.ConfirmPassword
+          })
+          .then((response) => {
+            console.log(response);
+            dispatch(signUpUserSuccess(response))
+          }, (error) => {
+            console.log(error);
+            dispatch(signUpUserFailure("errorMsg"))
+          });
     }
 }  
