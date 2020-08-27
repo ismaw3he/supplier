@@ -33,7 +33,7 @@ function App() {
               </li>
             </ul>
           </nav>
-          <h1>(withput API endpoints)</h1>
+          <h1>(without API endpoints)</h1>
           <Switch>
           <Route exact path="/">
               <Main />
