@@ -3,6 +3,7 @@ import {
     signUpUserSuccess,
     signUpUserFailure
 } from "../redux/signUp/signUpActions"
+import {verifyUserSet} from "../redux/verification/verificationActions"
 
 import url from "./url";
 
@@ -17,7 +18,7 @@ export const signUpUser = (signUpData) =>{
             Surname: signUpData.Surname,
             Country: signUpData.Country,
             CompanyName: signUpData.CompanyName,
-            TradeRole: signUpData.TradeRole,
+            TradeRole: Number(signUpData.TradeRole),
             PhoneNumber: signUpData.PhoneNumber,
             Email: signUpData.Email,
             Password: signUpData.Password,
@@ -25,10 +26,11 @@ export const signUpUser = (signUpData) =>{
           })
           .then((response) => {
             console.log(response);
-            dispatch(signUpUserSuccess(response))
+            dispatch(verifyUserSet(response.data.email))
+            dispatch(signUpUserSuccess(response.data.email))
           }, (error) => {
-            console.log(error);
-            dispatch(signUpUserFailure("errorMsg"))
+            console.log(error.response.data);
+            dispatch(signUpUserFailure("Error occured"))
           });
     }
 }  

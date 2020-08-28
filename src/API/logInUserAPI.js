@@ -17,10 +17,10 @@ export const logInUser = (logInData) =>{
           })
           .then((response) => {
             console.log(response);
-            dispatch(logInUserSuccess(response))
+            dispatch(logInUserSuccess(response.data))
           }, (error) => {
-            console.log(error);
-            dispatch(logInUserFailure("errorMsg"))
+            console.log(error.response.data);
+            dispatch(logInUserFailure(error.response.data.message))
           });
     }
 }  

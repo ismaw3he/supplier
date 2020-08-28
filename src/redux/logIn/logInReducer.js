@@ -3,7 +3,8 @@ const { LOG_IN_USER_REQUEST, LOG_IN_USER_SUCCESS, LOG_IN_USER_FAILURE } = requir
 const initialState = {
     loading: false,
     user: {},
-    error: ""
+    error: "",
+    loggedIn: false
 }
 
 const logInReducer = (state = initialState, action) => {
@@ -17,7 +18,9 @@ const logInReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                userData: action.payload
+                user: action.payload,
+                error: "",
+                loggedIn: true
             }
         case LOG_IN_USER_FAILURE:
             return {

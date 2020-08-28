@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { signUpUser } from "../../API/signUpUserAPI"
 
-function SignUp({ userData, signUpUser }) {
+import {
+  Redirect
+} from "react-router-dom";
+
+function SignUp({ data, signUpUser }) {
   // const [mail, setEmail] = useState("")
   const [signUpData, setSignUpData] = useState({
     Name: "",
@@ -39,7 +43,7 @@ function SignUp({ userData, signUpUser }) {
           type={"text"}
           value={signUpData.Country}
           placeholder={"Country"}
-          onChange={(e) => { setSignUpData({ ...signUpData, Country: e.target.value })}}
+          onChange={(e) => { setSignUpData({ ...signUpData, Country: e.target.value }) }}
         />
       </div>
       <div>
@@ -51,6 +55,7 @@ function SignUp({ userData, signUpUser }) {
         />
       </div>
       <div>
+        <p>(0 or 1 required)</p>
         <input
           type={"text"}
           value={signUpData.TradeRole}
@@ -59,6 +64,7 @@ function SignUp({ userData, signUpUser }) {
         />
       </div>
       <div>
+      <p>(number required)</p>
         <input
           type={"text"}
           value={signUpData.PhoneNumber}
@@ -67,6 +73,7 @@ function SignUp({ userData, signUpUser }) {
         />
       </div>
       <div>
+      <p>(email required)</p>
         <input
           type={"text"}
           value={signUpData.Email}
@@ -91,17 +98,20 @@ function SignUp({ userData, signUpUser }) {
         />
       </div>
       <button onClick={() => { signUpUser(signUpData) }}>Sign Up</button>
-      {/* {userData.loading ? <p>Loading...</p> :
-        userData.error ? <p>{userData.error}</p> :
-          userData.mail ? <p>{userData.mail}</p> : null
-      } */}
+      {data.loading ? <p>Loading...</p> :
+        data.error ? <p>{data.error}</p> :
+          data.email ?
+            <Redirect to="/verification" />             
+            : null
+      }
+
     </div>
   )
 }
 
 const mapStateToProps = state => {
   return {
-    userData: state.signUp
+    data: state.signUp
   }
 }
 
