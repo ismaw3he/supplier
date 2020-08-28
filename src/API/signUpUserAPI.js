@@ -12,7 +12,6 @@ import axios from "axios"
 export const signUpUser = (signUpData) =>{
     return (dispatch) =>{
         dispatch(signUpUserRequest())
-        console.log(signUpData)
         axios.post(url + '/api/Auth/SignIn', {
             Name: signUpData.Name,
             Surname: signUpData.Surname,
@@ -25,11 +24,9 @@ export const signUpUser = (signUpData) =>{
             ConfirmPassword: signUpData.ConfirmPassword
           })
           .then((response) => {
-            console.log(response);
             dispatch(verifyUserSet(response.data.email))
             dispatch(signUpUserSuccess(response.data.email))
           }, (error) => {
-            console.log(error.response.data);
             dispatch(signUpUserFailure("Error occured"))
           });
     }
