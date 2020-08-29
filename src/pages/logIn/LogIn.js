@@ -26,7 +26,7 @@ function LogIn({ userData, logInUser }) {
       <button onClick={() => { logInUser(logInData) }}>Log In</button>
       {userData.loading ? <p>Loading...</p> :
         userData.error ? <p>{userData.error}</p> :
-          userData.user.name ?
+          userData.user.name && userData.isAuthenticated ?
             <div>
               <h2>Logged in as {userData.user.name} {userData.user.surname}</h2>
               <h5>Company Name: {userData.user.companyName}</h5>

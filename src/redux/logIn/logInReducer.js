@@ -4,7 +4,7 @@ const initialState = {
     loading: false,
     user: {},
     error: "",
-    loggedIn: false
+    isAuthenticated: false
 }
 
 const logInReducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const logInReducer = (state = initialState, action) => {
                 loading: false,
                 user: action.payload,
                 error: "",
-                loggedIn: true
+                isAuthenticated: true
             }
         case LOG_IN_USER_FAILURE:
             return {

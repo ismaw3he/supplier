@@ -7,23 +7,28 @@ import {
   Link
 } from "react-router-dom";
 
-import LogIn from "./components/logIn/LogIn"
-import SignUp from "./components/signUp/SignUp"
-import Main from "./components/main/Main"
-import Verification from "./components/verification/Verification"
+import LogIn from "./pages/logIn/LogIn"
+import SignUp from "./pages/signUp/SignUp"
+import Main from "./pages/main/Main"
+import Verification from "./pages/verification/Verification"
+import Profile from "./pages/profile/Profile"
 
 import { Provider } from "react-redux";
 import store from "./redux/store"
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Provider store={store} >
-      <Router  basename="/supplier">
+      <Router basename="/supplier">
         <div className="App">
           <nav>
             <ul>
               <li>
                 <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
               </li>
               <li>
                 <Link to="/logIn">Log In</Link>
@@ -34,10 +39,13 @@ function App() {
             </ul>
           </nav>
           <Switch>
-          <Route exact path="/">
+            <Route exact path="/">
               <Main />
             </Route>
-            <Route  path="/signUp">
+            <PrivateRoute path="/profile" isAuthenticated={false}>
+              <Profile />
+            </PrivateRoute>
+            <Route path="/signUp">
               <SignUp />
             </Route>
             <Route path="/logIn">
