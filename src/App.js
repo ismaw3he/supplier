@@ -1,26 +1,15 @@
 import React from 'react';
 import './App.css';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
-import LogIn from "./pages/logIn/LogIn"
-import SignUp from "./pages/signUp/SignUp"
-import Main from "./pages/main/Main"
-import Verification from "./pages/verification/Verification"
-import Profile from "./pages/profile/Profile"
 
-import { Provider } from "react-redux";
-import store from "./redux/store"
-import PrivateRoute from "./components/PrivateRoute";
+import {RenderRoutes} from "./routing/RenderRoutes";
+import ROUTES from "./routing/routes";
 
 function App() {
   return (
-    <Provider store={store} >
-      <Router basename="/supplier">
         <div className="App">
           <nav>
             <ul>
@@ -38,26 +27,9 @@ function App() {
               </li>
             </ul>
           </nav>
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <PrivateRoute path="/profile" isAuthenticated={false}>
-              <Profile />
-            </PrivateRoute>
-            <Route path="/signUp">
-              <SignUp />
-            </Route>
-            <Route path="/logIn">
-              <LogIn />
-            </Route>
-            <Route path="/verification">
-              <Verification />
-            </Route>
-          </Switch>
+          <RenderRoutes routes={ROUTES} />
+          
         </div>
-      </Router>
-    </Provider>
   );
 }
 

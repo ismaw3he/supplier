@@ -12,7 +12,7 @@ import axios from "axios"
 export const signUpUser = (signUpData) =>{
     return (dispatch) =>{
         dispatch(signUpUserRequest())
-        axios.post(url + '/api/Auth/SignIn', {
+        axios.post(url + '/api/Auth/SignUp', {
             Name: signUpData.Name,
             Surname: signUpData.Surname,
             Country: signUpData.Country,
