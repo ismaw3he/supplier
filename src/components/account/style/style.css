@@ -1,0 +1,37 @@
+.account-container{
+    width: 150px;
+    height: 45px;
+    position: absolute;
+    top: 12px;
+    right: 0;
+    display: flex;
+}
+.user-account-img-container{
+    height: 100%;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-account-img {
+    width: 27px;
+    height: 27px;
+    margin-top: 3px;
+}
+.links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 9px;
+    font-size: 12px;
+}
+.sign-links:link,
+.sign-links:visited{
+    text-decoration: none;
+    color: rgb(56, 56, 56);
+    border-bottom: 1px solid #fff;
+}
+.sign-links:hover,
+.sign-links:active{
+    border-bottom: 1px solid rgb(56, 56, 56);
+}

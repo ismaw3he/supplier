@@ -1,0 +1,143 @@
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.sign-left-window{
+    width: calc(100% - 540px);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.gradient{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.40);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-left-window-container{
+    width: 83%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container-box-1{
+    height: 15%;
+    color: white;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+.container-box-2{
+    width: 58% ;
+    height: 53%;
+    color: white;
+}
+.container-box-3{
+    height: 10%;
+    border-top: rgba(255,255,255,0.43) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.basliq{
+    font-size: 40px;
+}
+.seffaf{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.63);
+    font-size: 17px;
+}
+.seffaf-1{
+    color: rgba(255, 255, 255, 0.63);
+    font-family: "Book Antiqua";
+}
+.the{width: 50px;}
+.shopify{width: 70px;}
+.colombia{width: 105px;}
+.puma{width: 50px;}
+.nike{width: 70px;}
+.adidas{width: 50px;}
+/* ************************************************* */
+.sign-right-container{
+    width: 540px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.sign-container-fixed{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.route-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 140px;
+    margin-right: 30px;
+    align-self: flex-end;
+}
+.divider{
+    height: 80%;
+    border-left: 1px solid gray;
+}
+
+.form-header{
+    font-size: 30px;
+    color: #0062bd;
+    margin-top: 60px;
+}
+.input-container{
+    margin-top: 20px;
+}
+.custom-form{
+    margin: 60px 0;
+}
+.form-submit-btn{
+    width: 100%;
+    height: 40px;
+    background-color: #ffd500;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-submit-btn:hover{
+    background-color: #e8c200;
+}
+
+@media only screen and (max-width: 1100px) {
+    .sign-right-container {
+        width: 400px;
+    }
+    .sign-left-window{
+        width: calc(100% - 400px);
+    }
+    .container-box-2{width: 90%;}
+    .the{width: 45px;}
+    .shopify{width: 60px;}
+    .colombia{width: 95px;}
+    .puma{width: 45px;}
+    .nike{width: 60px;}
+    .adidas{width: 45px;}
+}
+@media only screen and (max-width: 700px) {
+    .sign-right-container {
+        width: 100vw;
+    }
+    .sign-left-window{
+        display: none;
+    }
+}
+  

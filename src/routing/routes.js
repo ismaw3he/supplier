@@ -6,7 +6,7 @@ import {RenderRoutes} from "./RenderRoutes";
 import Main from "../pages/main/Main";
 import LogIn from "../pages/logIn/LogIn";
 import SignUp from "../pages/signUp/SignUp";
-
+import Profile from "../pages/profile/Profile";
 
 const ROUTES = [
     { 
@@ -19,7 +19,8 @@ const ROUTES = [
         path: "/profile",
         key: "APP",
         component: props => {
-            if (true) {
+            
+            if (false) {
               alert("You need to log in to access profile routes");
               return <Redirect to={"/"} />;
             }
@@ -30,7 +31,7 @@ const ROUTES = [
                 path: "/profile",
                 key: "APP_ROOT",
                 exact: true,
-                component: () => <h1>Profile Index</h1>,
+                component: () => <Profile />,
             },
             {
                 path: "/profile/page",

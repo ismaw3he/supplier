@@ -11,7 +11,7 @@ import ROUTES from "./routing/routes";
 function App() {
   return (
         <div className="App">
-          <nav>
+          {/* <nav>
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -26,7 +26,8 @@ function App() {
                 <Link to="/signUp">Sign Up</Link>
               </li>
             </ul>
-          </nav>
+            
+          </nav> */}
           <RenderRoutes routes={ROUTES} />
           
         </div>
