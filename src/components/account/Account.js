@@ -16,6 +16,7 @@ function Account(props) {
                 <Link className="sign-links" to="/logIn">Sign In</Link>
                 <Link className="sign-links" to="/signUp">Join free</Link>
             </div>
+            
         </div>
     );
 }

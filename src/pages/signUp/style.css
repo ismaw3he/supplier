@@ -69,6 +69,7 @@
     display: flex;
     justify-content: center;
     overflow-y: scroll;
+    position: relative;
 }
 
 .sign-container-fixed{
@@ -85,6 +86,14 @@
     margin-right: 30px;
     align-self: flex-end;
 }
+.route-options-wide{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 205px;
+    align-self: center;
+}
 .divider{
     height: 80%;
     border-left: 1px solid gray;
@@ -95,8 +104,19 @@
     color: #0062bd;
     margin-top: 60px;
 }
+#form-header-info{
+    color:#878787;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
 .input-container{
     margin-top: 20px;
+}
+.input-container-flex{
+    display: flex;
+    height: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
 }
 .custom-form{
     margin: 60px 0;
@@ -112,14 +132,52 @@
     margin-top: 20px;
     border-radius: 4px;
     cursor: pointer;
+    border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
 }
 .form-submit-btn:hover{
     background-color: #e8c200;
 }
-
+.self-center{
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+.bold{
+    font-weight: bold;
+}
+.loader{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 5px;
+    background-color: #ffd500;
+    width: 0;
+    transition: width 1s;
+}
+.loader-half{
+    width: 220px;
+}
+.loader-full{
+    width: 540px;
+    transition: width 0.2s;
+}
+.disabled{
+    background-color: #ececec;
+    cursor: default;
+}
+.disabled:hover{
+    background-color: #ececec;
+}
 @media only screen and (max-width: 1100px) {
-    .sign-right-container {
+    .sign-right-container,
+    .loader-full {
         width: 400px;
+    }
+    .loader-half{
+        width: 170px;
     }
     .sign-left-window{
         width: calc(100% - 400px);
@@ -133,8 +191,12 @@
     .adidas{width: 45px;}
 }
 @media only screen and (max-width: 700px) {
-    .sign-right-container {
+    .sign-right-container,
+    .loader-full  {
         width: 100vw;
+    }
+    .loader-half{
+        width: 40vw;
     }
     .sign-left-window{
         display: none;

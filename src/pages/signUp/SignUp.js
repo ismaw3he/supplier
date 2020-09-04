@@ -14,13 +14,13 @@ import {
   Radio
 } from 'semantic-ui-react'
 
-import adidas from "./img/logo-adidas.png"
-import shopify from "./img/logo-shopify.png"
-import tnv from "./img/logo-the.png"
-import colombia from "./img/logo-colombia.png"
-import puma from "./img/logo-puma.png"
-import nike from "./img/logo-nike.png"
-import bck from "./img/clothes-2.jpg"
+import adidas from "../../img/logo-adidas.png"
+import shopify from "../../img/logo-shopify.png"
+import tnv from "../../img/logo-the.png"
+import colombia from "../../img/logo-colombia.png"
+import puma from "../../img/logo-puma.png"
+import nike from "../../img/logo-nike.png"
+import bck from "../../img/bck-2.jpg"
 import "./style.css"
 
 const options = {
@@ -45,11 +45,13 @@ function SignUp({ data, signUpUser }) {
     Surname: "",
     Country: "",
     CompanyName: "",
-    TradeRole: "",
+    TradeRole: "0",
     PhoneNumber: "",
     Email: "",
     Password: "",
-    ConfirmPassword: ""
+    ConfirmPassword: "",
+    PhonePrefix: '+994',
+    Terms: false
   })
   return (
     <div className="main">
@@ -79,6 +81,7 @@ function SignUp({ data, signUpUser }) {
           </div>
         </div>
       </div>
+     
       <div className="sign-right-container">
         <div className="sign-container-fixed">
           <div className="route-options">
@@ -88,14 +91,17 @@ function SignUp({ data, signUpUser }) {
           </div>
           <Form className="custom-form">
             <h2 className="form-header">Register</h2>
+
             <div className="input-container">
               <Form.Field
                 control={Select}
                 label='Country/region'
                 options={options.country}
                 placeholder='Choose country'
+                onChange={(e) => { setSignUpData({ ...signUpData, Country: e.target.innerText }) }}
               />
             </div>
+
             <div className="input-container">
               <Form.Group grouped>
                 <label>Please select trade role</label>
@@ -104,58 +110,86 @@ function SignUp({ data, signUpUser }) {
                     control={Radio}
                     label='Buyer'
                     value='0'
-                    checked={true}
-                    onChange={() => { }}
+                    checked={signUpData.TradeRole === "0"}
+                    onChange={() => { setSignUpData({ ...signUpData, TradeRole: "0" }) }}
                   />
                   <Form.Field
                     control={Radio}
                     label='Seller'
                     value='1'
-                    checked={true}
-                    onChange={() => { }}
+                    checked={signUpData.TradeRole === "1"}
+                    onChange={() => { setSignUpData({ ...signUpData, TradeRole: "1" }) }}
                   />
                   <Form.Field
                     control={Radio}
                     label='Both'
                     value='2'
-                    checked={true}
-                    onChange={() => { }}
+                    checked={signUpData.TradeRole === "2"}
+                    onChange={() => { setSignUpData({ ...signUpData, TradeRole: "2" }) }}
                   />
                 </Form.Group>
               </Form.Group>
             </div>
+
             <div className="input-container">
               <Form.Field>
                 <label>Email</label>
-                <input placeholder='Email will be used as Login ID' />
+                <input
+                  placeholder='Email will be used as Login ID'
+                  onChange={(e) => { setSignUpData({ ...signUpData, Email: e.target.value }) }}
+                />
               </Form.Field>
             </div>
+
             <div className="input-container">
               <Form.Field>
                 <label>Password</label>
-                <input type="password" placeholder='Enter your Password' />
+                <input
+                  type="password"
+                  placeholder='Enter your Password'
+                  onChange={(e) => { setSignUpData({ ...signUpData, Password: e.target.value }) }}
+                />
               </Form.Field>
             </div>
+
             <div className="input-container">
               <Form.Field>
                 <label>Confirm Password</label>
-                <input type="password" placeholder='Enter your Password again' />
+                <input
+                  type="password"
+                  placeholder='Enter your Password again'
+                  onChange={(e) => { setSignUpData({ ...signUpData, ConfirmPassword: e.target.value }) }}
+                />
               </Form.Field>
             </div>
 
             <div className="input-container">
               <Form.Field>
                 <label>Company name</label>
-                <input placeholder='Your company' />
+                <input
+                  placeholder='Your company'
+                  onChange={(e) => { setSignUpData({ ...signUpData, CompanyName: e.target.value }) }}
+                />
               </Form.Field>
             </div>
 
             <div className="input-container">
               <Form.Group widths='equal'>
-                <Form.Input fluid label='First name' placeholder='Your first name' />
-                <Form.Input fluid label='Last name' placeholder='Your last name' />
+                <Form.Input
+                  fluid
+                  label='First name'
+                  placeholder='Your first name'
+                  onChange={(e) => { setSignUpData({ ...signUpData, Name: e.target.value }) }}
+                />
+                <Form.Input
+                  fluid
+                  label='Last name'
+                  placeholder='Your last name'
+                  onChange={(e) => { setSignUpData({ ...signUpData, Surname: e.target.value }) }}
+                />
               </Form.Group>
             </div>
+
             <div className="input-container">
               <Form.Group>
                 <Form.Select
@@ -164,111 +198,60 @@ function SignUp({ data, signUpUser }) {
                   label='Country'
                   options={options.number}
                   placeholder='+994'
+                  value={signUpData.PhonePrefix}
+                  onChange={(e) => {
+                    setSignUpData({
+                      ...signUpData,
+                      PhonePrefix: e.target.innerText
+
+                    })
+                  }}
                 />
-                <Form.Input fluid label='Phone Number' placeholder='Your number' width={10} />
+                <Form.Input
+                  fluid
+                  label='Phone Number'
+                  placeholder='Your number'
+                  width={10}
+                  onChange={(e) => { setSignUpData({ ...signUpData, PhoneNumber: e.target.value }) }}
+                />
               </Form.Group>
             </div>
+
             <div className="input-container">
+
               <ReCAPTCHA
                 sitekey="6513213651469541651"
                 onChange={() => { }}
               />
             </div>
+
             <div className="input-container">
-              <Form.Checkbox label='I agree to the Terms and Conditions' />
+              <Form.Checkbox
+                label='I agree to the Terms and Conditions'
+                checked={signUpData.Terms}
+                onChange={()=>{setSignUpData({ ...signUpData, Terms: !signUpData.Terms })} }
+              />
             </div>
 
-            <div className="form-submit-btn">
+            <button
+              type="submit"
+              onClick={() => { signUpUser(signUpData) }}
+              className={!signUpData.Terms?"form-submit-btn disabled":"form-submit-btn"}>
               Agree and Register
-            </div>
+            </button >
+
+            <p className="self-center">Have an account? <Link className="sign-links bold" to="/logIn">Sign In</Link></p>
 
           </Form>
-
+          {data.loading ? <p>Loading...</p> :
+            data.error ? <p>{data.error}</p> :
+              data.email ?
+                <Redirect to="/logIn" />
+                : null
+          }
         </div>
-      </div>
-      {/* <div>
-        <input
-          type={"text"}
-          value={signUpData.Name}
-          placeholder={"Name"}
-          onChange={(e) => { setSignUpData({ ...signUpData, Name: e.target.value }) }}
-        />
-      </div>
-      <div>
-        <input
-          type={"text"}
-          value={signUpData.Surname}
-          placeholder={"Surname"}
-          onChange={(e) => { setSignUpData({ ...signUpData, Surname: e.target.value }) }}
-        />
-      </div>
-      <div>
-        <input
-          type={"text"}
-          value={signUpData.Country}
-          placeholder={"Country"}
-          onChange={(e) => { setSignUpData({ ...signUpData, Country: e.target.value }) }}
-        />
-      </div>
-      <div>
-        <input
-          type={"text"}
-          value={signUpData.CompanyName}
-          placeholder={"CompanyName"}
-          onChange={(e) => { setSignUpData({ ...signUpData, CompanyName: e.target.value }) }}
-        />
-      </div>
-      <div>
-        <p>(0 or 1 required)</p>
-        <input
-          type={"text"}
-          value={signUpData.TradeRole}
-          placeholder={"TradeRole"}
-          onChange={(e) => { setSignUpData({ ...signUpData, TradeRole: e.target.value }) }}
-        />
-      </div>
-      <div>
-      <p>(number required)</p>
-        <input
-          type={"text"}
-          value={signUpData.PhoneNumber}
-          placeholder={"PhoneNumber"}
-          onChange={(e) => { setSignUpData({ ...signUpData, PhoneNumber: e.target.value }) }}
-        />
-      </div>
-      <div>
-      <p>(email required)</p>
-        <input
-          type={"text"}
-          value={signUpData.Email}
-          placeholder={"Mail"}
-          onChange={(e) => { setSignUpData({ ...signUpData, Email: e.target.value }) }}
-        />
-      </div>
-      <div>
-        <input
-          type={"text"}
-          value={signUpData.Password}
-          placeholder={"Password"}
-          onChange={(e) => { setSignUpData({ ...signUpData, Password: e.target.value }) }}
-        />
-      </div>
-      <div>
-        <input
-          type={"text"}
-          value={signUpData.ConfirmPassword}
-          placeholder={"ConfirmPassword"}
-          onChange={(e) => { setSignUpData({ ...signUpData, ConfirmPassword: e.target.value }) }}
-        />
-      </div>
-      <button onClick={() => { signUpUser(signUpData) }}>Sign Up</button>
-      {data.loading ? <p>Loading...</p> :
-        data.error ? <p>{data.error}</p> :
-          data.email ?
-            <Redirect to="/logIn" />             
-            : null
-      } */}
 
+      </div>
     </div>
   )
 }

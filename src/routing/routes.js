@@ -7,6 +7,7 @@ import Main from "../pages/main/Main";
 import LogIn from "../pages/logIn/LogIn";
 import SignUp from "../pages/signUp/SignUp";
 import Profile from "../pages/profile/Profile";
+import Forgot from "../pages/forgotPassword/Forgot";
 
 const ROUTES = [
     { 
@@ -52,6 +53,12 @@ const ROUTES = [
         key: "SIGNUP", 
         exact: true, 
         component: () => <SignUp /> 
+    },
+    { 
+        path: "/reset-password", 
+        key: "RESET", 
+        exact: true, 
+        component: () => <Forgot /> 
     }
 ];
 
