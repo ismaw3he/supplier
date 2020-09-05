@@ -18,7 +18,7 @@ export const signUpUser = (signUpData) =>{
             Country: signUpData.Country,
             CompanyName: signUpData.CompanyName,
             TradeRole: Number(signUpData.TradeRole),
-            PhoneNumber: signUpData.PhoneNumber,
+            PhoneNumber: signUpData.PhonePrefix + signUpData.PhoneNumber,
             Email: signUpData.Email,
             Password: signUpData.Password,
             ConfirmPassword: signUpData.ConfirmPassword

@@ -51,7 +51,8 @@ function SignUp({ data, signUpUser }) {
     Password: "",
     ConfirmPassword: "",
     PhonePrefix: '+994',
-    Terms: false
+    Terms: false,
+    recaptcha: false
   })
   return (
     <div className="main">
@@ -220,8 +221,8 @@ function SignUp({ data, signUpUser }) {
             <div className="input-container">
 
               <ReCAPTCHA
-                sitekey="6513213651469541651"
-                onChange={() => { }}
+                sitekey="6LcDIMgZAAAAAColV9-Jur_TdxurTGrNpGt-qJvX"
+                onChange={()=>{setSignUpData({ ...signUpData, recaptcha: true })}}
               />
             </div>
 
@@ -236,7 +237,8 @@ function SignUp({ data, signUpUser }) {
             <button
               type="submit"
               onClick={() => { signUpUser(signUpData) }}
-              className={!signUpData.Terms?"form-submit-btn disabled":"form-submit-btn"}>
+              className={ signUpData.Terms && signUpData.recaptcha?
+              "form-submit-btn":"form-submit-btn disabled"}>
               Agree and Register
             </button >
 
@@ -246,7 +248,7 @@ function SignUp({ data, signUpUser }) {
           {data.loading ? <p>Loading...</p> :
             data.error ? <p>{data.error}</p> :
               data.email ?
-                <Redirect to="/logIn" />
+                <Redirect to="/" />
                 : null
           }
         </div>

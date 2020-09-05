@@ -121,14 +121,14 @@ function LogIn({ userData, logInUser }) {
             </button >
 
             <p className="self-center">Don't have an account? <Link className="sign-links bold" to="/signUp">Register</Link></p>
-
+            {console.log(userData)}
           </Form>
-          {/* {data.loading ? <p>Loading...</p> :
-            data.error ? <p>{data.error}</p> :
-              data.email ?
-                <Redirect to="/logIn" />
+          {userData.loading ? <p>Loading...</p> :
+            userData.error ? <p>{userData.error}</p> :
+            userData.user.email ?
+                <Redirect to="/" />
                 : null
-          } */}
+          }
         </div>
 
       </div>

@@ -3,13 +3,12 @@ import Account from "../../components/account/Account";
 
 import { connect } from "react-redux";
 
-function Main(userData) {
+function Main({userData}) {
   return (
     <div>
       <h2>Home Page</h2>
       <Account />
-
-      {/* {userData.loading ? <p>Loading...</p> :
+      {userData.loading ? <p>Loading...</p> :
         userData.error ? <p>{userData.error}</p> :
           userData.user.name && userData.isAuthenticated ?
             <div>
@@ -20,7 +19,7 @@ function Main(userData) {
               <h5>Phone Number: {userData.user.phoneNumber}</h5>
               <h5>Trade Role: {userData.user.tradeRole}</h5>
             </div> : null
-      } */}
+      }
     </div>
   )
 }

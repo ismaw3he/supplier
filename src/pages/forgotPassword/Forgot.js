@@ -21,6 +21,10 @@ import bck from "../../img/bck-3.jpg"
 
 
 function Forgot() {
+    const [forgotData, setForgotData] = useState({
+        Email: "",
+        recaptcha: false
+      })
     return (
         <div className="main">
             <div className="sign-left-window" style={{ backgroundImage: `url(${bck})` }}>
@@ -82,15 +86,16 @@ function Forgot() {
                         <div className="input-container">
 
                             <ReCAPTCHA
-                                sitekey="6513213651469541651"
-                                onChange={() => { }}
+                                sitekey="6LcDIMgZAAAAAColV9-Jur_TdxurTGrNpGt-qJvX"
+                                onChange={()=>{setForgotData({ ...forgotData, recaptcha: true })}}
                             />
                         </div>
 
                         <button
                             type="submit"
                             //   onClick={() => { logInUser(logInData) }}
-                            className="form-submit-btn disabled">
+                            className={forgotData.recaptcha?
+                                "form-submit-btn":"form-submit-btn disabled"}>
                             Submit
             </button >
 
