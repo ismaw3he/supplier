@@ -9,6 +9,7 @@ import axios from "axios"
 
 export const logInUser = (logInData) =>{
     return (dispatch) =>{
+      console.log(logInData)
         dispatch(logInUserRequest())
         axios.post(url + '/api/Auth/SignIn', {
             Email: logInData.Email,
