@@ -16,7 +16,7 @@ export const googleResponse = (response) => {
             mode: 'cors',
             cache: 'default'
         };
-        fetch(url + '/IBO-URL', options)
+        fetch(url + '/api/Auth/GoogleAuth', options)
             .then(r => {
                 r.json().then(user => {
                     console.log(user);
