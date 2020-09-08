@@ -149,7 +149,7 @@ function LogIn({ userData, logInUser, googleResponse }) {
                         <path fill="#F14336" d="M16.383 2.302l-3.24 2.652c-.911-.57-1.989-.899-3.143-.899-2.607 0-4.821 1.678-5.624 4.013L1.12 5.401C2.781 2.192 6.134 0 10 0c2.426 0 4.651.864 6.383 2.302z" />
                       </g>
                     </svg>
-                    Sign up with Google
+                    Sign in with Google
                   </button>
                 )}
                 onSuccess={(response) => { googleResponse(response) }}

@@ -21,9 +21,11 @@ export const googleResponse = (response) => {
                 r.json().then(user => {
                     console.log(user);
                     dispatch(logInUserSuccess(user.data))
-                }).catch(function(error) {
+                }).catch(function (error) {
                     console.log(error);
-                    dispatch(logInUserFailure(error.response.data.message))
+                    if (error.response.data.message) {
+                        dispatch(logInUserFailure(error.response.data.message))
+                    }
                 });;
             })
     }
