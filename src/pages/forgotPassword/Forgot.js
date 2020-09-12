@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { forgotPassword } from "../../API/forgotPasswordAPI";
 
 import {
     Redirect,
@@ -20,11 +22,11 @@ import bck from "../../img/bck-3.jpg"
 
 
 
-function Forgot() {
+function Forgot({ data, forgotPSWD }) {
     const [forgotData, setForgotData] = useState({
         Email: "",
         recaptcha: false
-      })
+    })
     return (
         <div className="main">
             <div className="sign-left-window" style={{ backgroundImage: `url(${bck})` }}>
@@ -60,6 +62,7 @@ function Forgot() {
             <div className="sign-right-container">
                 <div className="sign-container-fixed">
                     <div className="route-options-wide">
+                        {console.log(data)}
                         <Link className="sign-links" to="/logIn">Sign In</Link>
                         <div className="divider"></div>
                         <Link className="sign-links" to="/signUp">Register</Link>
@@ -68,38 +71,49 @@ function Forgot() {
                     </div>
                     <Form className="custom-form">
                         <h2 className="form-header">Retrieve password</h2>
-                        <p id="form-header-info">
-                            Lost your password?
-                            Please enter your username or email address.
-                            You will receive a link to create a new password via email.
-                        </p>
-                        <div className="input-container">
-                            <Form.Field>
-                                <label>Email</label>
-                                <input
-                                    placeholder='Enter email address or member ID'
-                                //   onChange={(e) => { setLogInData({ ...logInData, Email: e.target.value }) }}
+                        {
+                        !data.success ? <div>
+                            <p id="form-header-info">
+                                Lost your password?
+                                Please enter your username or email address.
+                                You will receive a link to create a new password via email.
+                            </p>
+                            <div className="input-container">
+                                <Form.Field>
+                                    <label>Email</label>
+                                    <input
+                                        placeholder='Enter email address or member ID'
+                                        onChange={(e) => { setForgotData({ ...forgotData, Email: e.target.value }) }}
+                                    />
+                                </Form.Field>
+                            </div>
+
+                            <div className="input-container">
+
+                                <ReCAPTCHA
+                                    sitekey="6LcDIMgZAAAAAColV9-Jur_TdxurTGrNpGt-qJvX"
+                                    onChange={() => { setForgotData({ ...forgotData, recaptcha: true }) }}
                                 />
-                            </Form.Field>
-                        </div>
+                            </div>
+                            <button
+                                type="submit"
+                                onClick={() => { forgotPSWD(forgotData.Email) }}
+                                className={forgotData.recaptcha && forgotData.Email ?
+                                    "form-submit-btn" : "form-submit-btn disabled"}>
+                                Submit
+                            </button >
 
-                        <div className="input-container">
+                            <p className="self-center">Don't have an account? <Link className="sign-links bold" to="/signUp">Register</Link></p>
+                        </div> :
+                            <div>
+                                <p id="form-header-info">
+                                We've sent password reset instructions to {data.response} email address.
+                                    If no email is received within 10 minutes,
+                                    check that the submitted address is correct.
+                                </p>
 
-                            <ReCAPTCHA
-                                sitekey="6LcDIMgZAAAAAColV9-Jur_TdxurTGrNpGt-qJvX"
-                                onChange={()=>{setForgotData({ ...forgotData, recaptcha: true })}}
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            //   onClick={() => { logInUser(logInData) }}
-                            className={forgotData.recaptcha?
-                                "form-submit-btn":"form-submit-btn disabled"}>
-                            Submit
-            </button >
-
-                        <p className="self-center">Don't have an account? <Link className="sign-links bold" to="/signUp">Register</Link></p>
+                                <Link className="form-submit-button" to="/logIn">Back to Sign In</Link>
+                            </div>}
 
                     </Form>
                 </div>
@@ -109,6 +123,16 @@ function Forgot() {
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        data: state.forgotPSWD
+    }
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+        forgotPSWD: (Email) => { dispatch(forgotPassword(Email)) }
+    }
+}
 
-export default Forgot;
+export default connect(mapStateToProps, mapDispatchToProps)(Forgot);

@@ -2,7 +2,7 @@ import {
     signUpUserRequest,
     signUpUserSuccess,
     signUpUserFailure
-} from "../redux/signUp/signUpActions"
+} from "../redux/index"
 import {verifyUserSet} from "../redux/verification/verificationActions"
 
 import url from "./url";

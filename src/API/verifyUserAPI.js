@@ -2,7 +2,7 @@ import {
     verifyUserRequest,
     verifyUserSuccess,
     verifyUserFailure
-} from "../redux/verification/verificationActions"
+} from "../redux/index"
 
 import url from "./url";
 

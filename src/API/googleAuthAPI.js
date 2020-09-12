@@ -1,7 +1,7 @@
 import {
     logInUserSuccess,
     logInUserFailure
-} from "../redux/logIn/logInActions"
+} from "../redux/index"
 
 import url from "./url";
 

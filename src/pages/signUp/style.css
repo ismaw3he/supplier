@@ -168,6 +168,13 @@
     background-color: #ececec;
     cursor: default;
 }
+.white{
+    background-color: #fff;
+    border: 1px solid black;
+}
+.white:hover{
+    background-color: #fff;
+}
 .disabled:hover{
     background-color: #ececec;
 }
