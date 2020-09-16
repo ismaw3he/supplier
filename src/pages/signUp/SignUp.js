@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { signUpUser } from "../../API/signUpUserAPI"
 import { GoogleLogin } from 'react-google-login';
 
+import Loader from "../../components/loader/Loader";
 import {
   Redirect,
   Link
@@ -86,6 +87,7 @@ function SignUp({ data, signUpUser }) {
       </div>
 
       <div className="sign-right-container">
+      <Loader loading={data.loading}/>
         <div className="sign-container-fixed">
           <div className="route-options">
             <Link className="sign-links" to="/logIn">Sign In</Link>

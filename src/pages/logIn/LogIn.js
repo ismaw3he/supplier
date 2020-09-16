@@ -4,6 +4,7 @@ import { logInUser } from "../../API/logInUserAPI"
 import { GoogleLogin } from 'react-google-login';
 import { googleResponse } from "../../API/googleAuthAPI";
 
+import Loader from "../../components/loader/Loader";
 import {
   Redirect,
   Link
@@ -83,6 +84,7 @@ function LogIn({ userData, logInUser, googleResponse }) {
       </div>
 
       <div className="sign-right-container">
+        <Loader loading={userData.loading}/>
         <div className="sign-container-fixed">
           <div className="route-options">
             <Link className="sign-links" to="/signUp">Register</Link>

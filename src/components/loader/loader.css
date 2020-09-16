@@ -1,0 +1,30 @@
+.loader-full{
+    width: 540px;
+    height: 6px;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+.loader{
+    width: 0%;
+    height: 100%;
+    background-color: #ffd500;
+    transition: width 0.5s;
+}
+.loader-deactive{
+    width: 0%;
+}
+.loader-active{
+    width: 40%;
+}
+@media only screen and (max-width: 1100px) {
+    .loader-full {
+        width: 540px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .loader-full  {
+        width: 100vw;
+    }
+}
+  
