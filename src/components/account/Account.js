@@ -24,7 +24,8 @@ function Account(props) {
     } else {
         return (
             <div className="account-container">
-                
+                <Link className="button-white" to="/logIn">Log In</Link>
+                <Link className="button-orange" to="/signUp">Register</Link>
             </div>
         );
     }

@@ -54,3 +54,9 @@
 .account-active-link-text{
     margin-left: 35px;
 }
+.underline{
+    border-bottom: 1px solid white;
+}
+.underline:hover{
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,101 @@
+.left-menu-container{
+    width: 274px; /*76*/
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    -webkit-box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
+    box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
+
+}
+.left-top-container{
+    height: 75px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+.left-logo-container{
+    width: calc(100% - 75px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.burger-menu{
+    width: 75px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+.burger-menu-line{
+    width: 22px;
+    border-bottom: 1px solid #323e49;
+    display: flex;
+    margin: 3px 0;
+}
+
+.left-menu-options-container{
+    height: calc(100% - 75px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-menu-single-container{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+}
+.left-menu-single-container::before{
+    content: "";
+    width: 4px;
+    height: 50px;
+    background-color: #0062bd;
+    left: 0;
+    top: 0;
+    position: absolute;
+    display: none;
+}
+.left-menu-single-container:hover{
+    background-color:#f4f4f4;
+}
+.left-menu-single-container:hover::before{
+    display: inline;
+}
+.left-menu-option{
+    height: 100%;
+    width: 100%; 
+    display: flex;  
+}
+.left-menu-option-icon-container{
+    width: 75px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left-menu-option-icon{
+    width: 22px;
+}
+.left-menu-option-text{
+    width: calc(100% - 75px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+.left-menu-option-text:hover{
+    color: black;
+}

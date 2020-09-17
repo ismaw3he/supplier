@@ -1,6 +1,7 @@
 import React from "react";
 import Account from "../../components/account/Account";
 import TopNav from "../../components/topNav/TopNav";
+import LeftMenu from "../../components/leftMenu/LeftMenu";
 
 import { connect } from "react-redux";
 
@@ -8,7 +9,7 @@ function Main({userData}) {
   return (
     <div>
       <TopNav />
-    
+      <LeftMenu />
       {/* <h2>Home Page</h2>
       <Account />
       {userData.loading ? <p>Loading...</p> :

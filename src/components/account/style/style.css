@@ -49,3 +49,34 @@
     margin-bottom: -2px;
 }
 
+.button-white{
+    font-size: 16px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin: 0 10px;
+}
+.button-white:hover{
+    color: black;
+   background-color:  #f2f2f2;
+}
+.button-orange{
+    font-size: 16px;
+    width: 140px;
+    height: 40px;
+    background-color: #ffd500;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+.button-orange:hover{
+    background-color: #e8c200;
+    color: black;
+}

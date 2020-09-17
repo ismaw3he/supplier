@@ -12,8 +12,8 @@ export default function AccountActive(props) {
                         <img src={user} className="user-account-img" alt="User" />
                     </div>
                     <div className="account-active-info-text-container">
-                        <h4 className="account-full-name noselect">{props.fullName}</h4>
-                        <p>See your settings</p>
+                        <h4 className="account-full-name noselect underline">{props.fullName}</h4>
+                        <p className=" underline">See your settings</p>
                     </div>
 
                 </div>
