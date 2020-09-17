@@ -1,12 +1,15 @@
 import React from "react";
 import Account from "../../components/account/Account";
+import TopNav from "../../components/topNav/TopNav";
 
 import { connect } from "react-redux";
 
 function Main({userData}) {
   return (
     <div>
-      <h2>Home Page</h2>
+      <TopNav />
+    
+      {/* <h2>Home Page</h2>
       <Account />
       {userData.loading ? <p>Loading...</p> :
         userData.error ? <p>{userData.error}</p> :
@@ -19,7 +22,7 @@ function Main({userData}) {
               <h5>Phone Number: {userData.user.phoneNumber}</h5>
               <h5>Trade Role: {userData.user.tradeRole}</h5>
             </div> : null
-      }
+      } */}
     </div>
   )
 }

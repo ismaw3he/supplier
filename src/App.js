@@ -11,9 +11,7 @@ import ROUTES from "./routing/routes";
 function App() {
   return (
         <div className="App">
-          
           <RenderRoutes routes={ROUTES} />
-          
         </div>
   );
 }

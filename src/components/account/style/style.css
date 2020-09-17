@@ -1,22 +1,25 @@
 .account-container{
-    width: 150px;
     height: 45px;
     position: absolute;
     top: 12px;
-    right: 0;
+    right: 30px;
     display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 .user-account-img-container{
-    height: 100%;
-    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 10px;
 }
 .user-account-img {
-    width: 27px;
-    height: 27px;
-    margin-top: 3px;
+    width: 20px;
+    height: 20px;
+}
+.account-full-name {
+    font-size: 15px;
+    margin: 0;
 }
 .links-container {
     display: flex;
@@ -35,3 +38,14 @@
 .sign-links:active{
     border-bottom: 1px solid rgb(56, 56, 56);
 }
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000;
+    margin-left: 5px;
+    margin-bottom: -2px;
+}
+
