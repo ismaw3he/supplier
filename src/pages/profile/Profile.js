@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import TopNav from "../../components/topNav/TopNav";
+import LeftMenu from "../../components/leftMenu/LeftMenu";
 
 function LogIn({ userData }) {
     return (
         <div>
-            <h1>My Profile</h1>
+            {/* <h1>My Profile</h1>
 
             <div>
                 <h2>Logged in as {userData.user.name} {userData.user.surname}</h2>
@@ -13,8 +15,9 @@ function LogIn({ userData }) {
                 <h5>Email: {userData.user.email}</h5>
                 <h5>Phone Number: {userData.user.phoneNumber}</h5>
                 <h5>Trade Role: {userData.user.tradeRole}</h5>
-            </div>
-
+            </div> */}
+            <TopNav />
+            <LeftMenu />
         </div>
     )
 }

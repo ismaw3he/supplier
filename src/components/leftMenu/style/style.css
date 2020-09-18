@@ -8,8 +8,9 @@
     -webkit-box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
     -moz-box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
     box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
-
+    transition: width 0.2s;
 }
+
 .left-top-container{
     height: 75px;
     width: 100%;
@@ -17,11 +18,15 @@
     position: relative;
 }
 .left-logo-container{
-    width: calc(100% - 75px);
+    width: 199px;
     height: 100%;
+    overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.left-logo-container>h1{
+    white-space: nowrap;
 }
 .burger-menu{
     width: 75px;
@@ -33,12 +38,14 @@
     cursor: pointer;
     position: absolute;
     right: 0;
+    background-color: white;
 }
 .burger-menu-line{
     width: 22px;
     border-bottom: 1px solid #323e49;
     display: flex;
     margin: 3px 0;
+    transition: all 0.2s;
 }
 
 .left-menu-options-container{
@@ -75,7 +82,8 @@
 .left-menu-option{
     height: 100%;
     width: 100%; 
-    display: flex;  
+    display: flex; 
+    overflow-x: hidden; 
 }
 .left-menu-option-icon-container{
     width: 75px;
@@ -95,7 +103,15 @@
     font-size: 16px;
     color: black;
     font-weight: bold;
+    white-space: nowrap;
 }
 .left-menu-option-text:hover{
     color: black;
+}
+.left-menu-closed{
+    width: 75px;
+}
+.short-line{
+    width: 11px;
+    margin-left: -11px;
 }

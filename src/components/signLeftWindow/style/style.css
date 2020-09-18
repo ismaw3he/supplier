@@ -1,0 +1,48 @@
+.sign-left-window{
+    width: calc(100% - 540px);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.gradient{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.40);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-left-window-container{
+    width: 83%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.container-box-1{
+    height: 15%;
+    color: white;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+.container-box-2{
+    width: 58% ;
+    height: 53%;
+    color: white;
+}
+.container-box-3{
+    height: 10%;
+    border-top: rgba(255,255,255,0.43) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.the{width: 50px;}
+.shopify{width: 70px;}
+.colombia{width: 105px;}
+.puma{width: 50px;}
+.nike{width: 70px;}
+.adidas{width: 50px;}
+/* ************************************************* */

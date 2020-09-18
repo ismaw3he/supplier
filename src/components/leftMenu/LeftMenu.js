@@ -16,13 +16,16 @@ import powerIcon from "./img/power.svg";
 function LeftMenu(props) {
     const [active, setActive] = useState(false)
     return (
-        <div className="left-menu-container">
+        <div
+            className={active? "left-menu-container" : "left-menu-container left-menu-closed"}
+        >
+
             <div className="left-top-container">
                 <div className="left-logo-container">
                     <h1>YOUR LOGO.</h1>
                 </div>
-                <div className="burger-menu">
-                    <div className="burger-menu-line"></div>
+                <div onClick={() => { setActive(!active) }} className="burger-menu">
+                    <div className={active? "burger-menu-line" : "burger-menu-line short-line"}></div>
                     <div className="burger-menu-line"></div>
                     <div className="burger-menu-line"></div>
                 </div>

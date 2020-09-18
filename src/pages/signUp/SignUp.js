@@ -9,6 +9,7 @@ import {
   Link
 } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import bckImage from "./img/bck-2.jpg";
 
 import {
   Form,
@@ -16,14 +17,10 @@ import {
   Radio
 } from 'semantic-ui-react'
 
-import adidas from "../../img/logo-adidas.png"
-import shopify from "../../img/logo-shopify.png"
-import tnv from "../../img/logo-the.png"
-import colombia from "../../img/logo-colombia.png"
-import puma from "../../img/logo-puma.png"
-import nike from "../../img/logo-nike.png"
-import bck from "../../img/bck-2.jpg"
+
 import "./style.css"
+import SignLeftWindow from "../../components/signLeftWindow/SignLeftWindow";
+import SignRouteOptions from "../../components/signRoutOptions/SignRouteOptions";
 
 const options = {
   country: [
@@ -59,45 +56,18 @@ function SignUp({ data, signUpUser }) {
   })
   return (
     <div className="main">
-      <div className="sign-left-window" style={{ backgroundImage: `url(${bck})` }}>
-        <div className="gradient">
-          <div className="sign-left-window-container">
-            <div className="container-box-1">
-              <h2>YOUR LOGO.</h2>
-            </div>
-            <div className="container-box-2">
-              <h3>Alexa, Turn it up</h3>
-              <h1 className="box-header">All-new Echo 3rd </h1>
-              <h1 className="box-header">Generation</h1>
-              <h3 className="light">Company helps us to beorganized our team never like before.
-              Amazing tool for small size organiztion and startups. Highly
-                            recomended</h3>
-              <h4>Shane McGree <span className="light-1">Director, Forbes Inc</span></h4>
-            </div>
-            <div className="container-box-3">
-              <img className="the" src={tnv} alt="the north face" />
-              <img className="shopify" src={shopify} alt="shopify" />
-              <img className="colombia" src={colombia} alt="colombia" />
-              <img className="puma" src={puma} alt="puma" />
-              <img className="nike" src={nike} alt="nike" />
-              <img className="adidas" src={adidas} alt="adidas" />
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <SignLeftWindow bck={bckImage} />
 
       <div className="sign-right-container">
-      <Loader loading={data.loading}/>
+        
+        <Loader loading={data.loading} />
+
         <div className="sign-container-fixed">
-          <div className="route-options">
-            <Link className="sign-links" to="/logIn">Sign In</Link>
-            <div className="divider"></div>
-            <Link className="sign-links" to="/">Home Page</Link>
-          </div>
+          <SignRouteOptions Option="signUp" />
+
           <Form className="custom-form">
-
             <h2 className="form-header">Register {signUpData.page === 2 ? "with Google" : ""}</h2>
-
             {signUpData.page === 0 ?
               <div>
                 <div className="input-container">
@@ -138,11 +108,11 @@ function SignUp({ data, signUpUser }) {
 
 
                 <button
-                  onClick={() => { 
-                    if(signUpData.Email && signUpData.Password && signUpData.ConfirmPassword){
+                  onClick={() => {
+                    if (signUpData.Email && signUpData.Password && signUpData.ConfirmPassword) {
                       setSignUpData({ ...signUpData, page: 1 })
                     }
-                   }}
+                  }}
                   className={signUpData.Email && signUpData.Password && signUpData.ConfirmPassword ?
                     "form-submit-btn" : "form-submit-btn disabled"}>
                   Next
@@ -174,13 +144,13 @@ function SignUp({ data, signUpUser }) {
                     )}
                     onSuccess={(response) => {
                       console.log(response)
-                      setSignUpData({ 
+                      setSignUpData({
                         ...signUpData,
-                         page: 2,
-                         Name: response.profileObj.givenName,
-                         Surname: response.profileObj.familyName,
-                         Email: response.profileObj.email
-                         })
+                        page: 2,
+                        Name: response.profileObj.givenName,
+                        Surname: response.profileObj.familyName,
+                        Email: response.profileObj.email
+                      })
                       // googleResponse(response) 
                     }}
                     onFailure={(response) => {
@@ -191,7 +161,7 @@ function SignUp({ data, signUpUser }) {
                 </div>
               </div>
               :
-                
+
               <div>
                 {console.log(signUpData)}
                 <div className="input-container">
@@ -242,14 +212,14 @@ function SignUp({ data, signUpUser }) {
                     <Form.Input
                       fluid
                       label='First name'
-                      defaultValue = { signUpData.Name }
+                      defaultValue={signUpData.Name}
                       placeholder='Your first name'
                       onChange={(e) => { setSignUpData({ ...signUpData, Name: e.target.value }) }}
                     />
                     <Form.Input
                       fluid
                       label='Last name'
-                      defaultValue = { signUpData.Surname }
+                      defaultValue={signUpData.Surname}
                       placeholder='Your last name'
                       onChange={(e) => { setSignUpData({ ...signUpData, Surname: e.target.value }) }}
                     />
@@ -305,20 +275,20 @@ function SignUp({ data, signUpUser }) {
                   onClick={() => { signUpUser(signUpData) }}
                   className={
                     signUpData.Terms &&
-                     signUpData.recaptcha&&
-                     signUpData.PhoneNumber&&
-                     signUpData.Surname&&
-                     signUpData.Name && 
-                     signUpData.CompanyName &&
-                     signUpData.Country ?
-                    "form-submit-btn" : "form-submit-btn disabled"}>
+                      signUpData.recaptcha &&
+                      signUpData.PhoneNumber &&
+                      signUpData.Surname &&
+                      signUpData.Name &&
+                      signUpData.CompanyName &&
+                      signUpData.Country ?
+                      "form-submit-btn" : "form-submit-btn disabled"}>
                   Agree and Sign Up
                 </button >
 
                 <button
                   type="submit"
                   onClick={() => { setSignUpData({ ...signUpData, page: 0 }) }}
-                  className= "form-submit-btn white">
+                  className="form-submit-btn white">
                   Back
                 </button >
               </div>

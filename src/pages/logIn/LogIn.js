@@ -17,13 +17,9 @@ import {
   Radio
 } from 'semantic-ui-react'
 
-import adidas from "../../img/logo-adidas.png"
-import shopify from "../../img/logo-shopify.png"
-import tnv from "../../img/logo-the.png"
-import colombia from "../../img/logo-colombia.png"
-import puma from "../../img/logo-puma.png"
-import nike from "../../img/logo-nike.png"
-import bck from "../../img/bck-1.jpg"
+import bckImage from "./img/bck-1.jpg"
+import SignLeftWindow from "../../components/signLeftWindow/SignLeftWindow";
+import SignRouteOptions from "../../components/signRoutOptions/SignRouteOptions";
 
 const options = {
   country: [
@@ -53,44 +49,17 @@ function LogIn({ userData, logInUser, googleResponse }) {
   
   return (
     <div className="main">
-      <div className="sign-left-window" style={{ backgroundImage: `url(${bck})` }}>
-        <div className="gradient">
-          <div className="sign-left-window-container">
-            <div className="container-box-1">
-              <h2>YOUR LOGO.</h2>
-            </div>
-            <div className="container-box-2">
-              <h3>Alexa, Turn it up</h3>
-              <h1 className="box-header">All-new Echo 3rd </h1>
-              <h1 className="box-header">Generation</h1>
-              <h3 className="light">Company helps us to beorganized our team never like before.
-              Amazing tool for small size organiztion and startups. Highly
-                            recomended</h3>
-              <h4>Shane McGree <span className="light-1">Director, Forbes Inc</span></h4>
-            </div>
-            <div className="container-box-3">
-              <img className="the" src={tnv} alt="the north face" />
-              <img className="shopify" src={shopify} alt="shopify" />
-              <img className="colombia" src={colombia} alt="colombia" />
-              <img className="puma" src={puma} alt="puma" />
-              <img className="nike" src={nike} alt="nike" />
-              <img className="adidas" src={adidas} alt="adidas" />
-            </div>
-          </div>
-        </div>
 
-
-
-      </div>
+      <SignLeftWindow bck={bckImage}/>
 
       <div className="sign-right-container">
+
         <Loader loading={userData.loading}/>
+
         <div className="sign-container-fixed">
-          <div className="route-options">
-            <Link className="sign-links" to="/signUp">Register</Link>
-            <div className="divider"></div>
-            <Link className="sign-links" to="/">Home Page</Link>
-          </div>
+          
+          <SignRouteOptions Option="signIn"/>
+
           <Form className="custom-form">
             <h2 className="form-header">Sign In</h2>
             <p id="form-header-info">
@@ -128,7 +97,7 @@ function LogIn({ userData, logInUser, googleResponse }) {
             <button
               type="submit"
               onClick={() => { logInUser(logInData) }}
-              className="form-submit-btn">
+              className={logInData.Email && logInData.Password? "form-submit-btn" : "form-submit-btn disabled"}>
               Sign In
             </button >
 
@@ -165,7 +134,7 @@ function LogIn({ userData, logInUser, googleResponse }) {
           {userData.loading ? <p>Loading...</p> :
             userData.error ? <p>{userData.error}</p> :
               userData.user.email ?
-                <Redirect to="/" />
+                <Redirect to="/profile" />
                 : null
           }
         </div>

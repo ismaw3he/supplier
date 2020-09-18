@@ -8,9 +8,8 @@ import { connect } from "react-redux";
 function Main({userData}) {
   return (
     <div>
-      <TopNav />
-      <LeftMenu />
-      {/* <h2>Home Page</h2>
+
+      <h2>Home Page</h2>
       <Account />
       {userData.loading ? <p>Loading...</p> :
         userData.error ? <p>{userData.error}</p> :
@@ -23,7 +22,7 @@ function Main({userData}) {
               <h5>Phone Number: {userData.user.phoneNumber}</h5>
               <h5>Trade Role: {userData.user.tradeRole}</h5>
             </div> : null
-      } */}
+      }
     </div>
   )
 }
