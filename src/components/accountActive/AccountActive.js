@@ -1,40 +1,41 @@
 import React from "react";
 import "./style/style.css"
-
+import {
+    Link
+} from "react-router-dom";
 import user from "../account/img/user.png";
 
 export default function AccountActive(props) {
     return (
         <div className="account-active-container">
             <div className="fixed-240">
-                <div className="account-active-info-container">
+                <Link to="/profile" className="account-active-info-container">
                     <div className="account-active-avatar-container">
                         <img src={user} className="user-account-img" alt="User" />
                     </div>
                     <div className="account-active-info-text-container">
-                        <h4 className="account-full-name noselect underline">{props.fullName}</h4>
-                        <p className=" underline">See your settings</p>
+                        <h4 className="account-full-name noselect">{props.fullName}</h4>
+                        <p className=" noselect">See your settings</p>
                     </div>
-
-                </div>
-
-                <div className="account-active-divider"></div>
-
-                <div className="account-active-link">
-                    <p className="account-active-link-text">Feedback</p>
-                </div>
+                </Link>
 
                 <div className="account-active-divider"></div>
 
-                <div className="account-active-link">
-                    <p className="account-active-link-text">Help & Support</p>
-                </div>
+                <Link className="account-active-link" to="/profile/buyer">
+                    <p className="account-active-link-text">Buyer</p>
+                </Link>
 
                 <div className="account-active-divider"></div>
 
-                <div className="account-active-link">
+                <Link className="account-active-link" to="/profile/seller">
+                <p className="account-active-link-text">Seller</p>
+                </Link>
+
+                <div className="account-active-divider"></div>
+
+                <Link className="account-active-link" to="/">
                     <p className="account-active-link-text">Sign Out</p>
-                </div>
+                </Link>
 
                 <div className="account-active-divider"></div>
             </div>

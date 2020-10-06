@@ -1,0 +1,35 @@
+.container{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.container:hover{
+    background-color: #f4f4f4;
+}
+.fixed{
+    width: calc(100% - 60px);
+    height: 100%;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    align-items: center;
+}
+.description{
+    font-size: 16px;
+    width: 210px;
+    color: #878787;
+    margin: 0;
+}
+.content{
+    font-size: 16px;
+    margin: 0;
+}
+.editContainer{
+    width: 60px;
+    color: #3694d8;
+    font-size: 14px;
+    margin-left: auto;
+    text-align: right;
+}

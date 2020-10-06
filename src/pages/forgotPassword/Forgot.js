@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { forgotPassword } from "../../API/forgotPasswordAPI";
 
 import {
-    Redirect,
     Link
 } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -58,7 +57,7 @@ function Forgot({ data, forgotPSWD }) {
                                 </div>
                                 <button
                                     type="submit"
-                                    onClick={() => { forgotPSWD(forgotData.Email) }}
+                                    onClick={() => {if(forgotData.recaptcha && forgotData.Email){ forgotPSWD(forgotData.Email) }}}
                                     className={forgotData.recaptcha && forgotData.Email ?
                                         "form-submit-btn" : "form-submit-btn disabled"}>
                                     Submit

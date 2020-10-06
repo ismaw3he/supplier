@@ -1,0 +1,43 @@
+.container{
+    width: 100%;
+    display: flex;
+}
+.col{
+    width: 50%;
+    min-height: 50px;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    align-items: center;
+
+}
+.colDivider{
+    border-left: 1px solid #efefef;
+}
+.description{
+    margin-bottom: 0;
+    width: 210px;
+    margin-left: 30px;
+    color: #878787;
+    font-size: 16px;
+}
+.value{
+    color: #333e48;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+.multiContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 12px 0;
+    max-width: calc(100% - 240px);
+}
+.multiValue{
+    background-color: #0084ff;
+    border-radius: 5px;
+    margin: 4px 8px 4px 0;
+    color: white;
+    padding: 5px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}

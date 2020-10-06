@@ -1,7 +1,7 @@
 .left-menu-container{
     width: 274px; /*76*/
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: white;
@@ -9,6 +9,7 @@
     -moz-box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
     box-shadow: 0 0px 46px -29px rgba(0,0,0,0.55);
     transition: width 0.2s;
+    z-index: 1;
 }
 
 .left-top-container{

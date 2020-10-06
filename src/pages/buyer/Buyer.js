@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import TopNav from "../../components/topNav/TopNav";
 import LeftMenu from "../../components/leftMenu/LeftMenu";
 import RightPage from "../../components/rightPage/RightPage";
+import InfoBloksContainer from "../../components/infoBloksContainer/InfoBloksContainer";
+
 import ProfileInformation from "../../components/profileInformation/ProfileInformation";
-import bck from "../../img/profile-bck.png"
 import classes from "./style/style.module.css"
+import bck from "../../img/profile-bck.png"
 function LogIn({ userData }) {
     const [active, setActive] = useState(false)
     return (
@@ -22,20 +24,10 @@ function LogIn({ userData }) {
             </div> */}
             <TopNav />
             <LeftMenu active={active} setActive={setActive}/>
-
+            
             <RightPage active={active}>
-                <ProfileInformation 
-                    data={{
-                        fullName: "Rauf Ismayilov",
-                        password: "**************",
-                        link: "https://www.supplier.com/RaufIsmayilov",
-                        email: "rauf.raymond110@gmail.com",
-                        companyName: "Portflix LLC",
-                        tradeRole: "Seller",
-                        country: "Azerbaijan",
-                        phone: "+994505392909"
-                     }}
-                />
+                <InfoBloksContainer />
+                
             </RightPage>
         </div>
     )

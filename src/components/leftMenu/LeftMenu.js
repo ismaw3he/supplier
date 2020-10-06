@@ -14,7 +14,7 @@ import audioIcon from "./img/audio.svg";
 import powerIcon from "./img/power.svg";
 
 function LeftMenu(props) {
-    const [active, setActive] = useState(false)
+    const {active, setActive} = props
     return (
         <div
             className={active? "left-menu-container" : "left-menu-container left-menu-closed"}
@@ -37,7 +37,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={homeIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Home</Link>
+                            <Link className="left-menu-option-text" to="/profile">Home</Link>
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={messageIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Messages</Link>
+                            <Link className="left-menu-option-text" to="/profile">Messages</Link>
                         </div>
                     </div>
                     <div className="left-menu-single-container">
@@ -54,7 +54,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={diagramIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Buying Leads</Link>
+                            <Link className="left-menu-option-text" to="/profile">Buying Leads</Link>
                         </div>
                     </div>
                     <div className="left-menu-single-container">
@@ -62,7 +62,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={documentIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Orders</Link>
+                            <Link className="left-menu-option-text" to="/profile">Orders</Link>
                         </div>
                     </div>
                     <div className="left-menu-single-container">
@@ -70,7 +70,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={internetIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Trade Services</Link>
+                            <Link className="left-menu-option-text" to="/profile">Trade Services</Link>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={likeIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Feedback</Link>
+                            <Link className="left-menu-option-text" to="/profile">Feedback</Link>
                         </div>
                     </div>
                     <div className="left-menu-single-container">
@@ -88,7 +88,7 @@ function LeftMenu(props) {
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={audioIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Help & Support</Link>
+                            <Link className="left-menu-option-text" to="/profile">Help & Support</Link>
                         </div>
                     </div>
                     <div className="left-menu-single-container">

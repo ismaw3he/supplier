@@ -5,7 +5,7 @@ import Account from "../account/Account";
 
 export default function TopNav() {
     return (
-        <div className="top-nav">
+        <div className="top-nav"> 
             <Account
                 loggedIn={true}
                 fullName="Rauf Ismayilov"

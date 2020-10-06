@@ -1,7 +1,5 @@
 import React from "react";
 import Account from "../../components/account/Account";
-import TopNav from "../../components/topNav/TopNav";
-import LeftMenu from "../../components/leftMenu/LeftMenu";
 
 import { connect } from "react-redux";
 
@@ -9,9 +7,9 @@ function Main({userData}) {
   return (
     <div>
 
-      <h2>Home Page</h2>
+      <h2 style={{margin: "30vh auto"}}>Test Mode - HOME PAGE</h2>
       <Account />
-      {userData.loading ? <p>Loading...</p> :
+      {/* {userData.loading ? <p>Loading...</p> :
         userData.error ? <p>{userData.error}</p> :
           userData.user.name && userData.isAuthenticated ?
             <div>
@@ -22,7 +20,7 @@ function Main({userData}) {
               <h5>Phone Number: {userData.user.phoneNumber}</h5>
               <h5>Trade Role: {userData.user.tradeRole}</h5>
             </div> : null
-      }
+      } */}
     </div>
   )
 }

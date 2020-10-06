@@ -2,45 +2,31 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { logInUser } from "../../API/logInUserAPI"
 import { GoogleLogin } from 'react-google-login';
-import { googleResponse } from "../../API/googleAuthAPI";
+import {googleSignInUser} from "../../API/googleSignInAPI";
 
 import Loader from "../../components/loader/Loader";
 import {
   Redirect,
   Link
 } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
 
 import {
-  Form,
-  Select,
-  Radio
+  logInUserFailure
+} from "../../redux/index"
+
+import {
+  Form
 } from 'semantic-ui-react'
 
 import bckImage from "./img/bck-1.jpg"
 import SignLeftWindow from "../../components/signLeftWindow/SignLeftWindow";
 import SignRouteOptions from "../../components/signRoutOptions/SignRouteOptions";
 
-const options = {
-  country: [
-    { key: 'a', text: 'Azerbaijan', value: 'Azerbaijan' },
-    { key: 't', text: 'Turkey', value: 'Turkey' },
-    { key: 'r', text: 'Russia', value: 'Russia' },
-  ],
-  number: [
-    { key: '+994', text: '+994', value: '+994' },
-    { key: '+32', text: '+32', value: '+32' },
-    { key: '+1', text: '+1', value: '+1' },
-  ]
-}
-
-const googleAuthFail = (response)=>{
-  console.log(response)
-  alert(response)
-}
 
 
-function LogIn({ userData, logInUser, googleResponse }) {
+
+
+function LogIn({ userData, logInUser, logInUserFailure, googleSignInUser }) {
   const [logInData, setLogInData] = useState({
     Email: "",
     Password: ""
@@ -96,7 +82,7 @@ function LogIn({ userData, logInUser, googleResponse }) {
 
             <button
               type="submit"
-              onClick={() => { logInUser(logInData) }}
+              onClick={() => {if(logInData.Email && logInData.Password){ logInUser(logInData)} }}
               className={logInData.Email && logInData.Password? "form-submit-btn" : "form-submit-btn disabled"}>
               Sign In
             </button >
@@ -123,13 +109,15 @@ function LogIn({ userData, logInUser, googleResponse }) {
                     Sign in with Google
                   </button>
                 )}
-                onSuccess={(response) => { googleResponse(response) }}
-                onFailure={(response) => { googleAuthFail(response) }}
+                onSuccess={(response) => { googleSignInUser(response) }}
+                onFailure={(response) => {
+                  logInUserFailure(response.error) 
+                  }}
               />
             </div>
-
+                
             <p className="self-center">Don't have an account? <Link className="sign-links bold" to="/signUp">Register</Link></p>
-            {console.log(userData)}
+           
           </Form>
           {userData.loading ? <p>Loading...</p> :
             userData.error ? <p>{userData.error}</p> :
@@ -152,8 +140,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    logInUserFailure: (error)=>{logInUserFailure(error)},
     logInUser: (logInData) => { dispatch(logInUser(logInData)) },
-    googleResponse: (response) => { dispatch(googleResponse(response)) }
+    googleSignInUser: (logInData) => { dispatch(googleSignInUser(logInData)) }
   }
 }
  

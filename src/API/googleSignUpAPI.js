@@ -1,32 +1,35 @@
 import {
     signUpUserRequest,
-    signUpUserSuccess,
     signUpUserFailure
 } from "../redux/index"
-// import {verifyUserSet} from "../redux/verification/verificationActions"
-
 import url from "./url";
 
 import axios from "axios"
 
-export const signUpUser = (signUpData) =>{
+export const googleSignUpUser = (signUpData) =>{
+    console.log("signUpData")
+    console.log(signUpData)
     return (dispatch) =>{
+        console.log("signUpData")
+        console.log(signUpData)
         dispatch(signUpUserRequest())
-        axios.post(url + '/api/Auth/SignUp', {
+       
+        axios.post(url + '/api/Auth/GoogleSignUp', {
             Name: signUpData.Name,
             Surname: signUpData.Surname,
             Country: signUpData.Country,
             CompanyName: signUpData.CompanyName,
             TradeRole: Number(signUpData.TradeRole),
-            PhoneNumber: signUpData.PhonePrefix + signUpData.PhoneNumber,
-            Email: signUpData.Email,
-            Password: signUpData.Password,
-            ConfirmPassword: signUpData.ConfirmPassword
+            PhoneNumber: signUpData.PhoneNumber,
+            TokenId: signUpData.GoogleTokenId
           })
           .then((response) => {
-            // dispatch(verifyUserSet(response.data.email))
-            dispatch(signUpUserSuccess(response.data.email))
+            console.log("response")
+            console.log(response)
+            // dispatch(logInUserSuccess(response.data))
           }, (error) => {
+            console.log("error")
+            console.log(error.response)
             dispatch(signUpUserFailure(error.response.data.errorMessage))
           });
     }

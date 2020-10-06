@@ -1,3 +1,3 @@
-const url = 'https://turkey-suppliers.azurewebsites.net';
+const url = 'https://turkish-suppliers-identity.azurewebsites.net';
 
 export default url;

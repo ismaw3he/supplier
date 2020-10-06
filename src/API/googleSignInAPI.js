@@ -7,17 +7,15 @@ import url from "./url";
 
 import axios from "axios"
 
-export const logInUser = (logInData) =>{
+export const googleSignInUser = (response) =>{
     return (dispatch) =>{
         dispatch(logInUserRequest())
-        axios.post(url + '/api/Auth/SignIn', {
-            Email: logInData.Email,
-            Password: logInData.Password
+        axios.post(url + '/api/Auth/GoogleSignIn', {
+            TokenId: response.tokenId
           })
           .then((response) => {
             dispatch(logInUserSuccess(response.data))
           }, (error) => {
-            console.log(error)
             dispatch(logInUserFailure(error.response.data.errorMessage))
           });
     }
