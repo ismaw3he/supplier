@@ -12,7 +12,7 @@ import store from "./redux/store";
 
 ReactDOM.render(
     <Provider store={store} >
-      <BrowserRouter>
+      <BrowserRouter basename="/supplier">
         <App />
       </BrowserRouter>
     </Provider>,
