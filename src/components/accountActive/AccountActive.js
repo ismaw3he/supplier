@@ -4,8 +4,13 @@ import {
     Link
 } from "react-router-dom";
 import user from "../account/img/user.png";
+import {
+    logOutUser
+} from "../../redux/index"
+import { connect } from "react-redux";
 
-export default function AccountActive(props) {
+
+const AccountActive = (props) => {
     return (
         <div className="account-active-container">
             <div className="fixed-240">
@@ -28,12 +33,15 @@ export default function AccountActive(props) {
                 <div className="account-active-divider"></div>
 
                 <Link className="account-active-link" to="/profile/seller">
-                <p className="account-active-link-text">Seller</p>
+                    <p className="account-active-link-text">Seller</p>
                 </Link>
 
                 <div className="account-active-divider"></div>
 
-                <Link className="account-active-link" to="/">
+                <Link onClick={() => {
+                    localStorage.clear();
+                    props.logOutUser();
+                }} className="account-active-link" to="/">
                     <p className="account-active-link-text">Sign Out</p>
                 </Link>
 
@@ -42,3 +50,11 @@ export default function AccountActive(props) {
         </div>
     )
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        logOutUser: () => { dispatch(logOutUser()) }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(AccountActive);

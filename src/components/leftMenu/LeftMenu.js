@@ -3,7 +3,10 @@ import {
     Link
 } from "react-router-dom";
 import "./style/style.css"
-
+import {
+    logOutUser
+  } from "../../redux/index"
+  import { connect } from "react-redux";
 import homeIcon from "./img/home-copy.svg";
 import messageIcon from "./img/mail-copy.svg";
 import diagramIcon from "./img/diagram.svg";
@@ -19,7 +22,6 @@ function LeftMenu(props) {
         <div
             className={active? "left-menu-container" : "left-menu-container left-menu-closed"}
         >
-
             <div className="left-top-container">
                 <div className="left-logo-container">
                     <h1>YOUR LOGO.</h1>
@@ -92,12 +94,15 @@ function LeftMenu(props) {
                         </div>
                     </div>
                     <div className="left-menu-single-container">
-                        <div className="left-menu-option">
+                        <Link onClick={()=>{
+                            localStorage.clear();
+                            props.logOutUser();
+                            }} className="left-menu-option"  to="/">
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={powerIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/">Sign Out</Link>
-                        </div>
+                            <p className="left-menu-option-text">Sign Out</p>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -106,4 +111,10 @@ function LeftMenu(props) {
 
 }
 
-export default LeftMenu;
+const mapDispatchToProps = dispatch => {
+    return {
+      logOutUser: () => { dispatch(logOutUser()) }
+    }
+  }
+
+export default connect(null,mapDispatchToProps)(LeftMenu);

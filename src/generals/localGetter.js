@@ -8,9 +8,14 @@ const localGetter = () => {
         email: localStorage.getItem("email"),
         country: localStorage.getItem("country"),
         companyName: localStorage.getItem("companyName"),
-        tradeRole: localStorage.getItem("tradeRole")
+        tradeRole: localStorage.getItem("tradeRole"),
+        expiration: localStorage.getItem("expiration")
     }
-    console.log(data);
-    return data;
+    if(data.accessToken){
+        return data;
+    }
+    else{
+        return null;
+    }
 }
 export default localGetter;

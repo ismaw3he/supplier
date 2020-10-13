@@ -2,6 +2,7 @@ const localSetter = (data) => {
     console.log(data);
     localStorage.setItem("accessToken", data.access_token.token);
     localStorage.setItem("refreshToken", data.access_token.refreshToken);
+    localStorage.setItem("expiration", data.access_token.expiration);
     localStorage.setItem("surname", data.surname);
     localStorage.setItem("name", data.name);
     localStorage.setItem("phone", data.phoneNumber);

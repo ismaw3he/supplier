@@ -2,6 +2,7 @@ import React from "react";
 
 import {  Redirect } from "react-router-dom";
 import {RenderRoutes} from "./RenderRoutes";
+import localGetter from "../generals/localGetter";
 
 import Main from "../pages/main/Main";
 import LogIn from "../pages/logIn/LogIn";
@@ -22,9 +23,8 @@ const ROUTES = [
         key: "APP",
         component: props => {
             
-            if (false) {
-              alert("You need to log in to access profile routes");
-              return <Redirect to={"/"} />;
+            if (!localGetter()) {
+              return <Redirect to={"/logIn"} />;
             }
             return <RenderRoutes {...props} /> 
         },

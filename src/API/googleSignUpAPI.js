@@ -1,6 +1,7 @@
 import {
   signUpUserRequest,
-  signUpUserFailure
+  signUpUserFailure,
+  signUpUserSuccess
 } from "../redux/index"
 import url from "./url";
 import { logInUserSuccess } from "../redux/index"
@@ -8,11 +9,7 @@ import axios from "axios"
 import localSetter from "../generals/localSetter";
 
 export const googleSignUpUser = (signUpData) => {
-  console.log("signUpData")
-  console.log(signUpData)
   return (dispatch) => {
-    console.log("signUpData")
-    console.log(signUpData)
     dispatch(signUpUserRequest())
 
     axios.post(url + '/api/Auth/GoogleSignUp', {
@@ -28,6 +25,7 @@ export const googleSignUpUser = (signUpData) => {
         console.log("response")
         console.log(response)
         localSetter(response.data)
+        dispatch(signUpUserSuccess(response.data.email))
         dispatch(logInUserSuccess(response.data))
       }, (error) => {
         if (error.response) {

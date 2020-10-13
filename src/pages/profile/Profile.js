@@ -4,21 +4,12 @@ import TopNav from "../../components/topNav/TopNav";
 import LeftMenu from "../../components/leftMenu/LeftMenu";
 import RightPage from "../../components/rightPage/RightPage";
 import ProfileInformation from "../../components/profileInformation/ProfileInformation";
-
+import localGetter from "../../generals/localGetter";
 function LogIn({ userData }) {
     const [active, setActive] = useState(false)
+    const localData = localGetter()
     return (
         <div>
-            {/* <h1>My Profile</h1>
-
-            <div>
-                <h2>Logged in as {userData.user.name} {userData.user.surname}</h2>
-                <h5>Company Name: {userData.user.companyName}</h5>
-                <h5>Country: {userData.user.country}</h5>
-                <h5>Email: {userData.user.email}</h5>
-                <h5>Phone Number: {userData.user.phoneNumber}</h5>
-                <h5>Trade Role: {userData.user.tradeRole}</h5>
-            </div> */}
             <TopNav />
             <LeftMenu active={active} setActive={setActive}/>
 
@@ -26,13 +17,13 @@ function LogIn({ userData }) {
                 {console.log(userData)}
                 <ProfileInformation 
                     data={{
-                        fullName: userData.name+ " " + userData.surname,
+                        fullName: localData.name+ " " + localData.surname,
                         link: "https://www.supplier.com/your-profile-link",
-                        email: userData.email,
-                        companyName: userData.companyName,
-                        tradeRole: userData.tradeRole ===0? "Buyer" : "Seller",
-                        country: userData.country,
-                        phone: userData.phoneNumber
+                        email: localData.email,
+                        companyName: localData.companyName,
+                        tradeRole: localData.tradeRole ===0? "Buyer" : "Seller",
+                        country: localData.country,
+                        phone: localData.phone
                      }}
                 />
             </RightPage>
