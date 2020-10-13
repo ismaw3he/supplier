@@ -28,7 +28,7 @@ const logInReducer = (state = initialState, action) => {
                 loading: false,
                 response: {},
                 success:false,
-                error: action.payload.errorMessage
+                error: action.payload
            }
        default: return state
 

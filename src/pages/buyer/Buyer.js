@@ -5,9 +5,7 @@ import LeftMenu from "../../components/leftMenu/LeftMenu";
 import RightPage from "../../components/rightPage/RightPage";
 import InfoBloksContainer from "../../components/infoBloksContainer/InfoBloksContainer";
 
-import ProfileInformation from "../../components/profileInformation/ProfileInformation";
-import classes from "./style/style.module.css"
-import bck from "../../img/profile-bck.png"
+
 function LogIn({ userData }) {
     const [active, setActive] = useState(false)
     return (

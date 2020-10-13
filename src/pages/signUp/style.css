@@ -3,6 +3,11 @@
     height: 100vh;
     display: flex;
 }
+.errorMain{
+    color: #ff0043;
+    font-size: 15px;
+    margin: 15px;
+}
 
 .sign-right-container{
     width: 540px;

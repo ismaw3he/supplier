@@ -5,7 +5,6 @@ import EditableList from "../editableList/EditableList";
 
 import user from "./img/user.svg";
 
-import bck from "../../img/profile-bck.png"
 const ProfileInformation = (props) => {
     return (
         <>
@@ -30,7 +29,6 @@ const ProfileInformation = (props) => {
                 <WindowHeader>Your Account Settings</WindowHeader>
                 {console.log(props)}
                 <EditableList description="Full Name" content={props.data.fullName}/>
-                <EditableList description="Password" content={props.data.password}/>
                 <EditableList description="Your Profile Link" content={props.data.link}/>
                 <EditableList description="Email" content={props.data.email}/>
                 <EditableList description="Company Name" content={props.data.companyName}/>

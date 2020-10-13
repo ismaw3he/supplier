@@ -27,7 +27,14 @@ export const signUpUser = (signUpData) =>{
             // dispatch(verifyUserSet(response.data.email))
             dispatch(signUpUserSuccess(response.data.email))
           }, (error) => {
-            dispatch(signUpUserFailure(error.response.data.errorMessage))
+            if(error.response){
+              console.log(error.response.data)
+              dispatch(signUpUserFailure(error.response.data))
+            }
+            else{
+              dispatch(signUpUserFailure("No Connection"))
+            }
+            
           });
     }
 }  

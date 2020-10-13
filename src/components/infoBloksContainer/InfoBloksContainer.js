@@ -11,6 +11,7 @@ const InfoBloksContainer = (props) => {
 
             <InfoBlock windowHeader={"Company Information"}>
                 <ContactInformation />
+                <ContactInformation />
             </InfoBlock>
             
             <InfoBlock windowHeader={"Sourcing Information"}>

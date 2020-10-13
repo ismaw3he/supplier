@@ -138,7 +138,7 @@ function SignUp({ data, signUpUser, errorHandler,googleSignUpUser }) {
                     <p className="or">or</p>
                     <div className="sign-content-divider"></div>
                   </div>
-
+                  {data.error ? <p className="errorMain">{data.error}</p>: null}
                   <div className="input-container">
                     <GoogleLogin
                       clientId={"236063375563-amqjpkg9ik1fmfccqfhu9sti1h7u9u0o.apps.googleusercontent.com"}
@@ -169,6 +169,7 @@ function SignUp({ data, signUpUser, errorHandler,googleSignUpUser }) {
                         // googleResponse(response) 
                       }}
                       onFailure={(response) => {
+                        console.log(response.error)
                         errorHandler(response.error)
                         // googleAuthFail(response)
                       }}
@@ -283,6 +284,8 @@ function SignUp({ data, signUpUser, errorHandler,googleSignUpUser }) {
                       onChange={() => { setSignUpData({ ...signUpData, Terms: !signUpData.Terms }) }}
                     />
                   </div>
+                  {console.log(data.error)}
+                  {data.error ? <p className="errorMain">{data.error}</p>: null}
                   <button
                     type="submit"
                     onClick={signUpData.page === 1? () => { signUpUser(signUpData) } 
@@ -316,10 +319,9 @@ function SignUp({ data, signUpUser, errorHandler,googleSignUpUser }) {
             
 
           </Form>
-          {data.loading ? <p>Loading...</p> :
-            data.error ? <p>{data.error}</p>:
-                data.email && signUpData.page===2? <Redirect to="/profile" /> : null
-          }
+          
+                {data.email && signUpData.page===2? <Redirect to="/profile" /> : null}
+          
         </div>
 
       </div>

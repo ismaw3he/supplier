@@ -4,8 +4,7 @@ import TopNav from "../../components/topNav/TopNav";
 import LeftMenu from "../../components/leftMenu/LeftMenu";
 import RightPage from "../../components/rightPage/RightPage";
 import ProfileInformation from "../../components/profileInformation/ProfileInformation";
-import bck from "../../img/profile-bck.png"
-import classes from "./style/style.module.css"
+
 function LogIn({ userData }) {
     const [active, setActive] = useState(false)
     return (
@@ -24,16 +23,16 @@ function LogIn({ userData }) {
             <LeftMenu active={active} setActive={setActive}/>
 
             <RightPage active={active}>
+                {console.log(userData)}
                 <ProfileInformation 
                     data={{
-                        fullName: "Rauf Ismayilov",
-                        password: "**************",
-                        link: "https://www.supplier.com/RaufIsmayilov",
-                        email: "rauf.raymond110@gmail.com",
-                        companyName: "Portflix LLC",
-                        tradeRole: "Seller",
-                        country: "Azerbaijan",
-                        phone: "+994505392909"
+                        fullName: userData.name+ " " + userData.surname,
+                        link: "https://www.supplier.com/your-profile-link",
+                        email: userData.email,
+                        companyName: userData.companyName,
+                        tradeRole: userData.tradeRole ===0? "Buyer" : "Seller",
+                        country: userData.country,
+                        phone: userData.phoneNumber
                      }}
                 />
             </RightPage>
@@ -43,7 +42,7 @@ function LogIn({ userData }) {
 
 const mapStateToProps = state => {
     return {
-        userData: state.logIn
+        userData: state.logIn.user
     }
 }
 

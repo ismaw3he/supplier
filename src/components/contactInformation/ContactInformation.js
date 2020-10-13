@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import classes from "./style/style.module.css"
+import React from 'react';
 import InfoTable from "../infoTable/InfoTable";
 
 const ContactInformation = (props) => {

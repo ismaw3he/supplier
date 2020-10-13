@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { logInUser } from "../../API/logInUserAPI"
 import { GoogleLogin } from 'react-google-login';
-import {googleSignInUser} from "../../API/googleSignInAPI";
+import { googleSignInUser } from "../../API/googleSignInAPI";
 
 import Loader from "../../components/loader/Loader";
 import {
@@ -26,25 +26,25 @@ import SignRouteOptions from "../../components/signRoutOptions/SignRouteOptions"
 
 
 
-function LogIn({ userData, logInUser, logInUserFailure, googleSignInUser }) {
+function LogIn({ userData, logInUser, logInUserFail, googleSignInUser }) {
   const [logInData, setLogInData] = useState({
     Email: "",
     Password: ""
   })
 
-  
+
   return (
     <div className="main">
 
-      <SignLeftWindow bck={bckImage}/>
+      <SignLeftWindow bck={bckImage} />
 
       <div className="sign-right-container">
 
-        <Loader loading={userData.loading}/>
+        <Loader loading={userData.loading} />
 
         <div className="sign-container-fixed">
-          
-          <SignRouteOptions Option="signIn"/>
+
+          <SignRouteOptions Option="signIn" />
 
           <Form className="custom-form">
             <h2 className="form-header">Sign In</h2>
@@ -79,11 +79,12 @@ function LogIn({ userData, logInUser, logInUserFailure, googleSignInUser }) {
 
               <Link className="sign-links bold" to="/reset-password">Forgot Password</Link>
             </div>
-
+            {console.log(userData)}
+            {userData.error ? <p className="errorMain">{userData.error}</p> : null}
             <button
               type="submit"
-              onClick={() => {if(logInData.Email && logInData.Password){ logInUser(logInData)} }}
-              className={logInData.Email && logInData.Password? "form-submit-btn" : "form-submit-btn disabled"}>
+              onClick={() => { if (logInData.Email && logInData.Password) { logInUser(logInData) } }}
+              className={logInData.Email && logInData.Password ? "form-submit-btn" : "form-submit-btn disabled"}>
               Sign In
             </button >
 
@@ -91,7 +92,7 @@ function LogIn({ userData, logInUser, logInUserFailure, googleSignInUser }) {
               <div className="sign-content-divider"></div>
               <p className="or">or</p>
               <div className="sign-content-divider"></div>
-              </div>
+            </div>
 
             <div className="input-container">
               <GoogleLogin
@@ -109,21 +110,24 @@ function LogIn({ userData, logInUser, logInUserFailure, googleSignInUser }) {
                     Sign in with Google
                   </button>
                 )}
-                onSuccess={(response) => { googleSignInUser(response) }}
+                onSuccess={(response) => {
+                  console.log(response);
+                  googleSignInUser(response)
+                }}
                 onFailure={(response) => {
-                  logInUserFailure(response.error) 
-                  }}
+                  console.log(response.error)
+                  logInUserFail(response.error)
+                }}
               />
             </div>
-                
+
             <p className="self-center">Don't have an account? <Link className="sign-links bold" to="/signUp">Register</Link></p>
-           
+
           </Form>
-          {userData.loading ? <p>Loading...</p> :
-            userData.error ? <p>{userData.error}</p> :
-              userData.user.email ?
-                <Redirect to="/profile" />
-                : null
+          {
+            userData.user.email ?
+              <Redirect to="/profile" />
+              : null
           }
         </div>
 
@@ -140,10 +144,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logInUserFailure: (error)=>{logInUserFailure(error)},
+    logInUserFail: (error) => { dispatch(logInUserFailure(error)) },
     logInUser: (logInData) => { dispatch(logInUser(logInData)) },
     googleSignInUser: (logInData) => { dispatch(googleSignInUser(logInData)) }
   }
 }
- 
+
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

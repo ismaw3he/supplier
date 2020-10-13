@@ -17,7 +17,14 @@ export const forgotPassword = (email) =>{
           .then((response) => {
             dispatch(forgotPasswordSuccess(response.data))
           }, (error) => {
-            dispatch(forgotPasswordFailure(error.response.data.errorMessage))
+            if(error.response){
+              console.log(error.response.data)
+              dispatch(forgotPasswordFailure(error.response.data))
+            }
+            else{
+              dispatch(forgotPasswordFailure("No Connection"))
+            }
+            
           });
     }
 }  

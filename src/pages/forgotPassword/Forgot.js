@@ -55,6 +55,7 @@ function Forgot({ data, forgotPSWD }) {
                                         onChange={() => { setForgotData({ ...forgotData, recaptcha: true }) }}
                                     />
                                 </div>
+                                {data.error ? <p className="errorMain">{data.error}</p>: null}
                                 <button
                                     type="submit"
                                     onClick={() => {if(forgotData.recaptcha && forgotData.Email){ forgotPSWD(forgotData.Email) }}}
