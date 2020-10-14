@@ -1,5 +1,6 @@
 import React from "react";
 import Account from "../../components/account/Account";
+import localGetter from "../../generals/localGetter";
 
 import { connect } from "react-redux";
 
@@ -8,7 +9,7 @@ function Main({userData}) {
     <div>
 
       <h2 style={{margin: "30vh auto"}}>Test Mode - HOME PAGE</h2>
-      <Account />
+      <Account loggedIn={localGetter()} fullName={localGetter()? localGetter().name + " " + localGetter().surname : ""}/>
       {/* {userData.loading ? <p>Loading...</p> :
         userData.error ? <p>{userData.error}</p> :
           userData.user.name && userData.isAuthenticated ?

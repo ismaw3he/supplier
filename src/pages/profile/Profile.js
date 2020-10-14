@@ -17,7 +17,8 @@ function LogIn({ userData }) {
                 {console.log(userData)}
                 <ProfileInformation 
                     data={{
-                        fullName: localData.name+ " " + localData.surname,
+                        name: localData.name,
+                        surname: localData.surname,
                         link: "https://www.supplier.com/your-profile-link",
                         email: localData.email,
                         companyName: localData.companyName,

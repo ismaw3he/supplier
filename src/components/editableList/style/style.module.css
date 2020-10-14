@@ -1,17 +1,24 @@
 .container{
-    height: 50px;
     width: 100%;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     cursor: pointer;
+    transition: height 0.25s;
+}
+.activeContainer{
+    height: 150px;
+    background-color: #f4f4f4;
+    justify-content: flex-start;
 }
 .container:hover{
     background-color: #f4f4f4;
 }
 .fixed{
+    height: 50px;
     width: calc(100% - 60px);
-    height: 100%;
     border-bottom: 1px solid #efefef;
     display: flex;
     align-items: center;
@@ -32,4 +39,47 @@
     font-size: 14px;
     margin-left: auto;
     text-align: right;
+}
+.activeContent{
+    width: calc(100% - 240px);
+    align-self: flex-end;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.inputField{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding-top: 10px;
+}
+.input{
+    margin-left: -70px;
+    height: 25px;
+    width: 50%;
+}
+.editButtonsContainer{
+    display: flex;
+    width: 190px;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+.button{
+    width: 80px;
+    height: 29px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+
+}
+.save{
+    background-color: #ffd500;
+
+}
+.cancel{
+    background-color: white;
 }

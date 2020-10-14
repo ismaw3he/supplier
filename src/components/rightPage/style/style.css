@@ -1,7 +1,6 @@
 .right-page-container{
     width: calc(100% - 75px);
     height: 100%;
-    overflow-y: auto;
     position: absolute;
     right: 0;
     transition: all 0.2s;
