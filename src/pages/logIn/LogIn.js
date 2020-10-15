@@ -126,7 +126,7 @@ function LogIn({ userData, logInUser, logInUserFail, googleSignInUser }) {
           </Form>
           {
             userData.user.email ?
-              <Redirect to="/profile" />
+              <Redirect to="/" />
               : null
           }
         </div>

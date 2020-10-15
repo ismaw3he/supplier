@@ -60,7 +60,7 @@ const ProfileInformation = (props) => {
 
             <div className={classes.contactEditable}>
                 <WindowHeader>Your Account Settings</WindowHeader>
-                {console.log(activeList)}
+                
                 {editList.map((item) => {
                     
                     return <EditableList

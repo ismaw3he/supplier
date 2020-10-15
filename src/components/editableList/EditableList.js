@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./style/style.module.css";
 
 import {
@@ -6,11 +6,11 @@ import {
 } from 'semantic-ui-react'
 
 const EditableList = (props) => {
-    const [value, setValue] = useState(props.content)
+    // const [value, setValue] = useState(props.content)
     return (
-        <div onClick={() => props.handler(props.description)}
+        <div 
             className={!props.active ? classes.container : classes.container + " " + classes.activeContainer}>
-            <div className={classes.fixed}>
+            <div onClick={() => props.handler(props.description)} className={classes.fixed}>
                 <h3 className={classes.description}>{props.description}</h3>
                 <h3 className={classes.content}>{props.content}</h3>
 
@@ -31,7 +31,7 @@ const EditableList = (props) => {
                     <div className={classes.editButtonsContainer}>
                         <div className={classes.button + " " + classes.save}>Save</div>
                         <div
-                            onClick={() => props.handler(" ")}
+                            onClick={() => props.handler("")}
                             className={classes.button + " " + classes.cancel}
                         >
                             Cancel

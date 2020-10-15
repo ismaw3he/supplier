@@ -35,12 +35,12 @@ function LeftMenu(props) {
             <div className="left-menu-options-container">
                 <div className="left-menu-seperator">
                     <div className="left-menu-single-container">
-                        <div className="left-menu-option">
+                        <Link to="/" className="left-menu-option">
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={homeIcon} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/profile">Home</Link>
-                        </div>
+                            <div className="left-menu-option-text">Home</div>
+                        </Link>
                     </div>
 
                     <div className="left-menu-single-container">
