@@ -22,16 +22,66 @@ import bckImage from "./img/bck-1.jpg"
 import SignLeftWindow from "../../components/signLeftWindow/SignLeftWindow";
 import SignRouteOptions from "../../components/signRoutOptions/SignRouteOptions";
 
-
+import Input from "../../components/Input/Input";
+import { validation } from "../../generals/validation";
 
 
 
 function LogIn({ userData, logInUser, logInUserFail, googleSignInUser }) {
-  const [logInData, setLogInData] = useState({
-    Email: "",
-    Password: ""
+  // const [logInData, setLogInData] = useState({
+  //   Email: "",
+  //   Password: ""
+  // })
+
+  const [inputData, setInputData] = useState({
+    isFormValid: false,
+    Email: {
+      elementType: 'input',
+      elementConfig: {
+        type: "text",
+        placeholder: "Enter email address or member ID"
+      },
+      value: '',
+      rules: {
+        required: true,
+        isEmail: true
+      },
+      isValid: false,
+      validationMessages: []
+    },
+    Password: {
+      elementType: 'input',
+      elementConfig: {
+        type: "password",
+        placeholder: "Enter your password"
+      },
+      value: '',
+      rules: {
+        required: true,
+        minLength: 6
+      },
+      isValid: false,
+      validationMessages: []
+    }
   })
 
+  const inputOnchangeHandler = (event, identifier) => {
+
+    const updatedInputData = { ...inputData };
+    updatedInputData[identifier].value = event.target.value;
+
+    const result = validation(event.target.value, updatedInputData[identifier].rules);
+    updatedInputData[identifier].isValid = result.isValid;
+    updatedInputData[identifier].validationMessages = result.messages;
+
+    let formChecker = false;
+    if(inputData.Email.isValid && inputData.Password.isValid){
+      formChecker = true;
+    }
+    updatedInputData.isFormValid = formChecker;
+
+    setInputData(updatedInputData);
+  }
 
   return (
     <div className="main">
@@ -54,21 +104,39 @@ function LogIn({ userData, logInUser, logInUserFail, googleSignInUser }) {
             <div className="input-container">
               <Form.Field>
                 <label>Email</label>
-                <input
+                {/* <input
                   placeholder='Enter email address or member ID'
                   onChange={(e) => { setLogInData({ ...logInData, Email: e.target.value }) }}
+                /> */}
+                <Input
+                  elementType={inputData.Email.elementType}
+                  elementConfig={inputData.Email.elementConfig}
+                  value={inputData.Email.value}
+                  changed={(event) => inputOnchangeHandler(event, "Email")}
                 />
+                {inputData.Email.validationMessages.map((item) => {
+                  return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                })}
               </Form.Field>
             </div>
 
             <div className="input-container">
               <Form.Field>
                 <label>Password</label>
-                <input
+                {/* <input
                   type="password"
                   placeholder='Enter your Password'
                   onChange={(e) => { setLogInData({ ...logInData, Password: e.target.value }) }}
+                /> */}
+                <Input
+                  elementType={inputData.Password.elementType}
+                  elementConfig={inputData.Password.elementConfig}
+                  value={inputData.Password.value}
+                  changed={(event) => inputOnchangeHandler(event, "Password")}
                 />
+                {inputData.Password.validationMessages.map((item) => {
+                  return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                })}
               </Form.Field>
             </div>
 
@@ -79,12 +147,14 @@ function LogIn({ userData, logInUser, logInUserFail, googleSignInUser }) {
 
               <Link className="sign-links bold" to="/reset-password">Forgot Password</Link>
             </div>
-            {console.log(userData)}
             {userData.error ? <p className="errorMain">{userData.error}</p> : null}
             <button
               type="submit"
-              onClick={() => { if (logInData.Email && logInData.Password) { logInUser(logInData) } }}
-              className={logInData.Email && logInData.Password ? "form-submit-btn" : "form-submit-btn disabled"}>
+              onClick={() => { if (inputData.isFormValid) { logInUser({
+                Email: inputData.Email.value,
+                Password: inputData.Password.value
+              }) } }}
+              className={inputData.isFormValid ? "form-submit-btn" : "form-submit-btn disabled"}>
               Sign In
             </button >
 

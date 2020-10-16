@@ -10,7 +10,8 @@ export default function TopNav() {
         <div className="top-nav"> 
             <Account
                 loggedIn={localData!==null? true : false}
-                fullName={localData.name? localData.name +" "+ localData.surname: ""}
+                // fullName={localData.name? localData.name +" "+ localData.surname: ""}
+                fullName={"Rauf Ismayilov"}
             />
         </div>
     )

@@ -26,6 +26,10 @@ import "./style.css"
 import SignLeftWindow from "../../components/signLeftWindow/SignLeftWindow";
 import SignRouteOptions from "../../components/signRoutOptions/SignRouteOptions";
 
+
+import Input from "../../components/Input/Input";
+import {validation} from "../../generals/validation";
+
 const options = {
   country: [
     { key: 'a', text: 'Azerbaijan', value: 'Azerbaijan' },
@@ -47,7 +51,7 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
 
     Name: "",
     Surname: "",
-    Country: "",
+    Country: "Turkey",
     CompanyName: "",
     TradeRole: "0",
     PhoneNumber: "",
@@ -59,20 +63,112 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
     recaptcha: false,
     page: 0
   })
+
+  const [inputData, setInputData] = useState({
+    isFormValid: false,
+    Email: {
+      elementType: 'input',
+      elementConfig: {
+        type: "text",
+        placeholder: "Enter email address or member ID"
+      },
+      value: '',
+      rules: {
+        required: true,
+        isEmail: true
+      },
+      isValid: false,
+      validationMessages: []
+    },
+    Password: {
+      elementType: 'input',
+      elementConfig: {
+        type: "password",
+        placeholder: "Enter your password"
+      },
+      value: '',
+      rules: {
+        required: true,
+        minLength: 6
+      },
+      isValid: false,
+      validationMessages: []
+    },
+    ConfirmPassword: {
+      elementType: 'input',
+      elementConfig: {
+        type: "password",
+        placeholder: "Enter your password again"
+      },
+      value: '',
+      rules: {
+        required: true,
+        minLength: 6
+      },
+      isValid: false,
+      validationMessages: []
+    },
+    CompanyName:{
+      elementType: 'input',
+      elementConfig: {
+        type: "text",
+        placeholder: "Enter your Company name"
+      },
+      value: '',
+      rules: {
+        required: true
+      },
+      isValid: false,
+      validationMessages: []
+    },
+    PhonePrefix: {
+      elementType: 'input',
+      elementConfig: {
+        options: [
+          { key: '+994', displayValue: '+994', value: '+994' },
+          { key: '+32', displayValue: '+32', value: '+32' },
+          { key: '+1', displayValue: '+1', value: '+1' },
+        ]
+      },
+      value: ""
+    }
+  })
+  const inputOnchangeHandler = (event, identifier) => {
+
+    const updatedInputData = { ...inputData };
+    updatedInputData[identifier].value = event.target.value;
+
+    const result = validation( event.target.value, updatedInputData[identifier].rules);
+    updatedInputData[identifier].isValid = result.isValid;
+    updatedInputData[identifier].validationMessages = result.messages;
+
+    let formChecker = true;
+    
+    for(let key in inputData){
+      if(key!=="isFormValid" && key!=="PhonePrefix" && !inputData[key].isValid){
+        formChecker = false;
+      }
+    }
+    if(formChecker){
+      if(updatedInputData.Password.value !== updatedInputData.ConfirmPassword.value){
+        updatedInputData.ConfirmPassword.isValid = false;
+        updatedInputData.ConfirmPassword.validationMessages.push({status: "error", message:"Passwords do not match"})   
+        formChecker=false;
+      }
+    }
+    updatedInputData.isFormValid = formChecker;
+
+    setInputData(updatedInputData);
+  }
   return (
     <div className="main">
-      
       <SignLeftWindow bck={bckImage} />
-
       <div className="sign-right-container">
-
         <Loader loading={data.loading} />
-
         <div className="sign-container-fixed">
           <SignRouteOptions Option="signUp" />
           <Form className="custom-form">
             <h2 className="form-header">Register {signUpData.page === 2 ? "with Google" : ""}</h2>
-            
             {
               data.email ?
                 <div>
@@ -89,38 +185,67 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
                   <div>
                     <div className="input-container">
                       <Form.Field>
-                        <label>Email</label>
-                        <input
+                        <label>Email <span style={{color: "red"}}>*</span></label>
+                        {/* <input
                           placeholder='Email will be used as Login ID'
                           defaultValue={signUpData.Email}
                           onChange={(e) => { setSignUpData({ ...signUpData, Email: e.target.value }) }}
+                        /> */}
+                        <Input
+                          elementType={inputData.Email.elementType}
+                          elementConfig={inputData.Email.elementConfig}
+                          value={inputData.Email.value}
+                          changed={(event) => inputOnchangeHandler(event, "Email")}
                         />
+                        {inputData.Email.validationMessages.map((item) => {
+                          return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                        })}
+
                       </Form.Field>
                     </div>
 
                     <div className="input-container">
                       <Form.Field>
-                        <label>Password</label>
-                        <input
+                        <label>Password <span style={{color: "red"}}>*</span></label>
+                        {/* <input
                           type="password"
                           placeholder='Enter your Password'
                           defaultValue={signUpData.Password}
                           onChange={(e) => { setSignUpData({ ...signUpData, Password: e.target.value }) }}
+                        /> */}
+                        <Input
+                          elementType={inputData.Password.elementType}
+                          elementConfig={inputData.Password.elementConfig}
+                          value={inputData.Password.value}
+                          changed={(event) => inputOnchangeHandler(event, "Password")}
                         />
+                        {inputData.Password.validationMessages.map((item) => {
+                          return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                        })}
                       </Form.Field>
                     </div>
 
                     <div className="input-container">
                       <Form.Field>
-                        <label>Confirm Password</label>
-                        <input
+                        <label>Confirm Password <span style={{color: "red"}}>*</span></label>
+                        {/* <input
                           type="password"
                           defaultValue={signUpData.ConfirmPassword}
                           placeholder='Enter your Password again'
-                          onChange={(e) => { 
+                          onChange={(e) => {
                             console.log(signUpData);
-                            setSignUpData({ ...signUpData, ConfirmPassword: e.target.value }) }}
+                            setSignUpData({ ...signUpData, ConfirmPassword: e.target.value })
+                          }}
+                        /> */}
+                        <Input
+                          elementType={inputData.ConfirmPassword.elementType}
+                          elementConfig={inputData.ConfirmPassword.elementConfig}
+                          value={inputData.ConfirmPassword.value}
+                          changed={(event) => inputOnchangeHandler(event, "ConfirmPassword")}
                         />
+                        {inputData.ConfirmPassword.validationMessages.map((item) => {
+                          return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                        })}
                       </Form.Field>
                     </div>
 
@@ -128,12 +253,19 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
 
                     <button
                       onClick={() => {
-                        if (signUpData.Email && signUpData.Password && signUpData.ConfirmPassword) {
-                          
+                        if (
+                          inputData.Email.isValid &&
+                          inputData.Password.isValid &&
+                          inputData.ConfirmPassword.isValid
+                        ) {
+
                           setSignUpData({ ...signUpData, page: 1 })
                         }
                       }}
-                      className={signUpData.Email && signUpData.Password && signUpData.ConfirmPassword ?
+                      className={
+                        inputData.Email.isValid &&
+                        inputData.Password.isValid &&
+                        inputData.ConfirmPassword.isValid ?
                         "form-submit-btn" : "form-submit-btn disabled"}>
                       Next
                   </button >
@@ -159,7 +291,7 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
                                 <path fill="#F14336" d="M16.383 2.302l-3.24 2.652c-.911-.57-1.989-.899-3.143-.899-2.607 0-4.821 1.678-5.624 4.013L1.12 5.401C2.781 2.192 6.134 0 10 0c2.426 0 4.651.864 6.383 2.302z" />
                               </g>
                             </svg>
-                    Sign up with Google
+                             Sign up with Google
                           </button>
                         )}
                         onSuccess={(response) => {
@@ -182,7 +314,7 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
                       />
                     </div>
                   </div>
-                :
+                  :
 
                   <div>
                     <div className="input-container">
@@ -198,7 +330,7 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
 
                     <div className="input-container">
                       <Form.Group grouped>
-                        <label>Please select trade role</label>
+                        <label>Please select trade role <span style={{color: "red"}}>*</span></label>
                         <Form.Group inline>
                           <Form.Field
                             control={Radio}
@@ -221,14 +353,23 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
 
                     <div className="input-container">
                       <Form.Field>
-                        <label>Company name</label>
-                        <input
+                        <label>Company name <span style={{color: "red"}}>*</span></label>
+                        {/* <input
                           placeholder='Your company'
                           defaultValue={signUpData.CompanyName}
                           onChange={(e) => {
                             setSignUpData({ ...signUpData, CompanyName: e.target.value })
                           }}
+                        /> */}
+                        <Input
+                          elementType={inputData.CompanyName.elementType}
+                          elementConfig={inputData.CompanyName.elementConfig}
+                          value={inputData.CompanyName.value}
+                          changed={(event) => inputOnchangeHandler(event, "CompanyName")}
                         />
+                        {inputData.CompanyName.validationMessages.map((item) => {
+                          return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                        })}
                       </Form.Field>
                     </div>
 
@@ -298,15 +439,47 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
                     {data.error ? <p className="errorMain">{data.error}</p> : null}
                     <button
                       type="submit"
-                      onClick={signUpData.page === 1 ? () => { signUpUser(signUpData) }
-                        : () => { googleSignUpUser(signUpData) }}
+                      onClick={signUpData.page === 1 &&
+                        signUpData.Terms &&
+                        signUpData.recaptcha &&
+                        signUpData.PhoneNumber &&
+                        signUpData.Surname &&
+                        signUpData.Name &&
+                        inputData.CompanyName.isValid &&
+                        signUpData.Country 
+                        ? () => {
+                          let submissionData = {...signUpData}
+                          submissionData.CompanyName = inputData.CompanyName.value;
+                          submissionData.Email = inputData.Email.value;
+                          submissionData.Password = inputData.Password.value;
+                          submissionData.ConfirmPassword = inputData.ConfirmPassword.value;
+                          // needs to be fixed
+                          console.log(submissionData);
+                          signUpUser(submissionData)
+                           }
+                        :                         signUpData.Terms &&
+                        signUpData.recaptcha &&
+                        signUpData.PhoneNumber &&
+                        signUpData.Surname &&
+                        signUpData.Name &&
+                        inputData.CompanyName.isValid &&
+                        signUpData.Country? () => { 
+                          let submissionData = {...signUpData}
+                          submissionData.CompanyName = inputData.CompanyName.value;
+                          submissionData.Email = inputData.Email.value;
+                          submissionData.Password = inputData.Password.value;
+                          submissionData.ConfirmPassword = inputData.ConfirmPassword.value;
+                          // needs to be fixed
+                          googleSignUpUser(submissionData)
+                         }
+                        :null}
                       className={
                         signUpData.Terms &&
                           signUpData.recaptcha &&
                           signUpData.PhoneNumber &&
                           signUpData.Surname &&
                           signUpData.Name &&
-                          signUpData.CompanyName &&
+                          inputData.CompanyName.isValid &&
                           signUpData.Country ?
                           "form-submit-btn" : "form-submit-btn disabled"}>
                       Agree and Sign Up

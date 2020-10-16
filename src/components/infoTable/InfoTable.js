@@ -19,14 +19,17 @@ const InfoTable = (props) => {
                 }
             </div>
             <div className={classes.colDivider}></div>
-            <div className={classes.col}>
-                <p className={classes.description}>{props.description[1]}</p>
 
-                {Array.isArray(props.value[1]) ? props.value[1].map((item, index) => {
-                    return <div className={classes.multiValue} key={index}> {item} </div>
-                }) :
-                    <p className={classes.value}>{props.value[1]}</p>
-                }
+            <div className={classes.col}>
+                
+                    <p className={classes.description}>{props.description[1]}</p>
+
+                    {Array.isArray(props.value[1]) ? props.value[1].map((item, index) => {
+                        return <div className={classes.multiValue} key={index}> {item} </div>
+                    }) :
+                        <p className={classes.value}>{props.value[1]}</p>
+                    }
+                
             </div>
         </div>
     )
