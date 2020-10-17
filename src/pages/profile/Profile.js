@@ -13,7 +13,7 @@ function LogIn({ userData }) {
             <TopNav />
             <LeftMenu active={active} setActive={setActive}/>
 
-            <RightPage active={active}>
+            {/* <RightPage active={active}>
                 {console.log(userData)}
                 <ProfileInformation 
                     data={{
@@ -27,7 +27,7 @@ function LogIn({ userData }) {
                         phone: localData.phone
                      }}
                 />
-            </RightPage>
+            </RightPage> */}
         </div>
     )
 }

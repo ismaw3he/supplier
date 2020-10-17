@@ -27,14 +27,14 @@ const AccountActive = (props) => {
                 <div className="account-active-divider"></div>
 
                 <Link className="account-active-link" to="/profile/buyer">
-                    <p className="account-active-link-text">Buyer</p>
+                    <p className="account-active-link-text">Company</p>
                 </Link>
-
+{/* 
                 <div className="account-active-divider"></div>
 
                 <Link className="account-active-link" to="/profile/seller">
                     <p className="account-active-link-text">Seller</p>
-                </Link>
+                </Link> */}
 
                 <div className="account-active-divider"></div>
 

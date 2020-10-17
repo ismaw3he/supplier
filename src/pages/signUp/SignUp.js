@@ -145,10 +145,11 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
     let formChecker = true;
     
     for(let key in inputData){
-      if(key!=="isFormValid" && key!=="PhonePrefix" && !inputData[key].isValid){
+      if(key!=="isFormValid" && key!=="PhonePrefix" && key!=="CompanyName" && !inputData[key].isValid){
         formChecker = false;
       }
     }
+
     if(formChecker){
       if(updatedInputData.Password.value !== updatedInputData.ConfirmPassword.value){
         updatedInputData.ConfirmPassword.isValid = false;
@@ -156,6 +157,7 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
         formChecker=false;
       }
     }
+    
     updatedInputData.isFormValid = formChecker;
 
     setInputData(updatedInputData);
