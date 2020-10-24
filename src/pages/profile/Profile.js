@@ -13,7 +13,7 @@ function LogIn({ userData }) {
             <TopNav />
             <LeftMenu active={active} setActive={setActive}/>
 
-            {/* <RightPage active={active}>
+            <RightPage active={active}>
                 {console.log(userData)}
                 <ProfileInformation 
                     data={{
@@ -25,9 +25,17 @@ function LogIn({ userData }) {
                         tradeRole: localData.tradeRole ===0? "Buyer" : "Seller",
                         country: localData.country,
                         phone: localData.phone
+                        // name: "Rauf",
+                        // surname: "Ismayilov",
+                        // link: "https://www.supplier.com/your-profile-link",
+                        // email: "rauf@gmail.com",
+                        // companyName: "localData.companyName",
+                        // tradeRole:  "Buyer" ,
+                        // country: "localData.country",
+                        // phone: "localData.phone"
                      }}
                 />
-            </RightPage> */}
+            </RightPage>
         </div>
     )
 }

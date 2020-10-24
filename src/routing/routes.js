@@ -22,6 +22,7 @@ const ROUTES = [
         path: "/profile",
         key: "APP",
         component: props => {
+            // !localGetter()
             if (!localGetter()) {
               return <Redirect to={"/logIn"} />;
             }

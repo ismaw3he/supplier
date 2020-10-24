@@ -1,24 +1,24 @@
 import React from 'react';
 import InfoTable from "../infoTable/InfoTable";
 
-// General Info
-const ContactInformation = (props) => {
+
+const SourcingInformation = (props) => {
     return (
         <>
             <InfoTable
                 description={
-                    ["Email:", "Fax:"]
+                    ["Annual Purchasing Volume:", "Primary Sourcing Purpose:"]
                 }
                 value={
-                    ["rauf.raymond110@gmail.com", "None"]
+                    ["10001 - 100000", ["To resell items", "other"]]
                 }
             />
             <InfoTable
                 description={
-                    ["Social Links:", "Phone:"]
+                    ["Avarage Sourcing Frequency:", "Prefered Supplier Qualifications:"]
                 }
                 value={
-                    [["Facebook","Linkedin","Amazon"], "+994505392909"]
+                    ["Weeky", ["Has a factory","other"]]
                 }
             />
             
@@ -26,4 +26,4 @@ const ContactInformation = (props) => {
     )
 }
 
-export default ContactInformation;
+export default SourcingInformation;
