@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import InfoTable from "../infoTable/InfoTable";
 
 // General Info
 const ContactInformation = (props) => {
+    useEffect(()=>{
+        
+    },[])
     return (
         <>
             <InfoTable

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import "./assets/css/style_2.css";
 import Account from "../components/account/Account";
-import localGetter from "../generals/localGetter";
+// import localGetter from "../generals/localGetter";
 import {connect} from "react-redux";
 
 import construction from "./assets/img/construction.png"
@@ -35,7 +35,7 @@ import google from "./assets/icon/google-play.svg";
 import instagram from "./assets/icon/instagram.svg";
 import logoWhite from "./assets/img/your-logo-white.png";
 
-const Temporary = ({data}) => {
+const Temporary = (props) => {
     const [width, setWidth] = useState()
     
     useEffect(()=>{
@@ -45,7 +45,7 @@ const Temporary = ({data}) => {
     if(width > 1300){
         return (
             <div>
-                {console.log(data)}
+                {console.log(props.localData)}
                 {/* Header */}
                 <header id="header">
                     <nav className="header__nav">
@@ -81,7 +81,9 @@ const Temporary = ({data}) => {
                                         <button className="btn-sign-in">Sign in</button>
                                         <button className="btn-register animate__animated animate__pulse">Register</button>
                                     </div> */}
-                                    <Account loggedIn={data.name?true:false} fullName={data.name? data.name + " " + data.surname : ""}/>
+                                    <Account 
+                                    loggedIn={props.localData?true:false} 
+                                    fullName={props.localData? props.localData.name + " " + props.localData.surname : ""}/>
                                 {/* </div> */}
                             </div>
                         </div>
@@ -132,7 +134,7 @@ const Temporary = ({data}) => {
                             </div>
                         </div>
     
-                        <div className="slide__line-scd">
+                        <div className="slide__line">
                             <div className="left_categories">
                                 <div className="view_all">
                                     <span>Categories</span>
@@ -572,7 +574,7 @@ const Temporary = ({data}) => {
            
             <img style={{
                 width:"70vw"
-            }} src={construction}/>
+            }} alt="" src={construction}/>
         </div>)
     }
     

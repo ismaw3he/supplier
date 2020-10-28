@@ -11,6 +11,7 @@ const localGetter = () => {
         tradeRole: localStorage.getItem("tradeRole"),
         expiration: localStorage.getItem("expiration")
     }
+    console.log(data)
     if(data.accessToken){
         return data;
     }
