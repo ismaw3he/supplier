@@ -12,10 +12,60 @@
 
 .ModalActive{
     width: calc(100vw - 60px);
-    height: 700px;
     background-color: white;
     border-radius: 5px;
     position: absolute;
     top: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 85vh;
+    overflow-y: scroll;
+}
+.footer{
+    min-height: 80px;
+    width: 100%;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.container{
+    height: 100%;
     
+}
+.flexContainer{
+    display: flex;
+    width: 100%;
+    margin: 30px;
+}
+.inputContainer{
+    display: flex;
+    height: 65px;
+    width: 400px;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 30px;
+}
+.checkboxContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 30px;
+}
+.checkboxContainerFlex{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.title{
+    font-size: 14px;
+    color: #333e48;
+}
+.customForm{
+    display: flex;
+    flex-wrap: wrap;
 }

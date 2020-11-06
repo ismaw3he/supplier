@@ -1,6 +1,6 @@
 
 .headerContainer{
-    height: 45px;
+    min-height: 45px;
     width: 100%;
     display: flex;
     align-items: flex-end;

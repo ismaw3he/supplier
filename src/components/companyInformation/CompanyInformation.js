@@ -1,7 +1,7 @@
 import React from 'react';
 import InfoTable from "../infoTable/InfoTable";
 
-const CompanyInformation = (props) => {
+const CompanyInformation = ({companyInfo}) => {
     return (
         <>
             <InfoTable
@@ -9,7 +9,7 @@ const CompanyInformation = (props) => {
                     ["Company Name:", "Year Established:"]
                 }
                 value={
-                    ["Portflix", "2010"]
+                    [companyInfo.name, companyInfo.yearEstablished]
                 }
             />
             <InfoTable
@@ -17,7 +17,7 @@ const CompanyInformation = (props) => {
                     ["Official web site:", "Busines Type:"]
                 }
                 value={
-                    ["https://mysite.com", ["Manufacturer/ Factory", "Retailer", "Individual", "other"]]
+                    [companyInfo.webSite, companyInfo.businessTypes]
                 }
             />
             <InfoTable
@@ -25,7 +25,7 @@ const CompanyInformation = (props) => {
                     ["Number of employers:", "Platform for selling:"]
                 }
                 value={
-                    [" 5 - 10 ", ["Offline", "Amazon", "other"]]
+                    [companyInfo.employeesCount, companyInfo.sellingPlatforms]
                 }
             />
             <InfoTable
@@ -33,7 +33,7 @@ const CompanyInformation = (props) => {
                     ["Main Products:", "About us:"]
                 }
                 value={
-                    [["SOCKS", "UNDERPANS"], "Info about my company"]
+                    [companyInfo.mainProducts, companyInfo.about]
                 }
             />
             <InfoTable

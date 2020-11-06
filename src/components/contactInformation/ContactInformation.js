@@ -2,10 +2,7 @@ import React, {useEffect} from 'react';
 import InfoTable from "../infoTable/InfoTable";
 
 // General Info
-const ContactInformation = (props) => {
-    useEffect(()=>{
-        
-    },[])
+const ContactInformation = ({contactInfo}) => {
     return (
         <>
             <InfoTable
@@ -13,7 +10,7 @@ const ContactInformation = (props) => {
                     ["Email:", "Fax:"]
                 }
                 value={
-                    ["rauf.raymond110@gmail.com", "None"]
+                    [contactInfo.email, contactInfo.fax]
                 }
             />
             <InfoTable
@@ -21,7 +18,7 @@ const ContactInformation = (props) => {
                     ["Social Links:", "Phone:"]
                 }
                 value={
-                    [["Facebook","Linkedin","Amazon"], "+994505392909"]
+                    [contactInfo.socialLinks, contactInfo.phone]
                 }
             />
             
