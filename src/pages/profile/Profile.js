@@ -8,8 +8,10 @@ import localGetter from "../../generals/localGetter";
 import localSetter from "../../generals/localSetter";
 // import {accountInfoGetAPI} from "../../API/userInfo/accountInfoGetAPI";
 // import {refreshTokenAPI} from '../../API/refreshTokenAPI';
+import accountInfoGetAPI from "../../API/userInfo/accountInfoGetAPI";
+import accountInfoSetAPI from "../../API/userInfo/accountInfoSetAPI";
 
-function LogIn({ userData, getUser }) {
+function LogIn({ userData, getUser, setUser }) {
     const [active, setActive] = useState(false)
     const localData = localGetter()
     const [data, setData] = useState(localData);
@@ -52,11 +54,19 @@ function LogIn({ userData, getUser }) {
                 refreshToken: copyData.refreshToken
             }
         });
+        setUser(copyData)
     }
     useEffect(() => {
-        // getUser()
-        // refreshTokenAPI(localData.refreshToken)
+        let copyData = { 
+            ...data
+        };
+
+        getUser(setData, localSetter ,copyData)
     }, [])
+    useEffect(() => {
+        console.log("State Data", data);
+        console.log("Local Storage Data", localGetter());
+    })
     return (
         <div>
             <TopNav />
@@ -96,7 +106,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // getUser: (logInData) => { dispatch(accountInfoGetAPI()) }
+        getUser: (setData, localSetter, copyData) => { dispatch(accountInfoGetAPI(setData, localSetter, copyData)) },
+        setUser: (copyData) => { dispatch(accountInfoSetAPI( copyData)) }
     }
 }
 

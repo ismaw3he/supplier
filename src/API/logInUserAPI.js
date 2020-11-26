@@ -17,6 +17,7 @@ export const logInUser = (logInData) =>{
             Password: logInData.Password
           })
           .then((response) => {
+            console.log(response.data);
             localSetter(response.data)
             dispatch(logInUserSuccess(response.data))
           }, (error) => {

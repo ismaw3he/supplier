@@ -1,45 +1,44 @@
 import {
-    logInUserRequest,
-    logInUserSuccess,
-    logInUserFailure
+    logInUserSuccess
 } from "../../redux/index"
 import mainUrl from "../mainUrl";
-import url from "../url";
-import axios from "axios"
 
-import localSetter from "../../generals/localSetter";
-import localGetter from "../../generals/localGetter";
-import localUpdateUser from "../../generals/localUpdateUser"
-import refreshTokenAPI from "../refreshTokenAPI";
+import axiosInstance from "../helpers/axiosInstance";
 
-const config = {
-    headers: { Authorization: `Bearer ${localGetter().accessToken}` }
-};
-
-export const accountInfoGetAPI = () =>{
+export default (setData, localSetter, copyData)=>{
     return (dispatch) =>{
-        axios.get(mainUrl + '/User/GetAccountSetup', config)
-          .then((response) => {
-              console.log("test");
-              console.log(response.data);
-              
-              localUpdateUser(response.data)
-               dispatch(logInUserSuccess(response.data))
-          }, (error) => {
-            if(error.response.data.message === "Unauthorized"){
-                console.log("token expired");
-            }
-            else{
-                if(error.response){
-                    console.log(error.response.data)
-                  //   dispatch(logInUserFailure(error.response.data))
-                  }
-                  else{
-                  //   dispatch(logInUserFailure("No Connection"))
-                  }
-            }
 
+    axiosInstance.get(mainUrl + "/User/GetAccountSetup")
+    .then((res)=> {
+        // localSetter(response.data)
+        // dispatch(logInUserSuccess(response.data))
+        console.log("********Response********");
+        console.log(copyData);
+        console.log(res);
+        localSetter({
+            ...copyData,
+            country: res.data.country,
+            email: res.data.email,
+            name: res.data.name,
+            surname: res.data.surname,
+            phone: res.data.phoneNumber
+        });
+        
+        setData({
+            ...copyData,
+            country: res.data.country,
+            email: res.data.email,
+            name: res.data.name,
+            surname: res.data.surname,
+            phone: res.data.phoneNumber
+        });
 
-          });
-    }
+        console.log("data", res.data)
+        return res.data;
+    })
+    .catch(
+        (err)=> {
+            console.log("err", err.message)
+        })
+}
 }

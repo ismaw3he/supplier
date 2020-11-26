@@ -5,6 +5,7 @@ import {
     LOG_OUT_USER
 } from "./logInTypes";
 
+import localClear from "../../generals/localClear";
 
 export const logInUserRequest = () =>{
     return {
@@ -28,6 +29,7 @@ export const logInUserFailure = error =>{
 
 export const logOutUser = () =>{
     console.log("Logging Out");
+    localClear();
     return {
         type: LOG_OUT_USER
     }
