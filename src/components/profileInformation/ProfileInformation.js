@@ -15,10 +15,10 @@ const ProfileInformation = (props) => {
             description: "Surname",
             content: props.data.surname
         },
-        {
-            description: "Email",
-            content: props.data.email
-        },
+        // {
+        //     description: "Email",
+        //     content: props.data.email
+        // },
         {
             description: "Your Profile Link",
             content: props.data.link
@@ -54,21 +54,23 @@ const ProfileInformation = (props) => {
 
                 <div className={classes.linkContainer}>
                     <p className={classes.linkHeader}>Your profile link</p>
-                    <input className={classes.linkInput} type="text" defaultValue="https://www.supplier.com/RaufIsmayilov" />
+                    <input className={classes.linkInput} type="text" defaultValue="https://www.supplier.com/your-profile-link" />
                 </div>
             </div>
 
             <div className={classes.contactEditable}>
                 <WindowHeader>Your Account Settings</WindowHeader>
-                
+
                 {editList.map((item) => {
-                    
+
                     return <EditableList
                         handler={setActiveList}
                         key={item.description}
-                        active={activeList===item.description}
+                        active={activeList === item.description}
                         description={item.description}
-                        content={item.content} />
+                        content={item.content}
+                        editHandler={props.editHandler} />
+
                 })}
             </div>
         </>

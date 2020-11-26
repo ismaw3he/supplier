@@ -14,7 +14,7 @@ function LogIn({ userData }) {
             <LeftMenu active={active} setActive={setActive}/>
             
             <RightPage active={active}>
-                <InfoBloksContainer />
+                <InfoBloksContainer trade="BUYER"/>
                 
             </RightPage>
         </div>

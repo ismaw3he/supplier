@@ -3,7 +3,7 @@ import "./assets/css/style_2.css";
 import Account from "../components/account/Account";
 // import localGetter from "../generals/localGetter";
 import {connect} from "react-redux";
-
+import LeftCategories from "../components/leftCategories/LeftCategories";
 import construction from "./assets/img/construction.png"
 import yourLogo from "./assets/img/your-logo.png";
 import search from "./assets/icon/search.svg";
@@ -35,17 +35,21 @@ import google from "./assets/icon/google-play.svg";
 import instagram from "./assets/icon/instagram.svg";
 import logoWhite from "./assets/img/your-logo-white.png";
 
+import {refreshTokenAPI} from "../API/refreshTokenAPI";
+
 const Temporary = (props) => {
-    const [width, setWidth] = useState()
+    const [width, setWidth] = useState(window.innerWidth)
     
+    
+
     useEffect(()=>{
-        const {innerWidth: innerWidth} = window
-        setWidth(innerWidth)
+        if(localStorage.getItem("refreshToken")){
+            refreshTokenAPI(localStorage.getItem("refreshToken"))
+        }
     },[])
     if(width > 1300){
         return (
             <div>
-                {console.log(props.localData)}
                 {/* Header */}
                 <header id="header">
                     <nav className="header__nav">
@@ -88,7 +92,7 @@ const Temporary = (props) => {
                             </div>
                         </div>
                     </nav>
-                    <nav className="menu">
+                    <nav className="menu_temp">
                         <div className="menu_container">
                             <div className="menu__left-itmes"></div>
     
@@ -135,57 +139,20 @@ const Temporary = (props) => {
                         </div>
     
                         <div className="slide__line">
-                            <div className="left_categories">
-                                <div className="view_all">
-                                    <span>Categories</span>
-                                    <span>View All</span>
-                                </div>
-                                <div className="menu1">
-                                    <span>Consumer Electronics</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Apparel</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Vehicles & Accessories</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Sports & Entertainment</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Machinery</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Home & Garden</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Beauty & Personal Care</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Car Electronic & GPS</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Cameras & Photography</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Gadgets</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                                <div className="menu1">
-                                    <span>Accesories</span>
-                                    <img src={arrowRight} alt="" />
-                                </div>
-                            </div>
+
+
+
+
+
+                            <LeftCategories />
     
+
+
+
+
+
+
+
                             <div className="center__slider">
                                 <div className="slider_content">
                                     <h5>Alexa, Turn it up</h5>

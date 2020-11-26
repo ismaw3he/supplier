@@ -1,0 +1,75 @@
+.customForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+.container{
+    height: fit-content;
+}
+.inputContainer{
+    display: flex;
+    position: relative;
+    width: 400px;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 30px;
+}
+.inputInfo{
+    margin-left: 16px;
+    color: #8a8a8a;
+    font-size: 13px;
+    margin-top: 6px;
+    width: 200%;
+}
+.multiple{
+    width: 100%;
+    display: flex;
+}
+.deletable{
+    background-color: #0084ff;
+    color: white;
+    margin: 0 10px;
+    font-size: 14px;
+    height: 30px;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+.reset{
+    margin: 0;
+    margin-right: 10px;
+}
+.cursor{
+    cursor: pointer;
+}
+.info{
+    position: absolute;
+    top: 0;
+    height: 40px;
+    background-color: #e6e6e6;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 421px;
+    width: fit-content;
+    padding: 7px 12px;
+    border-radius: 5px;
+}
+.info::before{
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 8px solid #e6e6e6;
+    border-bottom: 10px solid transparent;
+    left: -8px;
+    content: "";
+    position: absolute;
+}
+.danger{
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 5px;
+}

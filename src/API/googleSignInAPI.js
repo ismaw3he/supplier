@@ -5,7 +5,7 @@ import {
 } from "../redux/index"
 import url from "./url";
 import localSetter from "../generals/localSetter";
-import axios from "axios"
+import axios from "axios";
 
 export const googleSignInUser = (response) =>{
     return (dispatch) =>{
@@ -17,14 +17,13 @@ export const googleSignInUser = (response) =>{
             localSetter(response.data)
             dispatch(logInUserSuccess(response.data))
           }, (error) => {
-            
             if(error.response){
               console.log(error.response);
-            dispatch(logInUserFailure(error.response.data))
+              dispatch(logInUserFailure(error.response.data))
             }
             else{
               dispatch(logInUserFailure("No Connection"))
             }
           });
     }
-}  
+}

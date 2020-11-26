@@ -40,9 +40,15 @@
     width: 100%;
     margin: 30px;
 }
+.inputInfo{
+    margin-left: 16px;
+    color: #8a8a8a;
+    font-size: 13px;
+    margin-top: 6px;
+    width: 200%;
+}
 .inputContainer{
     display: flex;
-    height: 65px;
     width: 400px;
     justify-content: space-between;
     flex-direction: column;

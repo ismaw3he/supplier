@@ -32,10 +32,30 @@ import {validation} from "../../generals/validation";
 
 const options = {
   country: [
-    { key: 'a', text: 'Azerbaijan', value: 'Azerbaijan' },
-    { key: 't', text: 'Turkey', value: 'Turkey' },
-    { key: 'r', text: 'Russia', value: 'Russia' },
-  ],
+    { key: 'af', value: 'af', text: 'Afghanistan' },
+    { key: 'ax', value: 'ax', text: 'Aland Islands' },
+    { key: 'al', value: 'al', text: 'Albania' },
+    { key: 'dz', value: 'dz', text: 'Algeria' },
+    { key: 'as', value: 'as', text: 'American Samoa' },
+    { key: 'ad', value: 'ad', text: 'Andorra' },
+    { key: 'ao', value: 'ao', text: 'Angola' },
+    { key: 'ai', value: 'ai', text: 'Anguilla' },
+    { key: 'ag', value: 'ag', text: 'Antigua' },
+    { key: 'ar', value: 'ar', text: 'Argentina' },
+    { key: 'am', value: 'am', text: 'Armenia' },
+    { key: 'aw', value: 'aw', text: 'Aruba' },
+    { key: 'au', value: 'au', text: 'Australia' },
+    { key: 'at', value: 'at', text: 'Austria' },
+    { key: 'az', value: 'az', text: 'Azerbaijan' },
+    { key: 'bs', value: 'bs', text: 'Bahamas' },
+    { key: 'bh', value: 'bh', text: 'Bahrain' },
+    { key: 'bd', value: 'bd', text: 'Bangladesh' },
+    { key: 'bb', value: 'bb', text: 'Barbados' },
+    { key: 'by', value: 'by', text: 'Belarus' },
+    { key: 'be', value: 'be', text: 'Belgium' },
+    { key: 'ru', value: 'ru', text: 'Russia' },
+    { key: 'tr', value: 'tr', text: 'Turkey' },
+],
   number: [
     { key: '+994', text: '+994', value: '+994' },
     { key: '+32', text: '+32', value: '+32' },
@@ -319,7 +339,6 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
                   :
 
                   <div>
-                    <div className="input-container">
                       <Form.Field
                         control={Select}
                         label='Country/region'
@@ -328,7 +347,6 @@ function SignUp({ data, signUpUser, errorHandler, googleSignUpUser }) {
                         defaultValue={signUpData.Country}
                         onChange={(e) => { setSignUpData({ ...signUpData, Country: e.target.innerText }) }}
                       />
-                    </div>
 
                     <div className="input-container">
                       <Form.Group grouped>

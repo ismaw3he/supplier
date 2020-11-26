@@ -1,7 +1,8 @@
 import React from 'react';
 import InfoTable from "../infoTable/InfoTable";
+import WindowHeader from "../windowHeader/WindowHeader";
 
-const CompanyInformation = ({companyInfo}) => {
+const CompanyInformation = ({ companyInfo }) => {
     return (
         <>
             <InfoTable
@@ -36,12 +37,13 @@ const CompanyInformation = ({companyInfo}) => {
                     [companyInfo.mainProducts, companyInfo.about]
                 }
             />
+            <WindowHeader>Registered Address</WindowHeader>
             <InfoTable
                 description={
                     ["Country/Region:", "City:"]
                 }
                 value={
-                    ["Azerbaijan", "Baku"]
+                    [companyInfo.registeredAddress.Country, companyInfo.registeredAddress.City]
                 }
             />
             <InfoTable
@@ -49,7 +51,41 @@ const CompanyInformation = ({companyInfo}) => {
                     ["Province/State:", "Street:"]
                 }
                 value={
-                    ["Absheron", "Nizami str 16"]
+                    [companyInfo.registeredAddress.State, companyInfo.registeredAddress.Street]
+                }
+            />
+            <InfoTable
+                description={
+                    ["Zip Code:", ""]
+                }
+                value={
+                    [companyInfo.registeredAddress.ZipCode, ""]
+                }
+            />
+
+            <WindowHeader>Operational Address</WindowHeader>
+            <InfoTable
+                description={
+                    ["Country/Region:", "City:"]
+                }
+                value={
+                    [companyInfo.operationalAddress.Country, companyInfo.operationalAddress.City]
+                }
+            />
+            <InfoTable
+                description={
+                    ["Province/State:", "Street:"]
+                }
+                value={
+                    [companyInfo.operationalAddress.State, companyInfo.operationalAddress.Street]
+                }
+            />
+            <InfoTable
+                description={
+                    ["Zip Code:", ""]
+                }
+                value={
+                    [companyInfo.operationalAddress.ZipCode, ""]
                 }
             />
         </>

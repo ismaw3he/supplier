@@ -27,6 +27,7 @@ export const logInUserFailure = error =>{
 }
 
 export const logOutUser = () =>{
+    console.log("Logging Out");
     return {
         type: LOG_OUT_USER
     }

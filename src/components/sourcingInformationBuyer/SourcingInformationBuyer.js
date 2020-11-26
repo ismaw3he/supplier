@@ -1,8 +1,8 @@
 import React from 'react';
 import InfoTable from "../infoTable/InfoTable";
+import WindowHeader from "../windowHeader/WindowHeader";
 
-
-const SourcingInformation = ({sourcingInfo}) => {
+const SourcingInformationBuyer = ({ sourcingInfo }) => {
     return (
         <>
             <InfoTable
@@ -13,6 +13,7 @@ const SourcingInformation = ({sourcingInfo}) => {
                     [sourcingInfo.annualPurchasingVolume, sourcingInfo.primarySourcingPurposes]
                 }
             />
+            
             <InfoTable
                 description={
                     ["Avarage Sourcing Frequency:", "Prefered Supplier Qualifications:"]
@@ -21,9 +22,23 @@ const SourcingInformation = ({sourcingInfo}) => {
                     [sourcingInfo.averageSourcingFrequency, sourcingInfo.preferedSupplierQualifications]
                 }
             />
-            
+            <WindowHeader>PreferedIndustries</WindowHeader>
+
+            {sourcingInfo.PreferedIndustries.map((item,index)=>{
+                return (
+                    <InfoTable
+                    key={index}
+                    description={
+                        ["Industry Name:", "Sub-Industries:"]
+                    }
+                    value={
+                        [item.Name, item.Industries]
+                    }
+                />
+                )
+            })}
         </>
     )
 }
 
-export default SourcingInformation;
+export default SourcingInformationBuyer;

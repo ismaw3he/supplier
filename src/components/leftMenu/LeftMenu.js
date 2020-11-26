@@ -15,7 +15,7 @@ import internetIcon from "./img/internet.svg";
 import likeIcon from "./img/like.svg";
 import audioIcon from "./img/audio.svg";
 import powerIcon from "./img/power.svg";
-
+import bulb from "./img/idea.svg";
 function LeftMenu(props) {
     const {active, setActive} = props
     return (
@@ -23,9 +23,9 @@ function LeftMenu(props) {
             className={active? "left-menu-container" : "left-menu-container left-menu-closed"}
         >
             <div className="left-top-container">
-                <div className="left-logo-container">
+                <Link to="/" className="left-logo-container">
                     <h1>YOUR LOGO.</h1>
-                </div>
+                </Link>
                 <div onClick={() => { setActive(!active) }} className="burger-menu">
                     <div className={active? "burger-menu-line" : "burger-menu-line short-line"}></div>
                     <div className="burger-menu-line"></div>
@@ -35,7 +35,7 @@ function LeftMenu(props) {
             <div className="left-menu-options-container">
                 <div className="left-menu-seperator">
                     <div className="left-menu-single-container">
-                        <Link to="/" className="left-menu-option">
+                        <Link to="/profile" className="left-menu-option">
                             <div className="left-menu-option-icon-container">
                                 <img className="left-menu-option-icon" src={homeIcon} alt="Home Icon" />
                             </div>
@@ -74,6 +74,14 @@ function LeftMenu(props) {
                             </div>
                             <Link className="left-menu-option-text" to="/profile">Trade Services</Link>
                         </div>
+                    </div>
+                    <div className="left-menu-single-container">
+                        <Link to="/profile/buyer" className="left-menu-option">
+                            <div className="left-menu-option-icon-container">
+                                <img className="left-menu-option-icon" src={bulb} alt="Home Icon" />
+                            </div>
+                            <div className="left-menu-option-text">Company & Site</div>
+                        </Link>
                     </div>
                 </div>
                 <div className="left-menu-seperator">

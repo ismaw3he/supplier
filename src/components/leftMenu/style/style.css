@@ -21,6 +21,7 @@
 .left-logo-container{
     width: 199px;
     height: 100%;
+    cursor: pointer;
     overflow-x: hidden;
     display: flex;
     align-items: center;
