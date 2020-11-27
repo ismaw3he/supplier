@@ -1941,7 +1941,7 @@ const LeftCategories = () => {
                                                                 </div>
                                                             )
                                                         }
-                                                        return ( null )
+                                                        return ( <React.Fragment></React.Fragment> )
                                                     })}
                                                 </div>
                                                 <div className={classes.group}>
@@ -1954,7 +1954,7 @@ const LeftCategories = () => {
                                                                 </div>
                                                             )
                                                         }
-                                                        return ( null )
+                                                        return ( <React.Fragment></React.Fragment> )
                                                     })}
                                                 </div>
                                             </React.Fragment>
@@ -1982,7 +1982,7 @@ const LeftCategories = () => {
                                     
                                 }
                                 return(
-                                    null
+                                    <React.Fragment></React.Fragment>
                                 )
                             })
                         }
