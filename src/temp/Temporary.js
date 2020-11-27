@@ -54,7 +54,7 @@ const Temporary = (props) => {
                 <header id="header">
                     <nav className="header__nav">
                         <div className="nav__container">
-                            <a href="/"><img src={yourLogo} alt="your_logo" /></a>
+                            <a href="/supplier"><img src={yourLogo} alt="your_logo" /></a>
                             <div className="nav__search">
                                 <input className="nav__search-input" type="text" name="search" 
                                     placeholder="What are you looking for…" />
@@ -71,11 +71,11 @@ const Temporary = (props) => {
                                 <div className="right-sec__left-icons">
     
                                     <div className="wishlist">
-                                        <a href="/"><img src={wishlist} alt="wishlist_icon" /></a>
+                                        <a href="/supplier"><img src={wishlist} alt="wishlist_icon" /></a>
                                         <span className="tooltip-wis">Wishlist</span>
                                     </div>
                                     <div className="cart">
-                                        <a href="/"><img src={cart} alt="cart_icon" /></a>
+                                        <a href="/supplier"><img src={cart} alt="cart_icon" /></a>
                                         <span className="tooltip-cart">Cart</span>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ const Temporary = (props) => {
     
                             <div className="menu__right-itmes">
                                 <div className="buyers">
-                                    <a className="header-sc" href="/">HEADER v1</a>
+                                    <a className="header-sc" href="/supplier">HEADER v1</a>
                                     <img src={arrowDown} alt="" />
                                 </div>
                                 <div className="buyers">
@@ -127,13 +127,13 @@ const Temporary = (props) => {
                                 <span>Personal Protective Equipment</span>
                                 <div className="divider-1"></div>
                                 <ul>
-                                    <li><a href="/"><img src={safety} alt="icon" />Protective Equipment</a></li>
+                                    <li><a href="/supplier"><img src={safety} alt="icon" />Protective Equipment</a></li>
                                     <div className="divi-2"></div>
-                                    <li><a href="/"><img src={clean} alt="icon" />Disinfectants</a></li>
+                                    <li><a href="/supplier"><img src={clean} alt="icon" />Disinfectants</a></li>
                                     <div className="divi-2"></div>
-                                    <li><a href="/"><img src={doctor} alt="icon" />Medical Devices</a></li>
+                                    <li><a href="/supplier"><img src={doctor} alt="icon" />Medical Devices</a></li>
                                     <div className="divi-2"></div>
-                                    <li><a href="/">View more</a></li>
+                                    <li><a href="/supplier">View more</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -416,7 +416,7 @@ const Temporary = (props) => {
                     <div className="footer_container">
                         <div className="footer-1">
                             <div className="footer-1__left">
-                                <a href="/"><img className="logo_white" src={logoWhite} alt="your_logo" /></a>
+                                <a href="/supplier"><img className="logo_white" src={logoWhite} alt="your_logo" /></a>
                             </div>
                             <div className="call-us">
                                 <div className="call-us__icon">
@@ -458,19 +458,19 @@ const Temporary = (props) => {
                                 <h4 className="footer_site-map">Categories</h4>
                                 <div className="categories_container">
                                     <ul>
-                                        <li><a href="/">Consumer Electronics</a></li>
-                                        <li><a href="/">Apparel</a></li>
-                                        <li><a href="/">Vehicles & Accessories</a></li>
-                                        <li><a href="/">Sports & Entertainment</a></li>
-                                        <li><a href="/">Machinery</a></li>
-                                        <li><a href="/">Home & Garden</a></li>
+                                        <li><a href="/supplier">Consumer Electronics</a></li>
+                                        <li><a href="/supplier">Apparel</a></li>
+                                        <li><a href="/supplier">Vehicles & Accessories</a></li>
+                                        <li><a href="/supplier">Sports & Entertainment</a></li>
+                                        <li><a href="/supplier">Machinery</a></li>
+                                        <li><a href="/supplier">Home & Garden</a></li>
                                     </ul>
                                     <ul>
-                                        <li><a href="/">Beauty & Personal Care</a></li>
-                                        <li><a href="/">Car Electronic & GPS</a></li>
-                                        <li><a href="/">Cameras & Photography</a></li>
-                                        <li><a href="/">Gadgets</a></li>
-                                        <li><a href="/">Accesories</a></li>
+                                        <li><a href="/supplier">Beauty & Personal Care</a></li>
+                                        <li><a href="/supplier">Car Electronic & GPS</a></li>
+                                        <li><a href="/supplier">Cameras & Photography</a></li>
+                                        <li><a href="/supplier">Gadgets</a></li>
+                                        <li><a href="/supplier">Accesories</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -479,11 +479,11 @@ const Temporary = (props) => {
                                 <h4 className="footer_site-map">Customer Services</h4>
                                 <div className="categories_container">
                                     <ul>
-                                        <li><a href="/">About us</a></li>
-                                        <li><a href="/">Contact us</a></li>
-                                        <li><a href="/">FAQ</a></li>
-                                        <li><a href="/">Help me</a></li>
-                                        <li><a href="/">Site map</a></li>
+                                        <li><a href="/supplier">About us</a></li>
+                                        <li><a href="/supplier">Contact us</a></li>
+                                        <li><a href="/supplier">FAQ</a></li>
+                                        <li><a href="/supplier">Help me</a></li>
+                                        <li><a href="/supplier">Site map</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -513,8 +513,8 @@ const Temporary = (props) => {
                         </div>
                         <div className="terms-conditions">
                             <ul>
-                                <li><a href="/">Privacy Policy</a></li>
-                                <li><a href="/">Terms and Conditions</a></li>
+                                <li><a href="/supplier">Privacy Policy</a></li>
+                                <li><a href="/supplier">Terms and Conditions</a></li>
                             </ul>
                         </div>
                     </div>
