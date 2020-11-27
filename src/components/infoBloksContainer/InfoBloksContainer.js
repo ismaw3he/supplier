@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import InfoBlock from "../infoBlock/InfoBlock";
 import classes from "./style/style.module.css";
 // Buyer
@@ -12,13 +12,78 @@ import SellerEdit from "../sellerEdit/SellerEdit";
 
 const InfoBloksContainer = (props) => {
     // BUYER
-    let [contactInfo, setContactInfo] = useState({
+    // let [contactInfo, setContactInfo] = useState({
+    //     email: "raufraymond110@gmail.com",
+    //     phone: "070123123",
+    //     fax: "598876541",
+    //     socialLinks: ["facebook", "linkedin", "instagram"]
+    // })
+    // let [companyInfo, setCompanyInfo] = useState({
+    //     name: "Portflix",
+    //     yearEstablished: 2010,
+    //     webSite: "https://mysite.com",
+    //     employeesCount: "5-10",
+    //     // employe count gives integer
+    //     about: "Info about my company",
+    //     registeredAddress: {
+    //         Country: "Azerbaijan",
+    //         State: "Absheron",
+    //         City: "Baku",
+    //         Street: "20 Yanvar",
+    //         ZipCode: "AZ1134"
+    //     },
+    //     operationalAddress: {
+    //         Country: "Azerbaijan",
+    //         State: "Absheron",
+    //         City: "Baku",
+    //         Street: "20 Yanvar",
+    //         ZipCode: "AZ1134"
+    //     },
+    //     // needs to be fixed
+    //     mainProducts: ["SOCKS", "UNDERPANS"],
+    //     businessTypes: ["Manufacturer/ Factory", "Retailer", "Individual", "other"],
+    //     sellingPlatforms: ["Offline", "Amazon", "other"]
+    // })
+    // let [sourcingInfo, setSourcingInfo] = useState({
+    //     averageSourcingFrequency: "Monthly",
+    //     annualPurchasingVolume: "10001  - 100000",
+    //     // 0 when empty
+    //     primarySourcingPurposes: ["To resell items", "other"],
+    //     PreferedIndustries:
+    //         [
+    //             {
+    //                 Name: "Electronics",
+    //                 Industries:[
+    //                         "Computer", "Phone"
+    //                     ]
+
+    //             },
+    //             {
+    //                 Name: "Electronics",
+    //                 Industries:[
+    //                         "Computer", "Phone"
+    //                     ]
+
+    //             },
+    //             {
+    //                 Name: "Electronics",
+    //                 Industries:[
+    //                         "Computer", "Phone"
+    //                     ]
+
+    //             }
+    //         ],
+    //     // needs to be fixed
+    //     preferedSupplierQualifications: ["Has a factory", "other"]
+    // })
+    
+    const contactInfo = {
         email: "raufraymond110@gmail.com",
         phone: "070123123",
         fax: "598876541",
         socialLinks: ["facebook", "linkedin", "instagram"]
-    })
-    let [companyInfo, setCompanyInfo] = useState({
+    }
+    const companyInfo = {
         name: "Portflix",
         yearEstablished: 2010,
         webSite: "https://mysite.com",
@@ -43,8 +108,8 @@ const InfoBloksContainer = (props) => {
         mainProducts: ["SOCKS", "UNDERPANS"],
         businessTypes: ["Manufacturer/ Factory", "Retailer", "Individual", "other"],
         sellingPlatforms: ["Offline", "Amazon", "other"]
-    })
-    let [sourcingInfo, setSourcingInfo] = useState({
+    }
+    const sourcingInfo = {
         averageSourcingFrequency: "Monthly",
         annualPurchasingVolume: "10001  - 100000",
         // 0 when empty
@@ -75,9 +140,7 @@ const InfoBloksContainer = (props) => {
             ],
         // needs to be fixed
         preferedSupplierQualifications: ["Has a factory", "other"]
-    })
-    
-
+    }
     // SELLER
 
 

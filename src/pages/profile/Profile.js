@@ -63,7 +63,7 @@ function LogIn({ userData, getUser, setUser }) {
         };
 
         getUser(setData, localSetter ,copyData)
-    }, [])
+    }, [data, getUser])
     return (
         <div>
             <TopNav />

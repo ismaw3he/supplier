@@ -31,7 +31,7 @@ const employee = [
     { key: "500+", value: "500+", text: "500+" },
 ]
 
-const M_ManufacturingCapability = (props) => {
+const MManufacturingCapability = (props) => {
     return (
         <div className={classes.container}>
             <Form className={classes.customForm}>
@@ -124,4 +124,4 @@ const M_ManufacturingCapability = (props) => {
     )
 }
 
-export default M_ManufacturingCapability;
+export default MManufacturingCapability;

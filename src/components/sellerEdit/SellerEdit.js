@@ -3,7 +3,7 @@ import CompanyDetails from "../companyDetails/CompanyDetails";
 import SourcingInformationSeller from "../sourcingInformationSeller/SourcingInformationSeller";
 import BusinessVerification from "../businessVerification/BusinessVerification";
 import ExportCapability from "../exportCapability/ExportCapability";
-import M_ManufacturingCapability from "../m_ManufacturingCapability/M_ManufacturingCapability";
+import MManufacturingCapability from "../m_ManufacturingCapability/MManufacturingCapability";
 
 import classes from "./style/style.module.css";
 
@@ -84,7 +84,7 @@ const menu = [
     },
     {
         name: "M_Manufacturing Capability",
-        component: <M_ManufacturingCapability data={{
+        component: <MManufacturingCapability data={{
             name: "Baku, Nizami str",
             size: [1000, 3000],
             numQCStaff: [5, 10],

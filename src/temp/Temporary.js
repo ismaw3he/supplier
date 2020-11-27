@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import "./assets/css/style_2.css";
 import Account from "../components/account/Account";
 // import localGetter from "../generals/localGetter";
 import {connect} from "react-redux";
 import LeftCategories from "../components/leftCategories/LeftCategories";
-import construction from "./assets/img/construction.png"
+// import construction from "./assets/img/construction.png"
 import yourLogo from "./assets/img/your-logo.png";
 import search from "./assets/icon/search.svg";
 import product from "./assets/icon/product_icon.svg";
@@ -35,7 +35,7 @@ import google from "./assets/icon/google-play.svg";
 import instagram from "./assets/icon/instagram.svg";
 import logoWhite from "./assets/img/your-logo-white.png";
 
-import {refreshTokenAPI} from "../API/refreshTokenAPI";
+// import {refreshTokenAPI} from "../API/refreshTokenAPI";
 
 const Temporary = (props) => {
     // const [width, setWidth] = useState(window.innerWidth)
