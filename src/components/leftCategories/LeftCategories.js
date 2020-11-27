@@ -1930,14 +1930,14 @@ const LeftCategories = () => {
                                         return (
                                             <React.Fragment key={count}>
                                                 <div className={classes.group}>
-                                                    <a href="/supplier" className={classes.groupHead}>{item.name}</a>
+                                                    <p  className={classes.groupHead}>{item.name}</p>
 
                                                     {item.subcategories.map((link, index) => {
 
                                                         if (index < item.subcategories.length / 2) {
                                                             return (
                                                                 <div key={index} className={classes.linkCover}>
-                                                                    <a href="/supplier/" > {link.name}</a>
+                                                                    <p > {link.name}</p>
                                                                 </div>
                                                             )
                                                         }
@@ -1950,7 +1950,7 @@ const LeftCategories = () => {
                                                         if (index >= item.subcategories.length / 2) {
                                                             return (
                                                                 <div key={index} className={classes.linkCover}>
-                                                                    <a href="/supplier/" > {link.name}</a>
+                                                                    <p  > {link.name}</p>
                                                                 </div>
                                                             )
                                                         }
@@ -1966,11 +1966,11 @@ const LeftCategories = () => {
                                                 {item.subcategories.map((sub, index) => {
                                                     return (
                                                         <div className={classes.group} key={index}>
-                                                            <a href="/supplier/" className={classes.groupHead}>{sub.name}</a>
+                                                            <p  className={classes.groupHead}>{sub.name}</p>
                                                             {sub.subcategories.map((link, subIndex) => {
                                                                 return (
                                                                     <div  key={subIndex} className={classes.linkCover}>
-                                                                        <a href="/supplier/"> {link.name}</a>
+                                                                        <p > {link.name}</p>
                                                                     </div>
                                                                 )
                                                             })}
