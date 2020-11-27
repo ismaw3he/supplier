@@ -23,7 +23,6 @@ export class TokenStorage {
       axios
         .post( url + "/api/Auth/CreateAccessToken", { RefreshToken: this.getRefreshToken() })
         .then(response => {
-          console.log(response.data.refreshToken);
           this.storeToken(response.data.token);
           this.storeRefreshToken(response.data.refreshToken);
  

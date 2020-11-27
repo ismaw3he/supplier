@@ -22,7 +22,6 @@ export default ( copyData)=>{
         // localSetter(response.data)
         // dispatch(logInUserSuccess(response.data))
         console.log("********Set Response********");
-        console.log(copyData);
 
         // localSetter({
         //     ...copyData,
