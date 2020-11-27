@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classes from "./style/style.module.css";
-import localGetter from "../../generals/localGetter";
 
 import {
     Form,

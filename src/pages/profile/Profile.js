@@ -56,6 +56,7 @@ function LogIn({ userData, getUser, setUser }) {
         });
         setUser(copyData)
     }
+    
     useEffect(() => {
         let copyData = { 
             ...data

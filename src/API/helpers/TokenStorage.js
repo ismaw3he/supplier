@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { Promise } from 'es6-promise';
 import url from "../url";
 

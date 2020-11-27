@@ -21,7 +21,7 @@ axiosInstance.interceptors.response.use((response) => new Promise((resolve, reje
     })
   }
 
-  if (error.config.url == mainUrl + '/api/Auth/CreateAccessToken' || error.response.message == 'Account is disabled.') {
+  if (error.config.url === mainUrl + '/api/Auth/CreateAccessToken' || error.response.message === 'Account is disabled.') {
       
     TokenStorage.clear();
     //  push to root
