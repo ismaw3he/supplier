@@ -1941,6 +1941,7 @@ const LeftCategories = () => {
                                                                 </div>
                                                             )
                                                         }
+                                                        return ( null )
                                                     })}
                                                 </div>
                                                 <div className={classes.group}>
@@ -1953,13 +1954,14 @@ const LeftCategories = () => {
                                                                 </div>
                                                             )
                                                         }
+                                                        return ( null )
                                                     })}
                                                 </div>
                                             </React.Fragment>
                                         )
                                     }
-                                    else {
-                                        return (
+                                    
+                                    return (
                                             <React.Fragment key={count}>
                                                 {item.subcategories.map((sub, index) => {
                                                     return (
@@ -1977,8 +1979,11 @@ const LeftCategories = () => {
                                                 })}
                                             </React.Fragment>
                                         )
-                                    }
+                                    
                                 }
+                                return(
+                                    null
+                                )
                             })
                         }
                     </div>
