@@ -12,9 +12,6 @@ export default (setData, localSetter, copyData)=>{
     .then((res)=> {
         // localSetter(response.data)
         // dispatch(logInUserSuccess(response.data))
-        console.log("********Response********");
-        console.log(copyData);
-        console.log(res);
         localSetter({
             ...copyData,
             country: res.data.country,

@@ -63,10 +63,6 @@ function LogIn({ userData, getUser, setUser }) {
 
         getUser(setData, localSetter ,copyData)
     }, [])
-    useEffect(() => {
-        console.log("State Data", data);
-        console.log("Local Storage Data", localGetter());
-    })
     return (
         <div>
             <TopNav />

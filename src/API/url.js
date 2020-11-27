@@ -1,3 +1,3 @@
-const url = 'http://localhost:53112';
+const url = 'https://turkey-suppliers-auth.azurewebsites.net';
 
 export default url;
