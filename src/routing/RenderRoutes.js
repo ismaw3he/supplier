@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    HashRouter,
     Switch,
     Route
 } from "react-router-dom";
@@ -16,11 +17,11 @@ function RouteWithSubRoutes(route) {
 
 export function RenderRoutes({routes}) {
     return (
-        <Switch>
+        <HashRouter>
             {routes.map((route, i) => {
                 return <RouteWithSubRoutes key={route.key} {...route} />;
             })}
             <Route component={() => <h1>Not Found!</h1>} />
-        </Switch>
+        </HashRouter>
     );
 }
