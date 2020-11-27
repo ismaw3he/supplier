@@ -38,16 +38,16 @@ import logoWhite from "./assets/img/your-logo-white.png";
 import {refreshTokenAPI} from "../API/refreshTokenAPI";
 
 const Temporary = (props) => {
-    const [width, setWidth] = useState(window.innerWidth)
+    // const [width, setWidth] = useState(window.innerWidth)
     
     
 
-    useEffect(()=>{
-        if(localStorage.getItem("refreshToken")){
-            refreshTokenAPI(localStorage.getItem("refreshToken"))
-        }
-    },[])
-    if(width > 1300){
+    // useEffect(()=>{
+    //     if(localStorage.getItem("refreshToken")){
+    //         refreshTokenAPI(localStorage.getItem("refreshToken"))
+    //     }
+    // },[])
+    // if(width > 1300){
         return (
             <div>
                 {/* Header */}
@@ -521,29 +521,29 @@ const Temporary = (props) => {
                 </footer>
             </div>
         )
-    }
-    else{
-        return( <div style={{
-            width: "100%",
-            height: "100vh",
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-around"
-        }}>
-            <h1  style={{
-            width: "70%",
-            fontSize: "65px",
-            color: "rgb(224 174 35)"
+    // }
+    // else{
+    //     return( <div style={{
+    //         width: "100%",
+    //         height: "100vh",
+    //         textAlign: "center",
+    //         display: "flex",
+    //         flexDirection: "column",
+    //         alignItems: "center",
+    //         justifyContent: "space-around"
+    //     }}>
+    //         <h1  style={{
+    //         width: "70%",
+    //         fontSize: "65px",
+    //         color: "rgb(224 174 35)"
             
-        }}>Smaller screen resolution will be supported soon...</h1>
+    //     }}>Smaller screen resolution will be supported soon...</h1>
            
-            <img style={{
-                width:"70vw"
-            }} alt="" src={construction}/>
-        </div>)
-    }
+    //         <img style={{
+    //             width:"70vw"
+    //         }} alt="" src={construction}/>
+    //     </div>)
+    // }
     
 }
 
