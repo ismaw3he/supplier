@@ -1,4 +1,4 @@
 const url = 'https://turkey-suppliers-auth.azurewebsites.net';
 
-// test commit
+// test commit new
 export default url;
