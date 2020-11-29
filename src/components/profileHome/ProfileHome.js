@@ -21,8 +21,7 @@ const ProfileHome = (props) => {
                     <h5>Verified</h5>
                 </div>
                 <div className={classes.buttonContainer}>
-                    <Link className={"button-orange " + classes.margin} to="/profile/buyer">Company</Link>
-                    <Link className={"button-orange " + classes.margin} to="/profile/settings">Settings</Link>
+                    <Link className={"button-orange " + classes.margin} to="/profile/buyer">Verify</Link>
                 </div>
             </div>
         </div>

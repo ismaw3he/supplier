@@ -68,7 +68,7 @@ function LogIn({ userData, getUser, setUser }) {
         <div>
             <TopNav />
             <LeftMenu active={active} setActive={setActive} />
-            <RightPage active={active}>
+            <RightPage background={true} active={active}>
                 <ProfileInformation
                     data={{
                         name: localData.name,

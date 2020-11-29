@@ -13,7 +13,7 @@ function LogIn({ userData }) {
             <TopNav />
             <LeftMenu active={active} setActive={setActive}/>
             
-            <RightPage active={active}>
+            <RightPage background={true} active={active}>
                 <InfoBloksContainer trade="BUYER"/>
                 
             </RightPage>
