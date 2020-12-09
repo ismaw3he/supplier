@@ -28,7 +28,7 @@ const AccountActive = (props) => {
                 <div className="account-active-divider"></div>
                 <Link className="account-active-link" 
                 // to={localGetter().tradeRole === 0? "/profile/buyer" : "/profile/seller"} 
-                to="/settings"
+                to="/profile/settings"
                 >
                     <p className="account-active-link-text">Settings</p>
                 </Link>
