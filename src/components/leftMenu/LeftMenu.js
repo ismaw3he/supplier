@@ -20,13 +20,19 @@ function LeftMenu(props) {
     const {active, setActive} = props
     return (
         <div
+        onMouseEnter={() => { setActive(true) }}
+        onMouseLeave={() => { setActive(false) }}
             className={active? "left-menu-container" : "left-menu-container left-menu-closed"}
         >
             <div className="left-top-container">
                 <Link to="/" className="left-logo-container">
                     <h1>YOUR LOGO.</h1>
                 </Link>
-                <div onClick={() => { setActive(!active) }} className="burger-menu">
+                <div 
+
+                // onClick={() => { setActive(!active) }} 
+                
+                className="burger-menu">
                     <div className={active? "burger-menu-line" : "burger-menu-line short-line"}></div>
                     <div className="burger-menu-line"></div>
                     <div className="burger-menu-line"></div>

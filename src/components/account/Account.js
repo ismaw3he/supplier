@@ -11,7 +11,12 @@ function Account(props) {
     const [active, setActive] = useState(false)
     if (props.loggedIn) {
         return (
-            <div onClick={() => { setActive(!active) }} className="account-container">
+            <div
+            onMouseEnter={() => { setActive(true) }}
+            onMouseLeave={() => { setActive(false) }}
+            
+                // onClick={() => { setActive(!active) }}
+              className="account-container">
                 <div className="user-account-img-container">
                     <img src={user} className="user-account-img" alt="User" />
                 </div>

@@ -619,6 +619,147 @@ const ModalEdit = (props) => {
             </Form>
         )
     }
+    else if (props.verifyBusiness) {
+        modal = (
+            <div className={classes.container}>
+                <Form className={classes.customForm}>
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Registered Business Name</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "Business Name"
+                                }}
+                                value={props.data.name}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+                            <p className={classes.inputInfo}>Please enter the full name of your company.</p>
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                    })} */}
+                        </Form.Field>
+                    </div>
+
+                    <WindowHeader cross={false} close={props.closeModal}>Business Address</WindowHeader>
+
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <Form.Select
+                                fluid
+                                label='Country'
+                                options={options}
+                                placeholder='Country'
+                            />
+                            <p className={classes.inputInfo}>Please enter where you company is located.</p>
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                    })} */}
+                        </Form.Field>
+                    </div>
+
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Region/Province</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "Region"
+                                }}
+                                value={props.data.region}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                    })} */}
+                        </Form.Field>
+                    </div>
+
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>City</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "City"
+                                }}
+                                value={props.data.city}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                    })} */}
+                        </Form.Field>
+                    </div>
+
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Street</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "Street"
+                                }}
+                                value={props.data.street}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+                            <p className={classes.inputInfo}>Please enter your company address, street name & number.</p>
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                    })} */}
+                        </Form.Field>
+                    </div>
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Zip/Postal Code</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "Zip/Postal code"
+                                }}
+                                value={props.data.zipCode}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                    })} */}
+                        </Form.Field>
+                    </div>
+                    <div style={{ width: "100%" }}></div>
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Company Website URL</label>
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "Add Product"
+                                }}
+                                changed={(event) => console.log("locationOfRegistration")}
+                            />
+
+                            <p className={classes.inputInfo}>Company Website URL should begin with http:// or https://</p>
+
+                            {/* {inputData.Email.validationMessages.map((item) => {
+                            return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                        })} */}
+                        </Form.Field>
+                    </div>
+                </Form>
+            </div>
+        )
+    }
     return (
         <div className={classes.ModalEdit}>
             <div className={classes.ModalActive}>

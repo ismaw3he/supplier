@@ -9,25 +9,28 @@ import {
 } from "../../redux/index"
 import { connect } from "react-redux";
 
-import localGetter from "../../generals/localGetter";
+// import localGetter from "../../generals/localGetter";
 
 const AccountActive = (props) => {
     return (
         <div className="account-active-container">
             <div className="fixed-240">
-                <Link to="/profile/settings" className="account-active-info-container">
+                <Link to="/profile" className="account-active-info-container">
                     <div className="account-active-avatar-container">
                         <img src={user} className="user-account-img" alt="User" />
                     </div>
                     <div className="account-active-info-text-container">
                         <h4 className="account-full-name noselect">{props.fullName}</h4>
-                        <p className=" noselect">See your settings</p>
+                        <p className=" noselect">See your profile</p>
                     </div>
                 </Link>
 
                 <div className="account-active-divider"></div>
-                <Link className="account-active-link" to={localGetter().tradeRole === 0? "/profile/buyer" : "/profile/seller"}  >
-                    <p className="account-active-link-text">Company</p>
+                <Link className="account-active-link" 
+                // to={localGetter().tradeRole === 0? "/profile/buyer" : "/profile/seller"} 
+                to="profile/settings"
+                >
+                    <p className="account-active-link-text">Settings</p>
                 </Link>
 {/* 
                 <div className="account-active-divider"></div>

@@ -2,9 +2,9 @@ import React from "react";
 import classes from "./style/style.module.css";
 import WindowHeader from "../windowHeader/WindowHeader";
 import user from "./img/user.svg";
-import {
-    Link
-} from "react-router-dom"
+// import {
+//     Link
+// } from "react-router-dom"
 
 const ProfileHome = (props) => {
     return (
@@ -21,7 +21,8 @@ const ProfileHome = (props) => {
                     <h5>Verified</h5>
                 </div>
                 <div className={classes.buttonContainer}>
-                    <Link className={"button-orange " + classes.margin} to="/profile/buyer">Verify</Link>
+                    <div className={"button-orange " + classes.margin}
+                    onClick={()=>props.modalHandler(true)}>Verify</div>
                 </div>
             </div>
         </div>
