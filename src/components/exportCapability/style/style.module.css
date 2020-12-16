@@ -38,14 +38,15 @@
 }
 .info{
     position: absolute;
-    top: 0;
+    top: -50px;
+    right: -105px;
     height: 40px;
     background-color: #e6e6e6;
     font-size: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
-    left: 421px;
+
     width: fit-content;
     padding: 7px 12px;
     border-radius: 5px;
@@ -82,5 +83,65 @@
     display: flex;
     width: 30%;
     justify-content: space-between;
+    flex-direction: column;
+}
+
+.percentageContainer{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+
+
+.shortInputContainer{
+    width: 200px;
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.inputContainerFull{
+    width: 100%;
+    position: relative;
+    margin: 30px;
+}
+.shortInput{
+    width: 30%;
+}
+.percentLabel{
+    margin-left: 10px;
+}
+
+.percentLoaderContainer{
+    width: 80%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    
+}
+.percentLoader{
+    height: 10px;
+    width: 80%;
+    overflow: hidden;
+    margin-right: 10px;
+    border: 1px solid #0084ff;
+}
+.percentLoaderFull{
+    height: 100%;
+    width: 80%;
+    background-color: #0084ff;
+    transition: width 0.5s;
+}
+.percentNumber{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.flexContainerEditable{
+    display: flex;
+    width: 100%;
+    margin: 30px;
     flex-direction: column;
 }

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./style/style.module.css";
-
+import EditableContent from "../editableContent/EditableContent";
 import Input from "../Input/Input";
 import {
     Form,
@@ -54,7 +54,115 @@ const employee = [
     { key: "100 - 500", value: "100 - 500", text: "100 - 500" },
     { key: "500+", value: "500+", text: "500+" },
 ]
+
 const SourcingInformationSeller = (props) => {
+    const [percentage, setPercentage] = useState(0);
+    const [mainMarkets, setMainMarkets] = useState([
+        {
+            name: "North America",
+            percentage: 0
+        },
+        {
+            name: "Southeast Asia",
+            percentage: 0
+        },
+        {
+            name: "Mid East",
+            percentage: 0
+        },
+        {
+            name: "Central America",
+            percentage: 0
+        },
+        {
+            name: "South Asia",
+            percentage: 0
+        },
+        {
+            name: "South America",
+            percentage: 0
+        },
+        {
+            name: "Africa",
+            percentage: 0
+        },
+        {
+            name: "Eastern Asia",
+            percentage: 0
+        },
+        {
+            name: "Northern Europe",
+            percentage: 0
+        },
+        {
+            name: "Domestic Market",
+            percentage: 0
+        },
+        {
+            name: "Eastern Europe",
+            percentage: 0
+        },
+        {
+            name: "Oceania",
+            percentage: 0
+        },
+        {
+            name: "Western Europe",
+            percentage: 0
+        },
+        {
+            name: "outhern Europe",
+            percentage: 0
+        },
+    ])
+
+    const percentInputChangeHandler = (name, value) => {
+        let marketsCopy = [...mainMarkets];
+        let counter = 0;
+        if (!isNaN(value)) {
+            for (let index = 0; index < marketsCopy.length; index++) {
+                if (marketsCopy[index].name === name) {
+                    marketsCopy[index].percentage = value;
+                }
+
+                counter += Number(marketsCopy[index].percentage)
+            }
+        }
+
+        setPercentage(counter)
+        setMainMarkets(marketsCopy);
+    }
+    // ******************************************
+    const [multipleIndustries, setMultipleIndustries] = useState(false);
+
+    // ******************************************
+    const [showOffices, setShowOffices] = useState(false)
+
+    const [officesList, setOfficesList] = useState([
+        {
+            id: 0,
+            name: "Test Name",
+            model: "test Model",
+            quantity: "Test Quantity"
+        }
+    ])
+
+    const officesActionHandler = (actionType, payload) => {
+        let list = [...officesList];
+        if (actionType === "ADD") {
+            list.push({
+                id: Math.random(),
+                name: "Test Name",
+                model: "test Model",
+                quantity: "Test Quantity"
+            })
+        }
+        else if (actionType === "REMOVE" && list.length !== 1) {
+            list = list.filter((item) => item.id !== payload)
+        }
+
+        setOfficesList(list)
+    }
     return (
         <div className={classes.container}>
             <Form className={classes.customForm}>
@@ -88,8 +196,62 @@ const SourcingInformationSeller = (props) => {
                     })} */}
                     </Form.Field>
                 </div>
+                <div className={classes.inputContainerFull} >
+                    <h2>Main Markets and Distribution</h2>
+                    <div className={classes.percentLoaderContainer}>
+                        <div className={classes.percentLoader}>
+                            <div className={classes.percentLoaderFull}
+                                style={percentage <= 100 ? { width: percentage + "%" } : {
+                                    width: percentage + "%",
+                                    backgroundColor: "#dc3545"
+                                }}
+                            >
 
+                            </div>
+                        </div>
 
+                        <p className={classes.percentNumber}
+                            style={percentage > 100 ? {
+                                color: "#dc3545"
+                            } : {}}
+                        >
+                            {percentage}%
+                        </p>
+                    </div>
+                    <div className={classes.percentageContainer}>
+                        {mainMarkets.map((item, index) => {
+                            return (
+                                <div key={index} className={classes.shortInputContainer} >
+                                    <div className={classes.shortInput}>
+                                        <Input
+
+                                            elementType='input'
+                                            elementConfig={{
+                                                type: "text",
+                                                placeholder: "%"
+                                            }}
+                                            focus={true}
+                                            value={item.percentage}
+                                            changed={
+                                                (event) =>
+                                                    percentInputChangeHandler(item.name, event.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <label className={classes.percentLabel}>% {item.name}</label>
+                                </div>
+                            )
+                        })}
+                        {percentage !== 100 ?
+                            <div className={classes.info}>
+                                Main markets percentage should be
+                         <span className={classes.danger}>100%</span>
+                            </div>
+                            :
+                            null}
+
+                    </div>
+                </div>
 
 
 
@@ -124,57 +286,74 @@ const SourcingInformationSeller = (props) => {
 
 
                 <div className={classes.flexContainer}>
-                    <div className={classes.checkboxContainerFlex} >
-                        <Form.Field>
-                            {/* <label>Are you able to source across multiple industries?</label>
-                            <Form.Checkbox
-                                label='Yes'
-                            />
-                            <Form.Checkbox
-                                label='No'
-                            /> */}
-                            <label>Are you able to source across multiple industries?</label>
-                            <Checkbox toggle label='No (Under Development)' disabled />
-                        </Form.Field>
-                    </div>
+                <Form.Group inline>
+                        <label>Are you able to source across multiple industries?</label>
+                        <Form.Radio
+                            label='Yes'
+                            value='yes'
+                            checked={multipleIndustries}
+                            onChange={() => setMultipleIndustries(true)}
+                        />
+                        <Form.Radio
+                            label='No'
+                            value='no'
+                            checked={!multipleIndustries}
+                            onChange={() => setMultipleIndustries(false)}
+                        />
+                    </Form.Group>
+                    
                 </div>
 
 
                 <div className={classes.inputContainer} >
                     <Form.Field>
-                        <label>Number of Quality Control Staff</label>
 
-                        <Input
-                            elementType='input'
-                            elementConfig={{
-                                type: "text",
-                                placeholder: "text"
-                            }}
-                            value={props.data.qualityControlStaffCount}
-                            changed={(event) => console.log("annualPurchasingVolume")}
+                        <Form.Select
+                            fluid
+                            label='Number of Quality Control Staff'
+                            options={employee}
+                            placeholder='Employee Count'
                         />
                         {/* {inputData.Email.validationMessages.map((item) => {
-                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                    })} */}
+                            return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
+                        })} */}
                     </Form.Field>
+
                 </div>
 
 
-                <div className={classes.flexContainer}>
-                    <div className={classes.checkboxContainerFlex} >
-                        <Form.Field>
-                            {/* <label>Are you able to source across multiple industries?</label>
-                            <Form.Checkbox
-                                label='Ələt'
-                            />
-                            <Form.Checkbox
-                                label='GYD cargo'
-                            /> */}
+                <div className={classes.flexContainerEditable}>
 
-                            <label>Are you able to source across multiple industries?</label>
-                            <Checkbox toggle label='No (Under Development)' disabled />
-                        </Form.Field>
-                    </div>
+                    <Form.Group inline>
+                        <label>Does your company have an overseas office?</label>
+                        <Form.Radio
+                            label='Yes'
+                            value='yes'
+                            checked={showOffices}
+                            onChange={() => setShowOffices(true)}
+                        />
+                        <Form.Radio
+                            label='No'
+                            value='no'
+                            checked={!showOffices}
+                            onChange={() => setShowOffices(false)}
+                        />
+                    </Form.Group>
+
+
+                    {showOffices ?
+                        officesList.map((item, index) => {
+                            return <EditableContent
+                                key={item.id}
+                                id={item.id}
+                                remove={index === 0 ? false : true}
+                                handler={officesActionHandler}
+                                header={"OverSeas Office"}
+                                export={true}
+                            />
+                        })
+                        :
+                        null}
                 </div>
 
                 <div className={classes.inputContainer} >
