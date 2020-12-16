@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classes from "./style/style.module.css";
 import EditableContent from "../editableContent/EditableContent";
 import Input from "../Input/Input";
 import {
-    Form,
-    Checkbox
+    Form
 } from 'semantic-ui-react';
 
 const annualRevenue = [
