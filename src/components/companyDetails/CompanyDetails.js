@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./style/style.module.css";
 import WindowHeader from "../windowHeader/WindowHeader";
-
+import close from "../../img/close.png";
 import Input from "../Input/Input";
 import {
     Form,
@@ -68,6 +68,72 @@ const officeSize = [
     { key: "5000+", value: "5000+", text: "5000+" },
 ]
 const CompanyDetails = (props) => {
+    const [mainProducts, setMainProducts] = useState([
+        {
+            id: Math.random(),
+            name: "Shoes"
+        }
+    ]);
+    const [otherProducts, setOtherProducts] = useState([
+        {
+            id: Math.random(),
+            name: "Dress"
+        },
+        {
+            id: Math.random(),
+            name: "Paper"
+        }
+    ]);
+    const [websites, setWebsites] = useState([
+        {
+            id: Math.random(),
+            name: "https://app.zeplin.io/project"
+        }
+    ]);
+    const itemAddHandler = (field, value) => {
+        let fieldCopy = null;
+        let stateHandler = null;
+        if (field === "MAIN") {
+            fieldCopy = [...mainProducts];
+            stateHandler = setMainProducts;
+        }
+        else if (field === "OTHER") {
+            fieldCopy = [...otherProducts];
+            stateHandler = setOtherProducts;
+        }
+        else if (field === "WEBSITE") {
+            fieldCopy = [...websites];
+            stateHandler = setWebsites;
+        }
+
+        fieldCopy.push({
+            id: Math.random(),
+            name: value
+        })
+        if (value) {
+            stateHandler(fieldCopy);
+        }
+
+    }
+    const itemRemoveHandler = (field, id) => {
+        let fieldCopy = null;
+        let stateHandler = null;
+        if (field === "MAIN") {
+            fieldCopy = [...mainProducts];
+            stateHandler = setMainProducts;
+        }
+        else if (field === "OTHER") {
+            fieldCopy = [...otherProducts];
+            stateHandler = setOtherProducts;
+        }
+        else if (field === "WEBSITE") {
+            fieldCopy = [...websites];
+            stateHandler = setWebsites;
+        }
+
+        fieldCopy = fieldCopy.filter((item) => item.id !== id)
+        stateHandler(fieldCopy);
+    }
     return (
         <div className={classes.container}>
             <Form className={classes.customForm}>
@@ -207,9 +273,12 @@ const CompanyDetails = (props) => {
 
 
                 <div className={classes.inputContainer} >
-                    <Form.Field>
+                    <Form.Field onSubmit={() => console.log("submit")}>
 
                         <Input
+                            enter={true}
+                            submitHandler={itemAddHandler}
+                            submitType={"MAIN"}
                             elementType='input'
                             elementConfig={{
                                 type: "text",
@@ -221,21 +290,20 @@ const CompanyDetails = (props) => {
                             Maximum <span className={classes.danger}>10 products</span> add and press enter
                         </div>
 
-                        <p className={classes.inputInfo}>Added Products - {props.data.mainProducts.length}</p>
+                        <p className={classes.inputInfo}>Added Products - {mainProducts.length}</p>
 
                         <div className={classes.multiple}>
-                            {props.data.mainProducts.map((item, index) => {
+                            {mainProducts.map((item) => {
                                 return (
-                                    <div key={index} className={classes.deletable}>
-                                        <p className={classes.reset}>{item}</p>
-                                        <p className={classes.cursor}>X</p>
+                                    <div key={item.id} className={classes.deletable}>
+                                        <p className={classes.reset}>{item.name}</p>
+                                        <div onClick={() => itemRemoveHandler("MAIN", item.id)} className={classes.cursor}>
+                                            <img src={close} alt="close"/>
+                                        </div>
                                     </div>
                                 )
                             })}
                         </div>
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                            return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                        })} */}
                     </Form.Field>
                 </div>
 
@@ -246,6 +314,9 @@ const CompanyDetails = (props) => {
                     <Form.Field>
 
                         <Input
+                            enter={true}
+                            submitHandler={itemAddHandler}
+                            submitType={"OTHER"}
                             elementType='input'
                             elementConfig={{
                                 type: "text",
@@ -257,21 +328,20 @@ const CompanyDetails = (props) => {
                             Maximum <span className={classes.danger}>10 products</span> add and press Enter.
                         </div>
 
-                        <p className={classes.inputInfo}>Added Products - {props.data.otherProducts.length}</p>
+                        <p className={classes.inputInfo}>Added Products - {otherProducts.length}</p>
 
                         <div className={classes.multiple}>
-                            {props.data.otherProducts.map((item, index) => {
+                            {otherProducts.map((item) => {
                                 return (
-                                    <div key={index} className={classes.deletable}>
-                                        <p className={classes.reset}>{item}</p>
-                                        <p className={classes.cursor}>X</p>
+                                    <div key={item.id} className={classes.deletable}>
+                                        <p className={classes.reset}>{item.name}</p>
+                                        <div onClick={() => itemRemoveHandler("OTHER", item.id)} className={classes.cursor}>
+                                            <img src={close} alt="close"/>
+                                        </div>
                                     </div>
                                 )
                             })}
                         </div>
-                        {/* {inputData.Email.validationMessages.map((item) => {
-            return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-        })} */}
                     </Form.Field>
                 </div>
 
@@ -308,6 +378,9 @@ const CompanyDetails = (props) => {
                     <Form.Field>
                         <label>Company Website URL</label>
                         <Input
+                            enter={true}
+                            submitHandler={itemAddHandler}
+                            submitType={"WEBSITE"}
                             elementType='input'
                             elementConfig={{
                                 type: "text",
@@ -316,25 +389,24 @@ const CompanyDetails = (props) => {
                             changed={(event) => console.log("locationOfRegistration")}
                         />
                         <div style={{ top: "22px" }} className={classes.info}>
-                            Maximum <span className={classes.danger}>3 products</span> URLs allowed.
+                            Maximum <span className={classes.danger}>3 URLs</span> allowed.
                         </div>
 
                         <p className={classes.inputInfo}>Each company website URL should begin with http://.
                                                             If your company owns more than one website, click "+" to add a URL.</p>
 
                         <div className={classes.multiple}>
-                            {props.data.websites.map((item, index) => {
+                            {websites.map((item) => {
                                 return (
-                                    <div key={index} className={classes.deletable}>
-                                        <p className={classes.reset}>{item}</p>
-                                        <p className={classes.cursor}>X</p>
+                                    <div key={item.id} className={classes.deletable}>
+                                        <p className={classes.reset}>{item.name}</p>
+                                        <div onClick={() => itemRemoveHandler("WEBSITE", item.id)} className={classes.cursor}>
+                                            <img src={close} alt="close"/>
+                                        </div>
                                     </div>
                                 )
                             })}
                         </div>
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                            return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                        })} */}
                     </Form.Field>
                 </div>
                 <div style={{ width: "100%" }}></div>
@@ -375,7 +447,7 @@ const CompanyDetails = (props) => {
                 <div className={classes.inputContainer} >
                     <Form.Field>
                         <label>Company Advantages</label>
-                        <TextArea placeholder='Tell us more' style={{ minHeight: 200 }}/>
+                        <TextArea placeholder='Tell us more' style={{ minHeight: 200 }} />
 
 
                         <p className={classes.inputInfo}>

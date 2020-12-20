@@ -159,6 +159,9 @@ const SellerEdit = () => {
             {
                 name: "Export Capability",
                 component: <ExportCapability data={{
+                    mainProducts: [
+                        "Shoes", "Bags", "T-Shirts"
+                    ],
                     minAnnualRevenue: 1.0,
                     maxAnnualRevenue: 10.0,
                     exportPercentage: [31, 40],

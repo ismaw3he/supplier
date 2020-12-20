@@ -240,7 +240,7 @@ const EditableContent = (props) => {
                         </div>
                     </div>
                 </div>
-                
+                        
                 <Form.Field className={classes.shortInput}>
                     <label>Phone number</label>
 

@@ -5,6 +5,7 @@ import Input from "../Input/Input";
 import {
     Form
 } from 'semantic-ui-react';
+import close from "../../img/close.png";
 
 const annualRevenue = [
     { key: "-1", value: "-1", text: "Below US $1 Million" },
@@ -162,6 +163,42 @@ const SourcingInformationSeller = (props) => {
 
         setOfficesList(list)
     }
+
+    const [products, setProducts] = useState([
+        {
+            id: Math.random(),
+            name: "Shoes"
+        }
+    ]);
+    const itemAddHandler = (field, value) => {
+        let fieldCopy = null;
+        let stateHandler = null;
+        if (field === "PRODUCTS") {
+            fieldCopy = [...products];
+            stateHandler = setProducts;
+        }
+
+        fieldCopy.push({
+            id: Math.random(),
+            name: value
+        })
+        if (value) {
+            stateHandler(fieldCopy);
+        }
+
+    }
+    const itemRemoveHandler = (field, id) => {
+        let fieldCopy = null;
+        let stateHandler = null;
+        if (field === "PRODUCTS") {
+            fieldCopy = [...products];
+            stateHandler = setProducts;
+        }
+
+        fieldCopy = fieldCopy.filter((item) => item.id !== id)
+        stateHandler(fieldCopy);
+    }
+
     return (
         <div className={classes.container}>
             <Form className={classes.customForm}>
@@ -285,7 +322,7 @@ const SourcingInformationSeller = (props) => {
 
 
                 <div className={classes.flexContainer}>
-                <Form.Group inline>
+                    <Form.Group inline>
                         <label>Are you able to source across multiple industries?</label>
                         <Form.Radio
                             label='Yes'
@@ -300,9 +337,43 @@ const SourcingInformationSeller = (props) => {
                             onChange={() => setMultipleIndustries(false)}
                         />
                     </Form.Group>
-                    
+
                 </div>
 
+                <div className={classes.inputContainerWidth} >
+                    <Form.Field>
+
+                        <Input
+                            enter={true}
+                            submitHandler={itemAddHandler}
+                            submitType={"PRODUCTS"}
+                            elementType='input'
+                            elementConfig={{
+                                type: "text",
+                                placeholder: "Add Product"
+                            }}
+                            changed={(event) => console.log("locationOfRegistration")}
+                        />
+                        <div className={classes.infoWarning}>
+                            Maximum <span className={classes.danger}>10 products</span> add and press enter
+                        </div>
+
+                        <p className={classes.inputInfo}>Added Products - {products.length}</p>
+
+                        <div className={classes.multiple}>
+                            {products.map((item) => {
+                                return (
+                                    <div key={item.id} className={classes.deletable}>
+                                        <p className={classes.reset}>{item.name}</p>
+                                        <div onClick={() => itemRemoveHandler("PRODUCTS", item.id)} className={classes.cursor}>
+                                            <img src={close} alt="close"/>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </Form.Field>
+                </div>
 
                 <div className={classes.inputContainer} >
                     <Form.Field>

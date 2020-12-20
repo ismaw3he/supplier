@@ -46,10 +46,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: fit-content;
+    padding: 7px 12px;
+    border-radius: 5px;
+}
+.infoWarning{
+    position: absolute;
+    top: 0;
+    right: -320px;
+    height: 40px;
+    background-color: #e6e6e6;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     width: fit-content;
     padding: 7px 12px;
     border-radius: 5px;
+}
+.infoWarning::before{
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 8px solid #e6e6e6;
+    border-bottom: 10px solid transparent;
+    left: -8px;
+    content: "";
+    position: absolute;
 }
 .flexContainer{
     display: flex;
@@ -93,8 +117,21 @@
     position: relative;
 }
 
-
-
+.inputContainerWidth{
+    display: flex;
+    position: relative;
+    width: 40%;
+    flex-direction: column;
+    margin: 30px;
+    margin-right: 50%;
+}
+.reset{
+    margin: 0;
+    margin-right: 10px;
+}
+.cursor{
+    cursor: pointer;
+}
 .shortInputContainer{
     width: 200px;
     margin: 5px 10px;
