@@ -51,7 +51,23 @@ const employee = [
     { key: "100 - 500", value: "100 - 500", text: "100 - 500" },
     { key: "500+", value: "500+", text: "500+" },
 ]
-
+const yearOptions = [
+    { key: 2020, value: 2020, text: 2020 },
+    { key: 2019, value: 2019, text: 2019 },
+    { key: 2018, value: 2018, text: 2018 },
+    { key: 2017, value: 2017, text: 2016 },
+    { key: 2015, value: 2015, text: 2015 },
+    { key: 2014, value: 2014, text: 2014 },
+    { key: 2013, value: 2013, text: 2013 },
+    { key: 2012, value: 2012, text: 2012 },
+    { key: 2011, value: 2011, text: 2011 },
+    { key: 2010, value: 2010, text: 2010 },
+    { key: 2009, value: 2009, text: 2009 },
+    { key: 2008, value: 2008, text: 2008 },
+    { key: 2007, value: 2007, text: 2007 },
+    { key: 2006, value: 2006, text: 2006 },
+    { key: 2005, value: 2005, text: 2005 },
+]
 
 const EditableContent = (props) => {
     let content = null;
@@ -85,13 +101,13 @@ const EditableContent = (props) => {
                         <div className={classes.inputButtons}>
                             <div className={classes.browse}>
                                 Browse
-                    </div>
+                            </div>
                             <p className={classes.uploadRules}>200KB max. JPEG or PNG format only.</p>
 
                             <div className={classes.btnRemove}>
                                 <img src={cancel} alt="cancel" />
-                        Remove
-                    </div>
+                                Remove
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,11 +118,7 @@ const EditableContent = (props) => {
 
                     <p className={classes.inputInfo}>
                         Please briefly describe process description of the Quality Control.”
-            </p>
-
-                    {/* {inputData.Email.validationMessages.map((item) => {
-                return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-            })} */}
+                    </p>
                 </Form.Field>
             </div>
         )
@@ -127,9 +139,7 @@ const EditableContent = (props) => {
                         changed={(event) => console.log("Equipment name")}
                     />
                     <p className={classes.inputInfo}>Please enter the full name of your company.</p>
-                    {/* {inputData.Email.validationMessages.map((item) => {
-                return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                })} */}
+
                 </Form.Field>
 
                 <Form.Field className={classes.shortInput}>
@@ -145,9 +155,7 @@ const EditableContent = (props) => {
                         changed={(event) => console.log("Equipment model")}
                     />
                     <p className={classes.inputInfo}>Please enter the full name of your company.</p>
-                    {/* {inputData.Email.validationMessages.map((item) => {
-                return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                })} */}
+
                 </Form.Field>
 
                 <Form.Field className={classes.shortInput}>
@@ -163,9 +171,7 @@ const EditableContent = (props) => {
                         changed={(event) => console.log("Equipment quantity")}
                     />
                     <p className={classes.inputInfo}>Please enter the full name of your company.</p>
-                    {/* {inputData.Email.validationMessages.map((item) => {
-                return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                })} */}
+
                 </Form.Field>
 
             </div>
@@ -220,7 +226,7 @@ const EditableContent = (props) => {
                         changed={(event) => console.log("Street adress")}
                     />
                 </Form.Field>
-                
+
                 <div className={classes.customFormField}>
                     <label>Office photos</label>
                     <div className={classes.imgInputContainer}>
@@ -240,7 +246,7 @@ const EditableContent = (props) => {
                         </div>
                     </div>
                 </div>
-                        
+
                 <Form.Field className={classes.shortInput}>
                     <label>Phone number</label>
 
@@ -308,6 +314,86 @@ const EditableContent = (props) => {
             </div>
         )
     }
+    else if (props.trade) {
+        content = (
+            <div className={classes.inputsContainer}>
+                <Form.Field className={classes.shortInput}>
+                    <label>Trade show name</label>
+
+                    <Input
+                        elementType='input'
+                        elementConfig={{
+                            type: "text",
+                            placeholder: "Name"
+                        }}
+                        changed={(event) => console.log("Street adress")}
+                    />
+                </Form.Field>
+
+                <Form.Field className={classes.shortInput}>
+                    <Form.Select
+                        fluid
+                        label='Date attended'
+                        options={yearOptions}
+                        placeholder='Date'
+                    />
+                </Form.Field>
+
+                <Form.Field className={classes.shortInput}>
+                    <Form.Select
+                        fluid
+                        label='Country/Region'
+                        options={options}
+                        placeholder='Country'
+                    />
+                </Form.Field>
+
+                <Form.Field>
+                    <label>Trade show introduction</label>
+                    <TextArea placeholder='This show was ...' style={{ minHeight: 140 }} />
+
+
+                    <p className={classes.inputInfo}>
+                        Please briefly describe the attended trade show.</p>
+                </Form.Field>
+
+                <div className={classes.inputContainerLarge} >
+                    <label>Photos from Trade show</label>
+                    <div className={classes.multiplePhotoSectionContainer}>
+                        <div className={classes.imagesContainer}>
+                            <div className={classes.avatarL}>
+                                <img src={empty} alt="avatar" />
+                            </div>
+                            <div className={classes.avatarSmall}>
+                                <img src={empty} alt="avatar" />
+                            </div>
+                            <div className={classes.avatarSmall}>
+                                <img src={empty} alt="avatar" />
+                            </div>
+                        </div>
+
+                        <div className={classes.photoButtonsContainer}>
+                            <div className={classes.inputButtons}>
+                                <div className={classes.btnRemove}>
+                                    <img src={cancel} alt="cancel" />
+                                            Remove
+                                 </div>
+                                <div className={classes.browse}>
+                                    Browse
+                                        </div>
+                                <p className={classes.uploadRules}>200KB max. JPEG or PNG format only.</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        )
+    }
+
+
     return (
         <div className={classes.editableContent}>
             <div className={classes.editHeader}>

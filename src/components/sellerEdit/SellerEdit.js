@@ -6,7 +6,7 @@ import ExportCapability from "../exportCapability/ExportCapability";
 import MManufacturingCapability from "../m_ManufacturingCapability/MManufacturingCapability";
 import BusinessType from "../businessType/BusinessType";
 import QualityControl from "../qualityControl/QualityControl";
-
+import CompanyIntroduction from "../companyIntroduction/CompanyIntroduction";
 import classes from "./style/style.module.css";
 
 
@@ -137,25 +137,6 @@ const SellerEdit = () => {
                     }}
                 />
             },
-            // {
-            //     name: "Business Verification",
-            //     component: <BusinessVerification data={
-            //         {
-            //             name: "Turkey-Suppliers",
-            //             country: "Azerbaijan",
-            //             region: "Absheron",
-            //             city: "Baku",
-            //             street: "Nizami str.",
-            //             zipCode: "AZ1134",
-            //             businessRegistrationCert: "IMAGE",
-            //             businessRegistrationCertNumber: "C21313123131",
-            //             website: "https://mycompany.com"
-            //         }
-            //     } />
-            // },
-    
-    
-            // Company Introduction
             {
                 name: "Export Capability",
                 component: <ExportCapability data={{
@@ -187,16 +168,11 @@ const SellerEdit = () => {
                     annualOutput: [1, 2.5],
     
                 }} />
+            },
+            {
+                name: "Company Introduction",
+                component: <CompanyIntroduction data={{}} />
             }
-            // ,
-            // {
-            //     name: "Quality Control",
-            //     component: <CompanyDetails />
-            // },
-            // {
-            //     name: "Manufacturing Capability",
-            //     component: <CompanyDetails />
-            // }
         ]
     ) 
 
@@ -231,15 +207,6 @@ const SellerEdit = () => {
                         {item.name}
                     </div>
                 })}
-
-                <div className={classes.headerButton} 
-                style={{ 
-                    // width: "310px", 
-                    cursor: "not-allowed" }}
-                >
-                    Company Introduction 
-                    {/* <span style={{ color: "#dc3545", marginLeft: "10px", fontWeight: "bold" }}>(Under Development)</span> */}
-                </div>
             </div>
 
             {menu[section].component}

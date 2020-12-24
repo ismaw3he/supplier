@@ -84,3 +84,97 @@
     justify-content: space-between;
     flex-direction: column;
 }
+
+.customFormField{
+    width: 100%;
+
+}
+.imgInputContainer{
+    height: 160px;
+    display: flex;
+    align-items: center;
+}
+
+.avatar{
+    width: 140px;
+    height: 140px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browse{
+    height: 28px;
+    width: 140px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    font-size: 13px;
+    color: #334141;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.uploadRules{
+    font-size: 12px;
+    color: #b1b1b1;
+    margin-top: 10px;
+}
+.inputButtons{
+    margin-left: 15px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btnRemove{
+    font-size: 14px;
+    color: #0062bd;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: auto;
+}
+.inputContainerLarge{
+    display: flex;
+    position: relative;
+    width: 80%;
+    justify-content: space-between;
+    margin: 30px;
+}
+.multiplePhotoSectionContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.imagesContainer{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+.photoButtonsContainer{
+    width: 200px;
+    height: 100%;
+}
+.avatarSmall{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flexContainerEditable{
+    display: flex;
+    width: 100%;
+    margin: 30px;
+    flex-direction: column;
+}
