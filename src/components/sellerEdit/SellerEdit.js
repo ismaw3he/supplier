@@ -70,15 +70,35 @@ const SellerEdit = () => {
                 if(name==="Manufacturer"){
                     let menuCopy = [...menu];
                     if(condition){
+                        
+                        let manufacturing = {
+                            name: "Manufacturing Capability",
+                            component: <MManufacturingCapability
+                            manufacturer = {true}
+                            data={{
+                                name: "Baku, Nizami str",
+                                size: [1000, 3000],
+                                numQCStaff: [5, 10],
+                                productionLines: 4,
+                                annualOutput: [1, 2.5],
+                                manufacturer: true
+                            }} />
+                        }
+                        menuCopy = menuCopy.filter((item)=>{
+                            return item.name !== "Manufacturing Capability";
+                        })
+                        menuCopy.push(manufacturing);
                         menuCopy.push(qualityControl);
-                        setMenu(menuCopy)
+                        // setMenu(menuCopy)
                     }
                     else{
-                        menuCopy.filter((item)=>{
-                            return item.name === qualityControl.name;
-                        })
-                        setMenu(menuCopy)
+                        //  menuCopy.filter((item)=>{
+                        //     return item.name === qualityControl.name;
+                        // })
+                        
+                        // setMenu(menuCopy)
                     }
+                    setMenu(menuCopy)
                 }
             }
         }
@@ -159,20 +179,20 @@ const SellerEdit = () => {
                 }} />
             },
             {
+                name: "Company Introduction",
+                component: <CompanyIntroduction data={{}} />
+            },
+            {
                 name: "Manufacturing Capability",
                 component: <MManufacturingCapability data={{
                     name: "Baku, Nizami str",
                     size: [1000, 3000],
                     numQCStaff: [5, 10],
                     productionLines: 4,
-                    annualOutput: [1, 2.5],
-    
+                    annualOutput: [1, 2.5]
                 }} />
-            },
-            {
-                name: "Company Introduction",
-                component: <CompanyIntroduction data={{}} />
             }
+            
         ]
     ) 
 
@@ -181,6 +201,15 @@ const SellerEdit = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [section])
+
+    useEffect(() => {
+        let menuCopy = [...menu];
+        if(menuCopy[0].name==="Business Type"){
+            menuCopy[0].component = <BusinessType error={error} data={marks} active={active} handler={markChangeHandler} />
+        }
+        setMenu(menuCopy)
+    }, [error])
+
     return (
         <div className={classes.container}>
             <div className={classes.header}>

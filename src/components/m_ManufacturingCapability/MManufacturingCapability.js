@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./style/style.module.css";
 
 import Input from "../Input/Input";
@@ -6,6 +6,7 @@ import {
     Form
 } from 'semantic-ui-react';
 
+import EditableContent from "../editableContent/EditableContent";
 const officeSize = [
     { key: "100 - 500", value: "100 - 500", text: "100 - 500" },
     { key: "500 - 1000", value: "500 - 1000", text: "500 - 1000" },
@@ -32,92 +33,158 @@ const employee = [
 ]
 
 const MManufacturingCapability = (props) => {
+    const [showCorporate, setShowCorporate] = useState(false)
+
+    const [corporateList, setCorporateList] = useState([
+        {
+            id: 0,
+            name: "Test Name",
+            photo: "test_url",
+            description: "Description Here"
+        }
+    ])
+
+    const corporateActionHandler = (actionType, payload) => {
+        let list = [...corporateList];
+        if (actionType === "ADD") {
+            list.push({
+                id: Math.random(),
+                name: "Test Name",
+                photo: "test_url",
+                description: "Description Here"
+            })
+        }
+        else if (actionType === "REMOVE" && list.length !== 1) {
+            list = list.filter((item) => item.id !== payload)
+        }
+
+        setCorporateList(list)
+    }
+
     return (
         <div className={classes.container}>
             <Form className={classes.customForm}>
-                <div className={classes.inputContainer} >
-                    <Form.Field>
-                        <label>Factory Location</label>
-
-                        <Input
-                            elementType='input'
-                            elementConfig={{
-                                type: "text",
-                                placeholder: "text"
-                            }}
-                            value={props.data.name}
-                            changed={(event) => console.log("annualPurchasingVolume")}
+                <div className={classes.flexContainer}>
+                    <Form.Group inline>
+                        <label>Do you cooperate with a factory?</label>
+                        <Form.Radio
+                            label='Yes'
+                            value='yes'
+                            checked={showCorporate}
+                            onChange={() => setShowCorporate(true)}
                         />
-
-                        <p className={classes.inputInfo}> Please enter City & Street</p>
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                    })} */}
-                    </Form.Field>
-                </div>
-                <div className={classes.inputContainer} >
-                    <Form.Field>
-
-                        <Form.Select
-                            fluid
-                            label='Factory Size (Square meters)'
-                            options={officeSize}
-                            placeholder='Size'
+                        <Form.Radio
+                            label='No'
+                            value='no'
+                            checked={!showCorporate}
+                            onChange={() => setShowCorporate(false)}
                         />
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                    })} */}
-                    </Form.Field>
-                </div>
-                
-                <div className={classes.inputContainer} >
-                    <Form.Field>
+                    </Form.Group>
 
-                        <Form.Select
-                            fluid
-                            label='Number of QC staff'
-                            options={employee}
-                            placeholder='Count'
-                        />
-                        <p className={classes.inputInfo}>Please enter how many people are working on Quality Control</p>
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                    })} */}
-                    </Form.Field>
-                </div>
-                
-                <div className={classes.inputContainer} >
-                    <Form.Field>
-                        <label>Number of Production Lines</label>
+                    {showCorporate ?
+                        corporateList.map((item, index) => {
+                            return <EditableContent
+                                key={item.id}
+                                id={item.id}
+                                remove={index === 0 ? false : true}
+                                handler={corporateActionHandler}
+                                header={"Process"}
+                                showCorporate={true}
+                            />
+                        })
 
-                        <Input
-                            elementType='input'
-                            elementConfig={{
-                                type: "text",
-                                placeholder: "text"
-                            }}
-                            value={props.data.productionLines}
-                            changed={(event) => console.log("annualPurchasingVolume")}
-                        />
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                    })} */}
-                    </Form.Field>
+                        :
+                        null}
+
                 </div>
+
+
+
+                {props.manufacturer ?
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Factory Location</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "text"
+                                }}
+                                value={props.data.name}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+
+                            <p className={classes.inputInfo}> Please enter City & Street</p>
+
+                        </Form.Field>
+                    </div>
+                    : null}
+
+                {props.manufacturer ?
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+
+                            <Form.Select
+                                fluid
+                                label='Factory Size (Square meters)'
+                                options={officeSize}
+                                placeholder='Size'
+                            />
+                        </Form.Field>
+                    </div>
+                    : null}
+
+                {props.manufacturer ?
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+
+                            <Form.Select
+                                fluid
+                                label='Number of QC staff'
+                                options={employee}
+                                placeholder='Count'
+                            />
+                            <p className={classes.inputInfo}>Please enter how many people are working on Quality Control</p>
+
+                        </Form.Field>
+                    </div>
+                    : null}
+
+
+                {props.manufacturer ?
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <label>Number of Production Lines</label>
+
+                            <Input
+                                elementType='input'
+                                elementConfig={{
+                                    type: "text",
+                                    placeholder: "text"
+                                }}
+                                value={props.data.productionLines}
+                                changed={(event) => console.log("annualPurchasingVolume")}
+                            />
+                        </Form.Field>
+                    </div>
+                    : null}
+
                 <div style={{ width: "100%" }}></div>
-                <div className={classes.inputContainer} >
-                    <Form.Field>
-                        <Form.Select
-                            fluid
-                            label='Total Annual Output'
-                            options={annualRevenue}
-                            placeholder='Revenue'
-                        />
-                        {/* {inputData.Email.validationMessages.map((item) => {
-                        return <p key={item.message} className={"validationMessage " + item.status}>{item.message}</p>
-                    })} */}
-                    </Form.Field>
-                </div>
+                {props.manufacturer ?
+                    <div className={classes.inputContainer} >
+                        <Form.Field>
+                            <Form.Select
+                                fluid
+                                label='Total Annual Output'
+                                options={annualRevenue}
+                                placeholder='Revenue'
+                            />
+                        </Form.Field>
+                    </div>
+                    : null}
+
+
             </Form>
         </div>
 

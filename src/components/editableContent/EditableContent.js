@@ -68,7 +68,15 @@ const yearOptions = [
     { key: 2006, value: 2006, text: 2006 },
     { key: 2005, value: 2005, text: 2005 },
 ]
-
+const annualRevenue = [
+    { key: " - 1", value: " - 1", text: "Below US $1 Million" },
+    { key: "1 - 2.5", value: "1 - 2.5", text: "US $1 Million - US $2.5 Million" },
+    { key: "2.5 - 5", value: "2.5 - 5", text: "US $2.5 Million - US $5 Million" },
+    { key: "5 - 10", value: "5 - 10", text: "US $5 Million - US $10 Million" },
+    { key: "10 - 50", value: "10 - 50", text: "US $10 Million - US $50 Million" },
+    { key: "50 - 100", value: "50 - 100", text: "US $50 Million - US $100 Million" },
+    { key: "100 - ", value: "100 - ", text: "Above US $100 Million" },
+]
 const EditableContent = (props) => {
     let content = null;
     if (props.showprocess) {
@@ -392,7 +400,67 @@ const EditableContent = (props) => {
             </div>
         )
     }
+    else if (props.showCorporate) {
+        content = (
+            <div className={classes.inputsContainer}>
+                <Form.Field className={classes.shortInput}>
+                    <label>Factory name</label>
 
+                    <Input
+                        elementType='input'
+                        elementConfig={{
+                            type: "text",
+                            placeholder: "Name"
+                        }}
+                        changed={(event) => console.log("Factory")}
+                    />
+                </Form.Field>
+
+                <div className={classes.customFormField}>
+                    <label>Cooperation contract</label>
+                    <div className={classes.imgInputContainer}>
+                        <div className={classes.avatar}>
+                            <img src={empty} alt="avatar" />
+                        </div>
+                        <div className={classes.inputButtons}>
+                            <div className={classes.browse}>
+                                Browse
+                            </div>
+                            <p className={classes.uploadRules}>200KB max. JPEG or PNG format only.</p>
+
+                            <div className={classes.btnRemove}>
+                                <img src={cancel} alt="cancel" />
+                                Remove
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <Form.Field className={classes.shortInput}>
+                    <label>Years of corporation</label>
+
+                    <Input
+                        elementType='input'
+                        elementConfig={{
+                            type: "text",
+                            placeholder: "Years"
+                        }}
+                        changed={(event) => console.log("Factory")}
+                    />
+                </Form.Field>
+
+                <Form.Field className={classes.shortInput}>
+                    <Form.Select
+                        fluid
+                        label='Total Transaction Amount with factory (last year)'
+                        options={annualRevenue}
+                        placeholder='Revenue'
+                    />
+                </Form.Field>
+            
+            </div>
+        )
+    }
 
     return (
         <div className={classes.editableContent}>
