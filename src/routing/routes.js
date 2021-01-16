@@ -8,6 +8,7 @@ import Main from "../pages/main/Main";
 import LogIn from "../pages/logIn/LogIn";
 import SignUp from "../pages/signUp/SignUp";
 import Profile from "../pages/profile/Profile";
+import Products from "../pages/products/Products";
 import Forgot from "../pages/forgotPassword/Forgot";
 import Buyer from "../pages/buyer/Buyer";
 import Home from "../pages/home/Home";
@@ -41,6 +42,12 @@ const ROUTES = [
                 key: "APP_SOURCING_INFO",
                 exact: true,
                 component: () => <Profile />,
+            },
+            {
+                path: "/profile/products",
+                key: "APP_PRODUCTS",
+                exact: true,
+                component: () => <Products />,
             },
             {
                 path: "/profile/buyer",

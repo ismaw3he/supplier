@@ -34,6 +34,25 @@ const employee = [
 
 const MManufacturingCapability = (props) => {
     const [showCorporate, setShowCorporate] = useState(false)
+    const [showProcess, setShowProcess] = useState(false)
+    const [showEquipment, setShowEquipment] = useState(false);
+
+    const [equipmentList, setEquipmentList] = useState([
+        {
+            id: 0,
+            name: "Test Name",
+            photo: "test_url",
+            description: "Description Here"
+        }
+    ])
+    const [processList, setProcessList] = useState([
+        {
+            id: 0,
+            name: "Test Name",
+            photo: "test_url",
+            description: "Description Here"
+        }
+    ])
 
     const [corporateList, setCorporateList] = useState([
         {
@@ -44,6 +63,38 @@ const MManufacturingCapability = (props) => {
         }
     ])
 
+    const equipmentActionHandler = (actionType, payload) => {
+        let list = [...equipmentList];
+        if (actionType === "ADD") {
+            list.push({
+                id: Math.random(),
+                name: "Test Name",
+                photo: "test_url",
+                description: "Description Here"
+            })
+        }
+        else if (actionType === "REMOVE" && list.length !== 1) {
+            list = list.filter((item) => item.id !== payload)
+        }
+
+        setEquipmentList(list)
+    }
+    const processActionHandler = (actionType, payload) => {
+        let list = [...processList];
+        if (actionType === "ADD") {
+            list.push({
+                id: Math.random(),
+                name: "Test Name",
+                photo: "test_url",
+                description: "Description Here"
+            })
+        }
+        else if (actionType === "REMOVE" && list.length !== 1) {
+            list = list.filter((item) => item.id !== payload)
+        }
+
+        setProcessList(list)
+    }
     const corporateActionHandler = (actionType, payload) => {
         let list = [...corporateList];
         if (actionType === "ADD") {
@@ -96,10 +147,70 @@ const MManufacturingCapability = (props) => {
                         :
                         null}
 
+                    <Form.Group inline>
+                        <label>Whether to show production process</label>
+                        <Form.Radio
+                            label='Yes'
+                            value='yes'
+                            checked={showProcess}
+                            onChange={() => setShowProcess(true)}
+                        />
+                        <Form.Radio
+                            label='No'
+                            value='no'
+                            checked={!showProcess}
+                            onChange={() => setShowProcess(false)}
+                        />
+                    </Form.Group>
+
+                    {showProcess ?
+                        processList.map((item, index) => {
+                            return <EditableContent
+                                key={item.id}
+                                id={item.id}
+                                remove={index === 0 ? false : true}
+                                handler={processActionHandler}
+                                header={"Process"}
+                                showprocess={true}
+                            />
+                        })
+
+                        :
+                        null}
+
+
+
+                    <Form.Group inline>
+                        <label>Whether to show production equipment</label>
+                        <Form.Radio
+                            label='Yes'
+                            value='yes'
+                            checked={showEquipment}
+                            onChange={() => setShowEquipment(true)}
+                        />
+                        <Form.Radio
+                            label='No'
+                            value='no'
+                            checked={!showEquipment}
+                            onChange={() => setShowEquipment(false)}
+                        />
+                    </Form.Group>
+
+
+                    {showEquipment ?
+                        equipmentList.map((item, index) => {
+                            return <EditableContent
+                                key={item.id}
+                                id={item.id}
+                                remove={index === 0 ? false : true}
+                                handler={equipmentActionHandler}
+                                header={"Equipment"}
+                                equipment={true}
+                            />
+                        })
+                        :
+                    null}
                 </div>
-
-
-
                 {props.manufacturer ?
                     <div className={classes.inputContainer} >
                         <Form.Field>

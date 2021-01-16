@@ -11,11 +11,11 @@ import homeIcon from "./img/home-copy.svg";
 import messageIcon from "./img/mail-copy.svg";
 import diagramIcon from "./img/diagram.svg";
 import documentIcon from "./img/document-copy.svg";
-import internetIcon from "./img/internet.svg";
 import likeIcon from "./img/like.svg";
 import audioIcon from "./img/audio.svg";
 import powerIcon from "./img/power.svg";
 import bulb from "./img/idea.svg";
+import products from "./img/layout.svg";
 function LeftMenu(props) {
     const {active, setActive} = props
     return (
@@ -74,12 +74,12 @@ function LeftMenu(props) {
                         </div>
                     </div>
                     <div className="left-menu-single-container">
-                        <div className="left-menu-option">
+                        <Link to="/profile/products" className="left-menu-option">
                             <div className="left-menu-option-icon-container">
-                                <img className="left-menu-option-icon" src={internetIcon} alt="Home Icon" />
+                                <img className="left-menu-option-icon" src={products} alt="Home Icon" />
                             </div>
-                            <Link className="left-menu-option-text" to="/profile">Trade Services</Link>
-                        </div>
+                            <div className="left-menu-option-text">Products</div>
+                        </Link>
                     </div>
                     <div className="left-menu-single-container">
                         <Link to="/profile/buyer" className="left-menu-option">

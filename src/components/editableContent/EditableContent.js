@@ -461,6 +461,50 @@ const EditableContent = (props) => {
             </div>
         )
     }
+    else if(props.equipment){
+        content=(
+            <div className={classes.inputsContainer}>
+                <Form.Field className={classes.shortInput}>
+                    <label>Equipment name</label>
+
+                    <Input
+                        elementType='input'
+                        elementConfig={{
+                            type: "text",
+                            placeholder: "Name"
+                        }}
+                        changed={(event) => console.log("name")}
+                    />
+                </Form.Field>
+
+                <Form.Field className={classes.shortInput}>
+                    <label>Equipment model</label>
+
+                    <Input
+                        elementType='input'
+                        elementConfig={{
+                            type: "text",
+                            placeholder: "Name"
+                        }}
+                        changed={(event) => console.log("model")}
+                    />
+                </Form.Field>
+
+                <Form.Field className={classes.shortInput}>
+                    <label>Equipment quantity</label>
+
+                    <Input
+                        elementType='input'
+                        elementConfig={{
+                            type: "text",
+                            placeholder: "Name"
+                        }}
+                        changed={(event) => console.log("Factory")}
+                    />
+                </Form.Field>
+            </div>
+        )
+    }
 
     return (
         <div className={classes.editableContent}>
@@ -496,3 +540,5 @@ const EditableContent = (props) => {
 }
 
 export default EditableContent;
+
+
